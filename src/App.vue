@@ -46,8 +46,8 @@ export default {
  
  @font-face {
      font-family: 'NotoSansHans-Regular';
-     src: url(../static/fonts/NotoSansHans-Regular.ttf);
-     src: url(../static/fonts/NotoSansHans-Regular.eot);
+     src: url(/static/fonts/NotoSansHans-Regular.ttf);
+     src: url(/static/fonts/NotoSansHans-Regular.eot);
  }
  
  .clearfix:after {

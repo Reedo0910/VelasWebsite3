@@ -84,13 +84,13 @@ main {
                         border-color: #373277;
                     }
                     .area:hover {
-                        background: url(../../static/images/expand-up.svg) 100px 5px no-repeat;
+                        background: url(/static/images/expand-up.svg) 100px 5px no-repeat;
                         background-size: 24px;
                     }
                 }
                 &.closed {
                     .area:hover {
-                        background: url(../../static/images/expand-down.svg) 100px 5px no-repeat;
+                        background: url(/static/images/expand-down.svg) 100px 5px no-repeat;
                         background-size: 24px;
                         border-color: #373277;
                     }

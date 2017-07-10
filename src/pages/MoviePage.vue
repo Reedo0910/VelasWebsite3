@@ -34,7 +34,7 @@ export default {
 
 @font-face {
     font-family: "Qwigley Regular";
-    src: url('../../static/fonts/Qwigley-Regular.ttf');
+    src: url(/static/fonts/Qwigley-Regular.ttf);
 }
 
 header {

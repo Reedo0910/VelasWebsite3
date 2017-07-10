@@ -70,7 +70,7 @@ export default {
 <style lang="scss" scoped>
 @mixin link-background {
     background: {
-        image: url(../../static/images/background.jpg);
+        image: url(/static/images/background.jpg);
         repeat: no-repeat;
         size: cover;
         position: 0 0;
@@ -112,7 +112,7 @@ export default {
                     height: 105px;
                     margin: 0 auto 35px;
                     background: {
-                        image: url('../../static/images/logo-with-text.png');
+                        image: url('/static/images/logo-with-text.png');
                         size: cover;
                     }
                 }
@@ -166,7 +166,7 @@ export default {
             width: 200px;
             height: 200px;
             background: {
-                image: url('../../static/images/head.png');
+                image: url('/static/images/head.png');
                 size: cover;
                 repeat: no-repeat;
                 position: -10px 0;
@@ -218,17 +218,17 @@ export default {
                 }
                 &:nth-child(1) {
                     background: {
-                        image: url(../../static/images/cardgroup/card1.jpg);
+                        image: url(/static/images/cardgroup/card1.jpg);
                     }
                 }
                 &:nth-child(2) {
                     background: {
-                        image: url(../../static/images/cardgroup/card2.jpg);
+                        image: url(/static/images/cardgroup/card2.jpg);
                     }
                 }
                 &:nth-child(3) {
                     background: {
-                        image: url(../../static/images/cardgroup/card4.jpg);
+                        image: url(/static/images/cardgroup/card4.jpg);
                     }
                 }
                 &:hover {

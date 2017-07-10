@@ -85,8 +85,8 @@ export default {
 
 #main-page {
     background-color: #444;
-    @include link-background;
     header {
+        @include link-background;
         width: 100%;
         min-height: 700px;
         background-color: rgba(0, 0, 0, 0.2);

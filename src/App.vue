@@ -27,13 +27,13 @@ export default {
 
 
 .switch-page-enter-active {
-    transition: all .3s ease;
+    transition: all .5s ease;
 }
 
 .switch-page-enter,
 .switch-page-leave {
-    transform: translateY(-5px);
-    opacity: 0;
+    transform: translateY(-8px);
+    opacity: 0.5;
 }
 
 .switch-page-leave-active {

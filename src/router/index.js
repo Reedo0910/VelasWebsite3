@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HomePage from '@/pages/HomePage'
-import MusicPage from '@/pages/MusicPage'
-import TastyPage from '@/pages/TastyPage'
-import MoviePage from '@/pages/MoviePage'
-import LogPage from '@/pages/LogPage'
+const HomePage = resovle => require(['@/pages/HomePage'], resovle);
+const MusicPage = resovle => require(['@/pages/MusicPage'], resovle);
+const TastyPage = resovle => require(['@/pages/TastyPage'], resovle);
+const MoviePage = resovle => require(['@/pages/MoviePage'], resovle);
+const LogPage = resovle => require(['@/pages/LogPage'], resovle);
 
 Vue.use(Router)
 

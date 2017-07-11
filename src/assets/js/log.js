@@ -70,3 +70,70 @@ export function listAction(obj, tarValue) {
         }
     }, 10);
 }
+
+function YItem (year, mitem) {
+    this.Year = year;
+    this.Months = mitem;
+}
+
+function MItem (month, ditem) {
+    this.Month = month;
+    this.Days = ditem;
+}
+
+function DItem (day, content) {
+    this.Day = day;
+    this.Content = content;
+}
+
+export function YMFilter() {
+    let objArray = [];
+    this.logs.forEach(function (element) {
+        let y = parseInt(element.date.split('-')[0]);
+        let m = parseInt(element.date.split('-')[1]);
+        let d = parseInt(element.date.split('-')[2]);
+        if (objArray.length === 0 || y !== objArray[objArray.length - 1].Year) {
+            let mArray = [];
+            mArray.push(m);
+            objArray.push(new YItem(y, mArray));
+        } else {
+            let arr = objArray[objArray.length - 1].Months;
+            if (m !== arr[arr.length - 1]) {
+                arr.push(m);
+            }
+        }
+    }, this);
+    return objArray;
+}
+
+export function TotalFilter() {
+    let totalArr = [];
+    this.logs.forEach(function (element) {
+        let y = parseInt(element.date.split('-')[0]);
+        let m = parseInt(element.date.split('-')[1]);
+        let d = parseInt(element.date.split('-')[2]);
+        let logItem = new DItem(d, element.content);
+
+        if (totalArr.length === 0 || y !== totalArr[totalArr.length - 1].Year) {
+            let dayArr = [];
+            dayArr.push(logItem);
+            let monthArr = [];
+            let monthItem = new MItem(m, dayArr);
+            monthArr.push(monthItem);
+            let yearItem = new YItem(y, monthArr)
+            totalArr.push(yearItem);
+        } else {
+            let ArrM = totalArr[totalArr.length - 1].Months;
+            if (m !== ArrM[ArrM.length - 1].Month) {
+                let dayArr = [];
+                dayArr.push(logItem);
+                let monthItem = new MItem(m, dayArr);
+                ArrM.push(monthItem);
+            } else {
+                let ArrD = ArrM[ArrM.length - 1].Days;
+                ArrD.push(logItem);
+            }
+        }
+    }, this);
+    return totalArr;
+}

@@ -1,13 +1,13 @@
 <template>
     <div class="updatelog-list" id="updatelog-list" v-cloak>
         <transition name="fade" mode="out-in">
-            <div v-for="yItem in logs" v-if="thisYear===yItem.year" :key="yItem">
+            <div v-for="yItem in TotalFilter" v-if="thisYear===yItem.Year" :key="yItem">
                 <transition name="fade" mode="out-in">
-                    <div v-for="mItem in yItem.monthLists" v-if="thisMonth===mItem.month" :key="mItem">
-                        <div :id="'anchor-'+index" class="notecard" v-for="(dItem,index) in mItem.dayLists" :key="(dItem,index)">
-                            <h2>{{mItem.month}}月{{dItem.day}}日</h2>
+                    <div v-for="mItem in yItem.Months" v-if="thisMonth===mItem.Month" :key="mItem">
+                        <div :id="'anchor-'+index" class="notecard" v-for="(dItem,index) in mItem.Days" :key="(dItem,index)">
+                            <h2>{{mItem.Month}}月{{dItem.Day}}日</h2>
                             <ol>
-                                <li v-for="item in dItem.logList" :class="{'singleList':dItem.logList.length==1}" :key="item">{{item}}</li>
+                                <li v-for="item in dItem.Content" :class="{'singleList':dItem.Content.length==1}" :key="item">{{item}}</li>
                             </ol>
                         </div>
                     </div>
@@ -33,6 +33,7 @@
 <script>
 import logJson from '../assets/js/log.json'
 import bus from '../assets/js/eventBus'
+import {TotalFilter} from '../assets/js/log'
 
 export default {
     name: 'UpdateList',
@@ -42,6 +43,9 @@ export default {
             thisYear: 0,
             thisMonth: 0
         }
+    },
+    computed: {
+        TotalFilter: TotalFilter
     },
     created: function () {
         var that = this;

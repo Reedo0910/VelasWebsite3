@@ -1,11 +1,11 @@
 <template>
     <div class="catalog-list" id="catalog-list" v-cloak>
         <ul class="main-nav">
-            <li class="panel" :class="{'expanded':expandIndex===index,'closed':expandIndex!==index }" v-for="(yItem,index) in logs" :key="(yItem,index)">
-                <a class="area" @click="expandPanel(index)">{{yItem.year}}年</a>
+            <li class="panel" :class="{'expanded':expandIndex===index,'closed':expandIndex!==index }" v-for="(yItem, index) in YMFilter" :key="(yItem, index)">
+                <a class="area" @click="expandPanel(index)">{{yItem.Year}}年</a>
                 <ul>
-                    <li v-for="mItem in yItem.monthLists" :key="mItem">
-                        <a class="catalog-list-item" @click="setMAndY(yItem.year,mItem.month)">{{yItem.year}}年{{mItem.month}}月</a>
+                    <li v-for="month in yItem.Months" :key="month">
+                        <a class="catalog-list-item" @click="setMAndY(yItem.Year, month)">{{yItem.Year}}年{{month}}月</a>
                     </li>
                 </ul>
             </li>
@@ -16,15 +16,19 @@
 <script>
 import logJson from '../assets/js/log.json'
 import bus from '../assets/js/eventBus'
-import {autoFixed, listAction} from '../assets/js/log'
+import {autoFixed, listAction, YMFilter} from '../assets/js/log'
 
 export default {
     name: 'CatalogList',
     data() {
         return {
             logs: logJson,
-            expandIndex: -1
+            expandIndex: -1,
+            filterText: ''
         }
+    },
+    computed: {
+        YMFilter: YMFilter
     },
     methods: {
         expandPanel: function (index) {

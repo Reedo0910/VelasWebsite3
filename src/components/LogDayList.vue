@@ -2,11 +2,11 @@
     <div class="day-list" id="day-list" v-cloak>
         <ul class="sub-nav">
             <transition name="fade" mode="out-in">
-                <div v-for="yItem in logs" v-if="thisYear===yItem.year" :key="yItem">
+                <div v-for="yItem in TotalFilter" v-if="thisYear===yItem.Year" :key="yItem">
                     <transition name="fade" mode="out-in">
-                        <div v-for="mItem in yItem.monthLists" v-if="thisMonth===mItem.month" :key="mItem">
-                            <li :class="{'active':activeIndex===index}" v-for="(dItem,index) in mItem.dayLists" :key="(dItem,index)">
-                                <a @click="goAnchor('#anchor-'+index),setDItemActive(index)">{{mItem.month}}月{{dItem.day}}日</a>
+                        <div v-for="mItem in yItem.Months" v-if="thisMonth===mItem.Month" :key="mItem">
+                            <li :class="{'active':activeIndex===index}" v-for="(dItem,index) in mItem.Days" :key="(dItem,index)">
+                                <a @click="goAnchor('#anchor-'+index),setDItemActive(index)">{{mItem.Month}}月{{dItem.Day}}日</a>
                             </li>
                         </div>
                     </transition>
@@ -19,7 +19,7 @@
 <script>
 import logJson from '../assets/js/log.json'
 import bus from '../assets/js/eventBus'
-import {autoFixed, scrollAnimate, autoNavigation} from '../assets/js/log'
+import {autoFixed, scrollAnimate, autoNavigation, TotalFilter} from '../assets/js/log'
 
 export default {
     name: 'LogList',
@@ -30,6 +30,9 @@ export default {
             thisYear: 0,
             thisMonth: 0
         }
+    },
+    computed: {
+        TotalFilter: TotalFilter
     },
     methods: {
         goAnchor: function (selector) {

@@ -11,6 +11,7 @@
                 <i class="fa fa-angle-double-down fa-2x down_icon" aria-hidden="true"></i>
             </header>
             <music-card></music-card>
+            <footer-block></footer-block>
         </div>
     </transition>
 </template>
@@ -18,11 +19,13 @@
 <script>
 import MusicCard from '../components/MusicCards'
 import VTitle from '../components/VTitle'
+import FooterBlock from '../components/Footer'
 export default {
   name: 'Music',
   components: {
       MusicCard,
-      VTitle
+      VTitle,
+      FooterBlock
   }
 }
 </script>
@@ -32,11 +35,6 @@ export default {
     -webkit-transition: all $time ease-out;
     -moz-transition: all $time ease-out;
     transition: all $time ease-out;
-}
-
-@font-face {
-    font-family: "Qwigley Regular";
-    src: url(/static/fonts/Qwigley-Regular.ttf);
 }
 
 header {

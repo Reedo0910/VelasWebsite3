@@ -2,18 +2,15 @@
     <div id="app">
         <navbar></navbar>
         <router-view></router-view>
-        <footer-block></footer-block>
     </div>
 </template>
 
 <script>
 import Navbar from './components/Nav'
-import FooterBlock from './components/Footer'
 export default {
   name: 'app',
   components: {
-    Navbar,
-    FooterBlock
+    Navbar
   }
 }
 </script>
@@ -48,6 +45,11 @@ export default {
      font-family: 'NotoSansHans-Regular';
      src: url(/static/fonts/NotoSansHans-Regular.ttf);
      src: url(/static/fonts/NotoSansHans-Regular.eot);
+ }
+
+ @font-face {
+    font-family: "Qwigley Regular";
+    src: url(/static/fonts/Qwigley-Regular.ttf);
  }
  
  .clearfix:after {

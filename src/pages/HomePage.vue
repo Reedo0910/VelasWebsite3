@@ -34,16 +34,19 @@
                     </router-link>
                 </div>
             </div>
+            <footer-block></footer-block>
         </div>
     </transition>
 </template>
 
 <script>
 import VTitle from '../components/VTitle'
+import FooterBlock from '../components/Footer'
 export default {
     name: 'Home',
     components: {
-        VTitle
+        VTitle,
+        FooterBlock
     },
     data () {
         return {

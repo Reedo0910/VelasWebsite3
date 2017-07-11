@@ -9,6 +9,7 @@
             <main>
                 <log-item></log-item>
             </main>
+            <footer-block></footer-block>
         </div>
     </transition>
 </template>
@@ -16,11 +17,13 @@
 <script>
 import VTitle from '../components/VTitle'
 import LogItem from '../components/LogItems'
+import FooterBlock from '../components/Footer'
 export default {
     name: 'Log',
     components: {
         LogItem,
-        VTitle
+        VTitle,
+        FooterBlock
     }
 }
 </script>

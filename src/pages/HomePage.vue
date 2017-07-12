@@ -28,7 +28,7 @@
                     <br>将是我的荣幸。</p>
                 <div class="context-head"></div>
                 <div class="card-group" id="card-group">
-                    <router-link v-for="card in cards" class="card" :to="card.href" :key="card">
+                    <router-link v-for="card in cards" class="card" :to="card.href" :key="card.title">
                         <span class="card-title">{{card.title}}</span>
                         <span class="card-intro">{{card.intro}}</span>
                     </router-link>

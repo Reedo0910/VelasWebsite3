@@ -1,9 +1,9 @@
 <template>
   <div id="music-card" v-cloak>
-        <div class="artist_list" v-for="artist in MusicCards" :style="{'background-image': 'url(' + artist.ArtistPic + ')'}" :key="artist">
+        <div class="artist_list" v-for="artist in MusicCards" :style="{'background-image': 'url(' + artist.ArtistPic + ')'}" :key="artist.Artist">
             <div class="music_card_group" :style="{'background-color': artist.BackgroundColor }">
                 <h2 class="artist_name">{{artist.Artist}}</h2>
-                <div class="music_card" v-for="card in artist.Albums" :key="card">
+                <div class="music_card" v-for="card in artist.Albums" :key="card.albumName">
                     <img class="card_album" :src="card.albumPic" :alt="card.albumName">
                     <div class="card_bg_cover above_layer"></div>
                     <div class="card_bg_cover" :style="{background: 'linear-gradient(to bottom,rgba(' + card.themeColor+',0.8),rgba('+ card.themeColor +',0.4) 80%,transparent)'}"></div>

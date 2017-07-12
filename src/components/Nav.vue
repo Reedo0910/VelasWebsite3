@@ -1,54 +1,69 @@
 <template>
-    <div id="navbar">
+    <div id="navbar" :class="{ontop: isOnTop}">
         <div id="logo">
             <router-link to="/">Velas</router-link>
         </div>
-        <ul id="navTitle">
-            <router-link to="/" id="home_nav" tag="li" @click.native="setType('dark')" exact>
-                <a>Home</a>
-            </router-link>
-            <li id="collection_nav" @click="itemEvent">
-                <a>Collections
-                    <i class="fa fa-angle-down fa-lg rotate" id="rotate" aria-hidden="true"></i>
-                </a>
-            </li>
-            <router-link to="/log" tag="li" id="log_nav" @click.native="setType()">
-                <a>Log</a>
-            </router-link>
-            <li class="nav-talk-button" id="talk_nav">
-                <a href="http://blog.velas.xyz/">Talk</a>
-            </li>
-        </ul>
-        <ul class="sub-navbar" id="subNavbar-Collection">
-            <router-link to="/music" tag="li" @click.native="setType()">
-                <a><i class="fa fa-music" aria-hidden="true"></i> Music</a>
-            </router-link>
-            <router-link to="/tasty" tag="li" @click.native="setType()">
-                <a><i class="fa fa-cutlery" aria-hidden="true"></i> Tasty</a>
-            </router-link>
-            <router-link to="/movie" tag="li" @click.native="setType()">
-                <a><i class="fa fa-film" aria-hidden="true"></i> Movie</a>
-            </router-link>
-        </ul>
+        <div class="nav-sub">
+            <a v-for="(slink, index) in sublinks" :key="slink.name" :href="slink.href" target="_blank" @mouseover="hoverSubIndex = index">
+                <i :class="['fa', slink.iconClass]" aria-hidden="true"></i><p>{{slink.name}}</p>
+            </a>
+        </div>
+        <div class="nav-main">
+            <router-link v-for="(link, index) in links" :key="link.name" :to="link.route" :exact="link.isExact"><i :class="[link.iconClass, 'fa']" aria-hidden="true"></i>{{link.name}}</router-link>
+        </div>
+        <span class="tab-indicator"></span>
     </div>
 </template>
 
 <script>
-import {navScrollOnTop, itemEvent, setType} from '../assets/js/nav'
 export default {
     name: 'Navbar',
+    data () {
+        return {
+            isOnTop: true,
+            hoverSubIndex: -1,
+            links: [
+                {
+                    route: '/',
+                    isExact: true,
+                    iconClass: 'fa-bandcamp',
+                    name: 'Home'
+                },
+                {
+                    route: '/music',
+                    isExact: false,
+                    iconClass: 'fa-eercast',
+                    name: 'Collection'
+                },
+                {
+                    route: '/log',
+                    isExact: false,
+                    iconClass: 'fa-tasks',
+                    name: 'Log'
+                }
+            ],
+            sublinks: [
+                 {
+                    href: 'http://www.velascamp.cn/',
+                    iconClass: 'fa-free-code-camp',
+                    name: 'Camp'
+                },
+                {
+                    href: 'http://blog.velas.xyz/',
+                    iconClass: 'fa-twitch',
+                    name: 'Talk'
+                }
+            ]
+        }
+    },
     methods: {
-        itemEvent: itemEvent,
-        setType: setType,
-        handleScroll: function () {
-            navScrollOnTop();
+        handleScroll() {
+            const top = document.documentElement.scrollTop || document.body.scrollTop;
+            this.isOnTop = top <= 50;
         }
     },
     created () {
         window.addEventListener('scroll', this.handleScroll);
-    },
-    mounted () {
-        setType('dark');
     },
     beforeDestroy () {
         window.removeEventListener('scroll', this.handleScroll);
@@ -59,6 +74,7 @@ export default {
 <style lang="scss" scoped>
 //p的字体大小
 $font-size-p:16px; //过渡动画样式
+
 @mixin link-transition($time) {
     -webkit-transition: all $time ease-out;
     -moz-transition: all $time ease-out;
@@ -66,63 +82,96 @@ $font-size-p:16px; //过渡动画样式
 }
 
 #navbar {
-    height: 50px;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0);
-    padding-top: 20px;
     position: fixed;
+    background-color: rgba(255, 255, 255, 0.99);
     z-index: 1000;
     overflow: hidden;
     @include link-transition(0.3s);
-    ul {
-        list-style: none;
-        padding-right: 25px;
-        float: right;
-        li {
-            display: inline-block;
-            a {
-                color: #ccc;
-                @include link-transition(0.2s);
-            }
-            &.router-link-active a,
-            a:hover {
-                @include link-transition(0.2s);
-                color: #fff;
-            }
-            &.nav-talk-button {
-                border-radius: 30px;
-                background-color: #0b00dc;
-                box-shadow: #222 -1px 1px 7px 0px;
-                @include link-transition(0.2s);
-                a {
-                    color: #fff;
-                }
-                &:hover {
-                    background-color: #0900b3;
-                    box-shadow: #222 -1px 1px 10px 0px;
-                    @include link-transition(0.2s);
-                }
+    .tab-indicator {
+        height: 2px;
+        width: 100px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-color: #2196f3;
+    }    
+    &.ontop {
+        padding-top: 8px;
+        background-color: transparent;
+        .nav-main a,
+        .nav-sub a {
+            color: #fff;
+            &:hover,
+            &.router-link-active,
+            &:hover p {
+                color: lightcoral;
             }
         }
-        #collection_nav a {
-            cursor: pointer;
+        .nav-sub {
+            background-color: transparent;
+        }
+        #logo a {
+            color: #fff;
+        }
+        .tab-indicator {
+            background-color: #fff;
         }
     }
-    ul.sub-navbar {
-        position: relative;
-        top: 15px;
-        clear: both;
-        padding-right: 88px;
+    .nav-main,
+    .nav-sub {
+        list-style: none;
+        float: right;
+        a {
+            text-decoration: none;
+            display: inline-block;
+            padding: 12px 0 12px;
+            line-height: 30px;
+            text-align: center;
+            @include link-transition(0.15s);    
+            &:hover,
+            &.router-link-active {
+                color: rgba(94, 53, 177, 0.5);
+            }
+        }
+    }
+    .nav-main a {
+        color: #666;
+        width: 125px;
+        i {
+            margin-right: .5em;
+        }
+    }
+    .nav-sub {
+        @include link-transition(0.3s);   
+        background-color: rgba(159, 168, 218, 0.9);
+        a {
+            color: #fff;
+            width: 70px;
+            p {
+                display: none;
+                color: #fff;
+            }
+            &:hover {
+                p {
+                    display: inline;
+                }
+                i {
+                    display: none;
+                }
+            }
+        }
     }
     #logo {
         float: left;
+        padding: 12px 0 12px;
         font-size: 20px;
         font-weight: 700;
         letter-spacing: 1px;
         margin-left: 25px;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         a {
-            color: #fff;
+            color: #8e24aa;
         }
     }
     #logo a,
@@ -131,7 +180,7 @@ $font-size-p:16px; //过渡动画样式
         text-decoration: none;
         display: inline-block;
         padding: 0 20px;
-        text-shadow: #222 -1px 1px 3px;
     }
 }
+
 </style>

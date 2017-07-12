@@ -1,10 +1,10 @@
 <template>
     <div class="updatelog-list" id="updatelog-list" v-cloak>
         <transition name="fade">
-            <div v-for="yItem in TotalFilter" v-if="thisYear===yItem.Year" :key="yItem">
+            <div v-for="yItem in TotalFilter" v-if="thisYear===yItem.Year" :key="yItem.Year">
                 <transition name="fade">
-                    <div v-for="mItem in yItem.Months" v-if="thisMonth===mItem.Month" :key="mItem">
-                        <div :id="'anchor-'+index" class="notecard" v-for="(dItem,index) in mItem.Days" :key="(dItem,index)">
+                    <div v-for="mItem in yItem.Months" v-if="thisMonth===mItem.Month" :key="mItem.Month">
+                        <div :id="'anchor-'+index" class="notecard" v-for="(dItem,index) in mItem.Days" :key="dItem.Day">
                             <h2>{{mItem.Month}}月{{dItem.Day}}日</h2>
                             <ol>
                                 <li v-for="item in dItem.Content" :class="{'singleList':dItem.Content.length==1}" :key="item">{{item}}</li>

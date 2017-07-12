@@ -1,7 +1,7 @@
 <template>
     <div class="catalog-list" id="catalog-list" v-cloak>
         <ul class="main-nav">
-            <li class="panel" :class="{'expanded':expandIndex===index,'closed':expandIndex!==index }" v-for="(yItem, index) in YMFilter" :key="(yItem, index)">
+            <li class="panel" :class="{'expanded':expandIndex===index,'closed':expandIndex!==index }" v-for="(yItem, index) in YMFilter" :key="yItem.Year">
                 <a class="area" @click="expandPanel(index)">{{yItem.Year}}年</a>
                 <ul>
                     <li v-for="month in yItem.Months" :key="month">

@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-const HomePage = resovle => void (require(['@/pages/HomePage.vue'], resovle));
-const MusicPage = resovle => void (require(['@/pages/MusicPage.vue'], resovle));
-const TastyPage = resovle => void (require(['@/pages/TastyPage.vue'], resovle));
-const MoviePage = resovle => void (require(['@/pages/MoviePage.vue'], resovle));
-const LogPage = resovle => void (require(['@/pages/LogPage.vue'], resovle));
+const HomePage = resovle => { require(['@/pages/HomePage.vue'], resovle) };
+const MusicPage = resovle => { require(['@/pages/MusicPage.vue'], resovle) };
+const TastyPage = resovle => { require(['@/pages/TastyPage.vue'], resovle) };
+const MoviePage = resovle => { require(['@/pages/MoviePage.vue'], resovle) };
+const LogPage = resovle => { require(['@/pages/LogPage.vue'], resovle) };
 
 Vue.use(Router)
 

@@ -27,13 +27,13 @@ export default new Router({
             path: '/tasty',
             name: 'tasty-page',
             component: TastyPage,
-            meta: { index: -1 }
+            meta: { index: 1 }
         },
         {
             path: '/movie',
             name: 'movie-page',
             component: MoviePage,
-            meta: { index: -1 }
+            meta: { index: 1 }
         },
         {
             path: '/log',

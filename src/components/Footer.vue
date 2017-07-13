@@ -146,13 +146,13 @@ export default {
         -moz-transition: all .2s ease;
         transition: all .2s ease;
         &.not_on_top {
-            opacity: .8;
+            opacity: .9;
             transform: scale(1);        
         }
         &:hover {
             background-color: #1B5E20;
             box-shadow: #0a520d 0 0 10px;
-            transform: scale(1.1);
+            transform: scale(1.15);
             opacity: 1;            
             -webkit-transition: all .2s ease;
             -moz-transition: all .2s ease;

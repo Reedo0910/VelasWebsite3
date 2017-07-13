@@ -22,11 +22,11 @@ export default {
     }
   },
   methods: {
-      gototop: function () {
-          const dd = document.documentElement;
-          const db = document.body;
-          const step = Math.floor(top / 15);
-          let top = dd.scrollTop || db.scrollTop;
+      gototop () {
+        const dd = document.documentElement;
+        const db = document.body;
+        let top = dd.scrollTop || db.scrollTop;
+        const step = Math.floor(top / 15);
         (function fn () {
             top -= step;
             if (top > -step) {
@@ -35,7 +35,7 @@ export default {
             }
         })();
       },
-      handleScroll: function () {
+      handleScroll () {
           let top = document.documentElement.scrollTop || document.body.scrollTop;
           this.isOnTop = top <= 200;
       }
@@ -136,25 +136,27 @@ export default {
         width: 32px;
         border-radius: 32px;
         background-color: #2e7d32;
-        box-shadow: #000 0 0 10px;
+        box-shadow: #0a520d 0 0 5px;
         display: block;
         text-decoration: none;
         color: #fff;
-        visibility: hidden;
         opacity: 0;
-        -webkit-transition: opacity 0.5s ease, visibility 0.5s ease, background-color 0.15s ease, box-shadow 0.15s ease;
-        -moz-transition: opacity 0.5s ease, visibility 0.5s ease, background-color 0.15s ease, box-shadow 0.15s ease;
-        transition: opacity 0.5s ease, visibility 0.5s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+        transform: scale(0);
+        -webkit-transition: all .2s ease;
+        -moz-transition: all .2s ease;
+        transition: all .2s ease;
         &.not_on_top {
-            visibility: visible;
-            opacity: 1;
+            opacity: .8;
+            transform: scale(1);        
         }
         &:hover {
             background-color: #1B5E20;
-            box-shadow: #222 0 0 8px;
-            -webkit-transition: background-color 0.15s ease, box-shadow 0.15s ease;
-            -moz-transition: background-color 0.15s ease, box-shadow 0.15s ease;
-            transition: background-color 0.15s ease, box-shadow 0.15s ease;
+            box-shadow: #0a520d 0 0 10px;
+            transform: scale(1.1);
+            opacity: 1;            
+            -webkit-transition: all .2s ease;
+            -moz-transition: all .2s ease;
+            transition: all .2s ease;
         }
     }
 }

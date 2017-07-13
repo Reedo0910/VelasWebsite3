@@ -4,24 +4,31 @@
             <router-link to="/">Velas</router-link>
         </div>
         <div class="nav-sub">
-            <a v-for="(slink, index) in sublinks" :key="slink.name" :href="slink.href" target="_blank" @mouseover="hoverSubIndex = index">
-                <i :class="['fa', slink.iconClass]" aria-hidden="true"></i><p>{{slink.name}}</p>
+            <a v-for="(slink, index) in sublinks" :key="slink.name" :href="slink.href" target="_blank" @mouseover.stop="hoverIndex = index + links.length" @mouseout.stop="hoverIndex = -1" @mousedown="handleMouseDown">
+                    <i :class="['fa', slink.iconClass]" aria-hidden="true"></i>
+                    <p>{{slink.name}}</p>
+                    <div class="touch-ripple"></div>
             </a>
         </div>
-        <div class="nav-main">
-            <router-link v-for="(link, index) in links" :key="link.name" :to="link.route" :exact="link.isExact"><i :class="[link.iconClass, 'fa']" aria-hidden="true"></i>{{link.name}}</router-link>
+        <div class="nav-main" id="nav_main">
+            <router-link v-for="(link, index) in links" @mouseover.native.stop="hoverIndex = index" :key="link.name" :to="link.route" :exact="link.isExact" @mouseout.native.stop="hoverIndex = -1" 
+            @mousedown.native="handleMouseDown">
+                <i :class="[link.iconClass, 'fa']" aria-hidden="true"></i>{{link.name}}
+                <div class="touch-ripple"></div>
+            </router-link>
         </div>
-        <span class="tab-indicator"></span>
+        <span class="tab-indicator" :style="{width: indicatorWidth, right: indicatorPos}"></span>
     </div>
 </template>
 
 <script>
+const touchripple = require('../assets/js/touchripple')
 export default {
     name: 'Navbar',
     data () {
         return {
             isOnTop: true,
-            hoverSubIndex: -1,
+            hoverIndex: -1,
             links: [
                 {
                     route: '/',
@@ -56,10 +63,34 @@ export default {
             ]
         }
     },
+    computed: {
+        indicatorPos() {
+            const MainTabWidth = 125;
+            const SubTabWidth = 70;
+            const diff = 45 / 2;
+            const subWidth = SubTabWidth * this.sublinks.length;
+            const Tab = this.links.length + this.sublinks.length - 1;
+            let index = this.hoverIndex === -1 ? this.$route.meta.index : this.hoverIndex;
+            let tar;
+            if (this.hoverIndex >= this.links.length) {
+                tar = (Tab - index) * SubTabWidth + diff + 'px';
+            } else {
+                tar = (this.links.length - 1 - index) * MainTabWidth + diff + subWidth + 'px';
+            }
+            return tar;
+        },
+        indicatorWidth() {
+            let tar = this.hoverIndex > this.links.length - 1 ? 25 : 80;
+            return tar + 'px';
+        }
+    },
     methods: {
         handleScroll() {
             const top = document.documentElement.scrollTop || document.body.scrollTop;
             this.isOnTop = top <= 50;
+        },
+        handleMouseDown(e) {
+            touchripple.handleMouseDown(e);
         }
     },
     created () {
@@ -72,6 +103,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/css/style.css';
 //p的字体大小
 $font-size-p:16px; //过渡动画样式
 
@@ -90,11 +122,12 @@ $font-size-p:16px; //过渡动画样式
     @include link-transition(0.3s);
     .tab-indicator {
         height: 2px;
-        width: 100px;
+        width: 80px;
         position: absolute;
         bottom: 0;
         right: 0;
         background-color: #2196f3;
+        transition: all .3s cubic-bezier(.35, 0, .25, 1);
     }    
     &.ontop {
         padding-top: 8px;
@@ -115,7 +148,7 @@ $font-size-p:16px; //过渡动画样式
             color: #fff;
         }
         .tab-indicator {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.8);
         }
     }
     .nav-main,
@@ -123,6 +156,7 @@ $font-size-p:16px; //过渡动画样式
         list-style: none;
         float: right;
         a {
+            position: relative;
             text-decoration: none;
             display: inline-block;
             padding: 12px 0 12px;
@@ -133,6 +167,7 @@ $font-size-p:16px; //过渡动画样式
             &.router-link-active {
                 color: rgba(94, 53, 177, 0.5);
             }
+            outline: none;
         }
     }
     .nav-main a {
@@ -144,13 +179,10 @@ $font-size-p:16px; //过渡动画样式
     }
     .nav-sub {
         @include link-transition(0.3s);   
-        background-color: rgba(159, 168, 218, 0.9);
         a {
-            color: #fff;
             width: 70px;
             p {
                 display: none;
-                color: #fff;
             }
             &:hover {
                 p {
@@ -165,8 +197,8 @@ $font-size-p:16px; //过渡动画样式
     #logo {
         float: left;
         padding: 12px 0 12px;
-        font-size: 20px;
-        font-weight: 700;
+        font-size: 21px;
+        font-weight: 500;
         letter-spacing: 1px;
         margin-left: 25px;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;

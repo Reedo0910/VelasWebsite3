@@ -7,7 +7,7 @@
             <a href="https://github.com/Reedo0910"><li class="fa fa-github fa-lg"><p>Github</p></li></a>
         </ul>
         <div id="copy">
-            <a href="javaScript:void(0)" class="fa fa-angle-up fa-2x gototop" id="gototop" @click="gototop"></a>
+            <a href="javaScript:void(0)" class="fa fa-angle-up fa-2x gototop" id="gototop" @click="gototop" :class="{ not_on_top: !isOnTop }"></a>
             <p>Zeee@Velas 2017</p>
         </div>
     </div>
@@ -16,12 +16,17 @@
 <script>
 export default {
   name: 'FooterBlock',
+  data () {
+    return {
+        isOnTop: true
+    }
+  },
   methods: {
       gototop: function () {
-          let dd = document.documentElement;
-          let db = document.body;
+          const dd = document.documentElement;
+          const db = document.body;
+          const step = Math.floor(top / 15);
           let top = dd.scrollTop || db.scrollTop;
-          let step = Math.floor(top / 15);
         (function fn () {
             top -= step;
             if (top > -step) {
@@ -32,14 +37,7 @@ export default {
       },
       handleScroll: function () {
           let top = document.documentElement.scrollTop || document.body.scrollTop;
-          let gttBtn = document.getElementById('gototop');
-          if (top <= 200) {
-              gttBtn.style.opacity = 0;
-              gttBtn.style.visibility = 'hidden';
-          } else {
-              gttBtn.style.opacity = 1;
-              gttBtn.style.visibility = 'visible';
-          }
+          this.isOnTop = top <= 200;
       }
   },
   mounted () {
@@ -147,6 +145,10 @@ export default {
         -webkit-transition: opacity 0.5s ease, visibility 0.5s ease, background-color 0.15s ease, box-shadow 0.15s ease;
         -moz-transition: opacity 0.5s ease, visibility 0.5s ease, background-color 0.15s ease, box-shadow 0.15s ease;
         transition: opacity 0.5s ease, visibility 0.5s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+        &.not_on_top {
+            visibility: visible;
+            opacity: 1;
+        }
         &:hover {
             background-color: #1B5E20;
             box-shadow: #222 0 0 8px;

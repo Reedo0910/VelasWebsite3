@@ -14,27 +14,32 @@ export default new Router({
         {
             path: '/',
             name: 'home-page',
-            component: HomePage
+            component: HomePage,
+            meta: { index: 0 }
         },
         {
             path: '/music',
             name: 'music-page',
-            component: MusicPage
+            component: MusicPage,
+            meta: { index: 1 }
         },
         {
             path: '/tasty',
             name: 'tasty-page',
-            component: TastyPage
+            component: TastyPage,
+            meta: { index: -1 }
         },
         {
             path: '/movie',
             name: 'movie-page',
-            component: MoviePage
+            component: MoviePage,
+            meta: { index: -1 }
         },
         {
             path: '/log',
             name: 'log-page',
-            component: LogPage
+            component: LogPage,
+            meta: { index: 2 }
         }
     ],
     scrollBehavior(to, from, savedPosition) {

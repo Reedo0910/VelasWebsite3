@@ -73,7 +73,7 @@ export default {
         position: relative;
         background-color: green;
         top: -25px;
-        box-shadow: #000 0 0 30px;
+        box-shadow: #222 0 0 5px;
         box-sizing: border-box;
     }
     .hr {

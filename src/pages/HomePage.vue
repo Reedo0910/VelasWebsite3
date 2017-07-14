@@ -104,11 +104,13 @@ export default {
                     }
                 }
                 .sub-heading {
-                    margin: 20px 0 10px;
-                    padding: 28px 0 0;
-                    line-height: 40px;
+                    margin: 20px 0;
+                    padding: 20px 0 0;
                     font-weight: 300;
                     font-size: 36px;
+                    box-sizing: border-box;
+                    line-height: 2.2em;
+                    border-bottom: 2px solid #eee;
                 }
             }
         }

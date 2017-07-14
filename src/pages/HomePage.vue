@@ -97,14 +97,14 @@ export default {
                 .velas_logo {
                     width: 288px;
                     height: 100px;
-                    margin: 0 0 20px;
+                    margin: 20px 0 20px;
                     background: {
                         image: url('/static/images/logo-with-text.png');
                         size: cover;
                     }
                 }
                 .sub-heading {
-                    margin: 0 0 10px;
+                    margin: 20px 0 10px;
                     padding: 28px 0 0;
                     line-height: 40px;
                     font-weight: 300;

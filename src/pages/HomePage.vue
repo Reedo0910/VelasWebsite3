@@ -6,27 +6,17 @@
                 <div id="banner">
                     <div class="inner">
                         <div class="velas_logo"></div>
-                        <div class="sub-heading">
-                            <p>
-                                <strong>“春观夜樱、夏望繁星、秋赏满月、冬会初雪。”</strong>
-                            </p>
-                            <p>春は夜桜 夏には星 秋に満月 冬には雪。</p>
-                        </div>
-                        <div class="hr"></div>
-                        <div class="decorate-box"></div>
+                        <p class="sub-heading">Everything flows.</p>
                     </div>
                 </div>
-                <p class="header-pic-intro">关于图片：中国西藏-尼泊尔 喜玛拉雅山脉 Tibet-Nepal Himalayas</p>
             </header>
             <div class="context">
-                <h2 class="context-big-headtitle">Welcome to Velas</h2>
+                <h2 class="context-big-headtitle">What is Velas?</h2>
                 <div class="hr"></div>
-                <p class="context-intro">我是Zeee。
-                    <br>Velas是我设计的个人博客型网站，
-                    <br>用于分享一些我私人的喜好与个人经验。
-                    <br>如果Velas能给你带来一些灵感又或是轻松愉悦的体验的话，
-                    <br>将是我的荣幸。</p>
-                <div class="context-head"></div>
+                <p class="context-intro">这是我的个人博客型网站，
+                    <br>用于分享我的想法见解和个人爱好。
+                    <br>如果这里能为你带来一些灵感或是轻松愉悦的体验，
+                    <br>那么这将是我的荣幸。</p>
                 <div class="card-group" id="card-group">
                     <router-link v-for="card in cards" class="card" :to="card.href" :key="card.title">
                         <span class="card-title">{{card.title}}</span>
@@ -73,11 +63,11 @@ export default {
 <style lang="scss" scoped>
 @mixin link-background {
     background: {
-        image: url(/static/images/background.jpg);
+        image: url(http://o7a3i0m1t.bkt.clouddn.com/image/website/rain_drop.jpg);
         repeat: no-repeat;
         size: cover;
         position: 0 0;
-        attachment: fixed;
+        // attachment: fixed;
     }
 } //过渡动画样式
 @mixin link-transition($time) {
@@ -93,45 +83,32 @@ export default {
         width: 100%;
         min-height: 700px;
         background-color: rgba(0, 0, 0, 0.2);
-        .header-pic-intro {
-            font-size: 10px;
-            position: absolute;
-            bottom: -15px;
-            right: 25px;
-            color: #ccc;
-            margin: 0;
-        }
         #banner {
             height: 100%;
             .inner {
-                max-width: 540px;
+                width: 70%;
+                display: flex;
                 margin: 0 auto;
                 position: relative;
                 top: 215px;
                 color: #fff;
                 box-sizing: border-box;
+                justify-content: space-between;
                 .velas_logo {
-                    width: 360px;
-                    height: 105px;
-                    margin: 0 auto 35px;
+                    width: 288px;
+                    height: 100px;
+                    margin: 0 0 20px;
                     background: {
                         image: url('/static/images/logo-with-text.png');
                         size: cover;
                     }
                 }
                 .sub-heading {
+                    margin: 0 0 10px;
+                    padding: 28px 0 0;
                     line-height: 40px;
                     font-weight: 300;
-                    margin: 0 10px;
-                    text-align: center;
-                    p:nth-child(1) {
-                        font-size: 18px;
-                        margin: 0;
-                    }
-                    p:nth-child(2) {
-                        font-size: 16px;
-                        margin-top: 5px;
-                    }
+                    font-size: 36px;
                 }
             }
         }
@@ -140,10 +117,9 @@ export default {
     .context {
         width: 100%;
         min-height: 750px;
-        background-color: #eee;
+        background-color: #f7f7f7;
         position: relative;
         text-align: center;
-        box-shadow: #444 0 0 10px;
         padding-bottom: 60px;
         .context-big-headtitle {
             text-transform: uppercase;
@@ -162,19 +138,6 @@ export default {
             margin: 20px auto;
             position: relative;
         }
-        .context-head {
-            position: absolute;
-            top: -55px;
-            right: 50px;
-            width: 200px;
-            height: 200px;
-            background: {
-                image: url('/static/images/head.png');
-                size: cover;
-                repeat: no-repeat;
-                position: -10px 0;
-            }
-        }
         .card-group {
             max-width: 765px;
             margin: 50px auto;
@@ -186,7 +149,7 @@ export default {
                 height: 205px;
                 width: 205px;
                 position: relative;
-                box-shadow: 8px 6px 13px -8px #888;
+                box-shadow: 8px 6px 10px -8px #888;
                 text-align: center;
                 text-decoration: none;
                 margin-bottom: 30px;
@@ -221,22 +184,22 @@ export default {
                 }
                 &:nth-child(1) {
                     background: {
-                        image: url(/static/images/cardgroup/card1.jpg);
+                        image: url(http://o7a3i0m1t.bkt.clouddn.com/image/card1.jpg);
                     }
                 }
                 &:nth-child(2) {
                     background: {
-                        image: url(/static/images/cardgroup/card2.jpg);
+                        image: url(http://o7a3i0m1t.bkt.clouddn.com/image/card2.jpg);
                     }
                 }
                 &:nth-child(3) {
                     background: {
-                        image: url(/static/images/cardgroup/card4.jpg);
+                        image: url(http://o7a3i0m1t.bkt.clouddn.com/image/website/card4.jpg);
                     }
                 }
                 &:hover {
                     opacity: 1;
-                    box-shadow: 8px 6px 25px -8px #666;
+                    box-shadow: 8px 6px 20px -8px #666;
                     @include link-transition(0.2s);
                     .card-intro {
                         opacity: 0.9;

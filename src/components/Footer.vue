@@ -1,6 +1,6 @@
 <template>
   <div id="footer-block">
-        <p class="footer-contact">如何联系Zeee?</p>
+        <p class="footer-contact">如何找到我？</p>
         <ul class="share-group">
             <a href="mailto:sea.sand@live.cn"><li class="fa fa-envelope fa-lg"><p>Email</p></li></a>
             <a href="http://weibo.com/reedo"><li class="fa fa-weibo fa-lg"><p>Weibo</p></li></a>

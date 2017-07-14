@@ -30,8 +30,8 @@ export default {
 
 <style lang="scss" scoped>
 header {
-    height: 400px;
-    background: #777 url(/static/images/background-2.jpg) 0px -167px no-repeat;
+    height: 440px;
+    background: #777 url(http://o7a3i0m1t.bkt.clouddn.com/image/website/raspberry.jpg) 0px -167px no-repeat;
     background-size: cover;
     width: 100%;
     p {

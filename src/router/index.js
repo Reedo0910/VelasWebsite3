@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
+import NotFoundPage from '@/pages/NotFoundPage';
 const HomePage = resovle => { require(['@/pages/HomePage.vue'], resovle) };
 const MusicPage = resovle => { require(['@/pages/MusicPage.vue'], resovle) };
 const TastyPage = resovle => { require(['@/pages/TastyPage.vue'], resovle) };
@@ -40,6 +42,11 @@ export default new Router({
             name: 'log-page',
             component: LogPage,
             meta: { index: 2 }
+        },
+        {
+            path: '*',
+            component: NotFoundPage,
+            meta: { index: 0 }
         }
     ],
     scrollBehavior(to, from, savedPosition) {

@@ -86,7 +86,7 @@ export default {
         #banner {
             height: 100%;
             .inner {
-                width: 70%;
+                max-width: 70%;
                 display: flex;
                 margin: 0 auto;
                 position: relative;

@@ -1,11 +1,14 @@
 <template>
     <div>
         <v-title>404 Not Found</v-title>
-        <div id="context" :style="{height: getHeight}">
-            <img src="/static/images/Light_Of.png" alt="light off">
-            <p>Ops</p>
-            <h1 :class="{disappear : !isAppear}">404 Not Found</h1>
-            <p>找不到你想要浏览的网页</p>
+        <div id="context" :style="{height: winHeight}">
+            <div class="bg" :class="{disappear : !isAppear}"></div>
+            <div class="ft">
+                <img src="/static/images/Light_Of.png" alt="light off">
+                <p>Ops</p>
+                <h1 :class="{disappear : !isAppear}">404 Not Found</h1>
+                <p>找不到你想要浏览的网页</p>
+            </div>
         </div>
     </div>
 </template>
@@ -17,27 +20,32 @@ export default {
     data () {
         return {
             isAppear: true,
-            timer: null
+            timer: null,
+            winHeight: '0px'
         }
     },
-    computed: {
+    methods: {
         getHeight() {
-            let winHeight = 0;
             if (document.documentElement && document.documentElement.clientHeight) {
-                winHeight = document.documentElement.clientHeight;
+                this.winHeight = document.documentElement.clientHeight + 'px';
             }
-            return winHeight + 'px';
         }
+    },
+    created() {
+        this.getHeight();
+        window.addEventListener('resize', this.getHeight);
     },
     mounted() {
         let that = this;
+        let value = 0;
         this.timer = setInterval(function () {
-            let value = Math.ceil(Math.random() * 1000);
+            value = Math.ceil(Math.random() * 1000);
             that.isAppear = value % 4 !== 0;
         }, 300);
     },
     beforeDestroy() {
         clearInterval(this.timer);
+        window.removeEventListener('resize', this.getHeight);
     },
     components: {
         VTitle
@@ -47,28 +55,48 @@ export default {
 
 <style lang="scss" scoped>
 #context {
+    position: relative;
     height: 500px;
-    background-color: #000;
     text-align: center;
     padding-top: 150px;
     box-sizing: border-box;
     color: #fff;
-    img {
-        width: 100px;
-        height: 100px;
-    }
-    h1 {
-        font-size: 3.5em;
-        margin: 30px 0 40px;
-        opacity: 1;
+    background: #000;
+    .bg {
         transition: opacity 800ms ease;
+        background: radial-gradient(#444, #000);
+        opacity: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
         &.disappear {
             opacity: 0;
         }
     }
-    p {
-        margin: 10px 0;
-        font-size: 1.2em;
+    .ft {
+        position: relative;
+        z-index: 2;
+        img {
+            width: 100px;
+            height: 100px;
+        }
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 3.5em;
+            margin: 30px 0 40px;
+            opacity: 1;
+            transition: opacity 800ms ease;
+            &.disappear {
+                opacity: 0;
+            }
+        }
+        p {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
     }
 }
 </style>

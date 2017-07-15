@@ -16,12 +16,9 @@ export default {
 </script>
 
 <style lang="scss">
- $total-font: "Microsoft YaHei",
- 微软雅黑,
- Arial,
- sans-serif;
- $font-size-p:16px;
+ $total-font: "Microsoft YaHei",'微软雅黑', Arial, sans-serif;
 
+ $font-size-p:16px;
 
 .switch-page-enter-active {
     transition: all .5s ease;

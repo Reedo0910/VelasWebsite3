@@ -16,7 +16,8 @@ export default {
     name: 'NotFound',
     data () {
         return {
-            isAppear: true
+            isAppear: true,
+            timer: null
         }
     },
     computed: {
@@ -30,10 +31,13 @@ export default {
     },
     mounted() {
         let that = this;
-        setInterval(function () {
+        this.timer = setInterval(function () {
             let value = Math.ceil(Math.random() * 1000);
             that.isAppear = value % 4 !== 0;
         }, 300);
+    },
+    beforeDestroy() {
+        clearInterval(this.timer);
     },
     components: {
         VTitle

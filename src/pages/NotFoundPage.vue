@@ -58,7 +58,7 @@ export default {
     position: relative;
     height: 500px;
     text-align: center;
-    padding-top: 150px;
+    padding-top: 180px;
     box-sizing: border-box;
     color: #fff;
     background: #000;
@@ -80,8 +80,8 @@ export default {
         position: relative;
         z-index: 2;
         img {
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
         }
         h1 {
             font-family: Arial, Helvetica, sans-serif;

@@ -23,8 +23,7 @@ export default {
     data() {
         return {
             logs: logJson,
-            expandIndex: -1,
-            filterText: ''
+            expandIndex: -1
         }
     },
     computed: {

@@ -1,6 +1,6 @@
 // 元素固定
 export function autoFixed(element, eTop) {
-    var T1 = 350;
+    var T1 = 390;
     var T2 = 50;
     var top = document.documentElement.scrollTop || document.body.scrollTop;
     var fE = document.getElementById(element);
@@ -71,6 +71,12 @@ export function listAction(obj, tarValue) {
     }, 10);
 }
 
+function DateItem (year, month, date) {
+    this.Year = year;
+    this.Month = month;
+    this.Date = date;
+}
+
 function YItem (year, mitem) {
     this.Year = year;
     this.Months = mitem;
@@ -86,12 +92,24 @@ function DItem (day, content) {
     this.Content = content;
 }
 
+export function DateFilter() {
+    let array = [];
+    this.logs.forEach(function (element) {
+        let y = parseInt(element.date.split('-')[0]);
+        let m = parseInt(element.date.split('-')[1]);
+        let date = y + '-' + m;
+        if (array.length === 0 || date !== array[array.length - 1].Date) {
+            array.push(new DateItem(y, m, date));
+        }
+    }, this);
+    return array;
+}
+
 export function YMFilter() {
     let objArray = [];
     this.logs.forEach(function (element) {
         let y = parseInt(element.date.split('-')[0]);
         let m = parseInt(element.date.split('-')[1]);
-        let d = parseInt(element.date.split('-')[2]);
         if (objArray.length === 0 || y !== objArray[objArray.length - 1].Year) {
             let mArray = [];
             mArray.push(m);

@@ -43,6 +43,11 @@ main {
             }
         }
     }
+    #date-selector {
+        width: 65%;
+        margin: 0 auto;
+        display: none;
+    }
     .catalog-list {
         float: left;
         padding: 15px 0;

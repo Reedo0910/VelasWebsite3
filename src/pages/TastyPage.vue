@@ -70,4 +70,10 @@ header {
 #context {
     height: 1000px;
 }
+
+@media screen and (max-width: 1000px) {
+    header #banner .inner h1 {
+        font-size: 96px;
+    }
+}
 </style>

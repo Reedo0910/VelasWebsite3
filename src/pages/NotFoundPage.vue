@@ -99,4 +99,10 @@ export default {
         }
     }
 }
+
+@media screen and (max-width: 600px) {
+    #context .ft h1 {
+        font-size: 2.2em;
+    }
+}
 </style>

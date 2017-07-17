@@ -23,44 +23,15 @@
 
 <script>
 const touchripple = require('../assets/js/touchripple')
+import {Mainlinks, Sublinks} from '../assets/js/nav.json'
 export default {
     name: 'Navbar',
     data () {
         return {
             isOnTop: true,
             hoverIndex: -1,
-            links: [
-                {
-                    route: '/',
-                    isExact: true,
-                    iconClass: 'fa-bandcamp',
-                    name: 'Home'
-                },
-                {
-                    route: '/music',
-                    isExact: false,
-                    iconClass: 'fa-eercast',
-                    name: 'Collection'
-                },
-                {
-                    route: '/log',
-                    isExact: false,
-                    iconClass: 'fa-tasks',
-                    name: 'Log'
-                }
-            ],
-            sublinks: [
-                 {
-                    href: 'http://www.velascamp.cn/',
-                    iconClass: 'fa-free-code-camp',
-                    name: 'Camp'
-                },
-                {
-                    href: 'http://blog.velas.xyz/',
-                    iconClass: 'fa-twitch',
-                    name: 'Talk'
-                }
-            ]
+            links: Mainlinks,
+            sublinks: Sublinks
         }
     },
     computed: {

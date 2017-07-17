@@ -236,6 +236,7 @@ export default {
             }
             #banner .inner {
                 justify-content: center;
+                top: 180px;                
             }
         }
         .context {

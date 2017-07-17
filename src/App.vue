@@ -1,24 +1,52 @@
 <template>
     <div id="app">
-        <navbar></navbar>
+        <navbar v-if="!isCompact"></navbar>
+        <navbar-compact v-else></navbar-compact>
         <router-view></router-view>
     </div>
 </template>
 
 <script>
 import Navbar from './components/Nav'
+import NavbarCompact from './components/NavCompact'
 export default {
-  name: 'app',
-  components: {
-    Navbar
-  }
+    name: 'app',
+    components: {
+        Navbar,
+        NavbarCompact
+    },
+    data() {
+        return {
+            isCompact: false
+        }
+    },
+    methods: {
+        displayCheck() {
+            const MaxWidth = 800; // 移动设备最大宽度
+            let winWidth = 0;
+            if (document.documentElement && document.documentElement.clientWidth) {
+                winWidth = document.documentElement.clientWidth;
+            }
+            this.isCompact = winWidth <= MaxWidth;
+        }
+    },
+    created() {
+        this.displayCheck();
+        window.addEventListener('resize', this.displayCheck);
+    },
+    beforeDestroy() {
+        window.removeEventListener('resize', this.displayCheck);
+    }
 }
 </script>
 
 <style lang="scss">
- $total-font: "Microsoft YaHei",'微软雅黑', Arial, sans-serif;
+$total-font: "Microsoft YaHei",
+'微软雅黑',
+Arial,
+sans-serif;
 
- $font-size-p:16px;
+$font-size-p:16px;
 
 .switch-page-enter-active {
     transition: all .5s ease;
@@ -34,41 +62,41 @@ export default {
     transition: all 0s;
 }
 
- body {
-     font-family: $total-font;
- }
- 
- @font-face {
-     font-family: 'NotoSansHans-Regular';
-     src: url(/static/fonts/NotoSansHans-Regular.ttf);
-     src: url(/static/fonts/NotoSansHans-Regular.eot);
- }
+body {
+    font-family: $total-font;
+}
 
- @font-face {
+@font-face {
+    font-family: 'NotoSansHans-Regular';
+    src: url(/static/fonts/NotoSansHans-Regular.ttf);
+    src: url(/static/fonts/NotoSansHans-Regular.eot);
+}
+
+@font-face {
     font-family: "Qwigley Regular";
     src: url(/static/fonts/Qwigley-Regular.ttf);
- }
- 
- .clearfix:after {
-     content: ' ';
-     display: block;
-     clear: both;
- }
- 
- ul {
-     margin: 0;
- }
- 
- h3 {
-     font-size: 20px;
- }
- 
- p {
-     font-size: $font-size-p;
-     letter-spacing: 1px;
- }
+}
 
- [v-cloak] {
-  display: none;
+.clearfix:after {
+    content: ' ';
+    display: block;
+    clear: both;
+}
+
+ul {
+    margin: 0;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+p {
+    font-size: $font-size-p;
+    letter-spacing: 1px;
+}
+
+[v-cloak] {
+    display: none;
 }
 </style>

@@ -29,29 +29,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-header {
-    height: 440px;
-    background: #777 url(http://o7a3i0m1t.bkt.clouddn.com/image/website/raspberry.jpg) 0px -167px no-repeat;
-    background-size: cover;
-    width: 100%;
-    p {
-        color: #fff;
-        margin: 0 0 0 15%;
-        letter-spacing: 3px;
-    }
-    h1 {
-        margin: 0 11% 0;
-        text-align: center;
-        padding: 100px 16px 13px;
-        width: 15%;
-        color: #fff;
-        font-size: 2em;
-        letter-spacing: 1px;
-    }
-}
-
-main {
-    position: relative;
-    width: 100%;
-}
+@import '../assets/scss/log.scss';
 </style>

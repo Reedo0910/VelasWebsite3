@@ -95,9 +95,10 @@ function DItem (day, content) {
 export function DateFilter() {
     let array = [];
     this.logs.forEach(function (element) {
-        let y = parseInt(element.date.split('-')[0]);
-        let m = parseInt(element.date.split('-')[1]);
+        let y = element.date.split('-')[0];
+        let m = element.date.split('-')[1];
         let date = y + '-' + m;
+        // let mm = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二'];
         if (array.length === 0 || date !== array[array.length - 1].Date) {
             array.push(new DateItem(y, m, date));
         }

@@ -16,7 +16,30 @@
 }
 
 //--
+header {
+    height: 440px;
+    background: #777 url(http://o7a3i0m1t.bkt.clouddn.com/image/website/raspberry.jpg) 0px -167px no-repeat;
+    background-size: cover;
+    width: 100%;
+    p {
+        color: #fff;
+        margin: 0 0 0 15%;
+        letter-spacing: 3px;
+    }
+    h1 {
+        margin: 0 11% 0;
+        text-align: center;
+        padding: 100px 16px 13px;
+        width: 15%;
+        color: #fff;
+        font-size: 2em;
+        letter-spacing: 1px;
+    }
+}
+
 main {
+    position: relative;
+    width: 100%;
     .catalog-list,
     .day-list {
         top: 30px;
@@ -44,9 +67,21 @@ main {
         }
     }
     #date-selector {
-        width: 65%;
-        margin: 0 auto;
         display: none;
+        margin: 0 auto;
+        padding-top: 20px;
+        p,
+        select {
+          display: inline-block;
+        }
+        select {
+          padding: 0 10px;
+        }
+        p {
+          margin-right: 10px;
+          color: #444;
+        }
+
     }
     .catalog-list {
         float: left;
@@ -187,3 +222,43 @@ main {
         }
     }
 }
+
+@media screen and (max-width: 900px) {
+  header {
+    height: 300px;
+    background-position: 0 0;
+    h1 {
+      width: 100%;
+      margin: 0;
+      text-align: left;
+      padding-left: 15%;
+    }
+    p {
+      margin: 0;
+      padding-left: 15%;
+      text-align: left;
+    }
+  }
+  main {
+    #date-selector {
+      display: block;
+      width: 85%;
+    }
+    .catalog-list,
+    .day-list {
+      display: none;
+    }
+    #log-item {
+      .updatelog-list {
+        width: 95%;
+        padding-top: 0;
+      }
+      .postscript {
+        padding: 0 20px;
+      }
+    }
+  }
+}
+
+
+

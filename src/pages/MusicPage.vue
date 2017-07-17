@@ -53,7 +53,7 @@ header {
             h1 {
                 font-family: Qwigley Regular;
                 line-height: 90px;
-                font-size: 15em;
+                font-size: 196px;
                 letter-spacing: 10px;
                 font-weight: 300;
                 margin: 0 auto;
@@ -68,4 +68,12 @@ header {
         text-shadow: #4a148c 0px 1px 30px;
     }
 }
+
+
+@media screen and (max-width: 1000px) {
+    header #banner .inner h1 {
+        font-size: 96px;
+    }
+}
+
 </style>

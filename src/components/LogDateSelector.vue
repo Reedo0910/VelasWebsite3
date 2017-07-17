@@ -1,5 +1,6 @@
 <template>
     <div id="date-selector" v-cloak>
+        <p>选择日期</p>
         <select v-model="selected" @change="setMAndY()">
             <option v-for="item in DateFilter" :key="item.Date" :value="item.Date">{{item.Year}}年 {{item.Month}}月</option>
         </select>
@@ -23,7 +24,6 @@ export default {
         DateFilter: DateFilter
     },
     mounted() {
-        this.selected = this.DateFilter[0].Date;
         let that = this;
         bus.$on('logchange', function (y, m) {
             that.selected = y + '-' + m;

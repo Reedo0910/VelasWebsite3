@@ -3,6 +3,7 @@
         <div id="main-page">
             <v-title>Velas - 首页</v-title>
             <header>
+                <div class="bg"></div>
                 <div id="banner">
                     <div class="inner">
                         <div class="velas_logo"></div>
@@ -16,7 +17,7 @@
                 <p class="context-intro">这是我的个人博客型网站，
                     <br>用于分享我的想法见解和个人爱好。
                     <br>如果这里能为你带来一些灵感或是轻松愉悦的体验，
-                    <br>那么这将是我的荣幸。</p>
+                    <br id="tbr">那么这将是我的荣幸。</p>
                 <div class="card-group" id="card-group">
                     <router-link v-for="card in cards" class="card" :to="card.href" :key="card.title">
                         <span class="card-title">{{card.title}}</span>
@@ -66,8 +67,7 @@ export default {
         image: url(http://o7a3i0m1t.bkt.clouddn.com/image/website/rain_drop.jpg);
         repeat: no-repeat;
         size: cover;
-        position: 0 0;
-        // attachment: fixed;
+        position: center 0;
     }
 } //过渡动画样式
 @mixin link-transition($time) {
@@ -83,8 +83,21 @@ export default {
         width: 100%;
         min-height: 700px;
         background-color: rgba(0, 0, 0, 0.2);
+        position: relative;
+        .bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-color: rgba(1, 1, 0, 0.5);
+            display: none;
+        }
         #banner {
             height: 100%;
+            position: relative;
+            z-index: 2;
             .inner {
                 max-width: 70%;
                 display: flex;
@@ -94,6 +107,7 @@ export default {
                 color: #fff;
                 box-sizing: border-box;
                 justify-content: space-between;
+                flex-wrap: wrap;
                 .velas_logo {
                     width: 288px;
                     height: 100px;
@@ -212,4 +226,43 @@ export default {
         }
     }
 }
+
+@media screen and (max-width: 900px) {
+    #main-page {
+        header {
+            min-height: 560px;
+            .bg {
+                display: block;
+            }
+            #banner .inner {
+                justify-content: center;
+            }
+        }
+        .context {
+            .context-big-headtitle {
+                font-size: 24px;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+     #main-page header #banner .inner {
+        .velas_logo {
+            width: 240px;
+            height: 80px;
+        }
+        .sub-heading {
+            font-size: 24px;
+            margin: 0;
+            padding: 0;
+        }
+    }
+    #tbr {
+        display: none;
+    }
+}
+
+
 </style>

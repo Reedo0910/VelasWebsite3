@@ -37,7 +37,6 @@ export default {
 <style lang="scss" scoped>
  #music-card {
     background-color: rgba(90, 90, 90, 0.95);
-    box-shadow: #444 0 0 10px;
     .artist_list {
         background-repeat: no-repeat;
         background-size: cover;
@@ -140,4 +139,65 @@ export default {
         }
     }
 }
+
+@media screen and (max-width: 1000px) {
+    #music-card .artist_list .music_card_group {
+        justify-content: center;
+        padding: 10px 0;
+        .artist_name {
+            position: relative;
+            left: 0;
+            top: 0;
+            writing-mode: initial;
+            margin: 10px 0 0;
+            color: rgba(136, 136, 136, 0.8);
+        }
+    }
+}
+
+@media screen and (max-device-width: 1000px) {
+    #music-card .artist_list {
+        background-attachment: initial;
+    }
+}
+
+
+@media screen and (max-width: 800px) {
+    #music-card .artist_list .music_card_group {
+        .artist_name {
+            font-size: 3em;
+        }
+        .music_card {
+            width: 400px;
+            margin: 60px auto;
+            .card_album {
+                display: none;
+            }
+            .card_info {
+                left: 0;
+                width: 100%;
+                padding: 0 30px;
+                box-sizing: border-box;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    #music-card .artist_list .music_card_group .music_card {
+        width: 80%;
+        margin:  60px auto;
+        .card_album {
+            display: none;
+        }
+        .card_info {
+            left: 0;
+            width: 100%;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+    }
+}
+
 </style>

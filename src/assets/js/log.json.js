@@ -1,7 +1,8 @@
 const logJson = [{
     date: '2017-7-18',
     content: [
-        '移动端适配优化'
+        '移动端适配优化',
+        'Web App适配'
     ]
   },
   {

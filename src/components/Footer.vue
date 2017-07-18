@@ -145,19 +145,28 @@ export default {
         -webkit-transition: all .2s ease;
         -moz-transition: all .2s ease;
         transition: all .2s ease;
+        outline: none;
         &.not_on_top {
-            opacity: .9;
-            transform: scale(1);        
-        }
+        opacity: .9;
+        transform: scale(1);
         &:hover {
             background-color: #1B5E20;
             box-shadow: #0a520d 0 0 10px;
-            transform: scale(1.15);
-            opacity: 1;            
+            transform: scale(1.1);
+            opacity: 1;
             -webkit-transition: all .2s ease;
             -moz-transition: all .2s ease;
             transition: all .2s ease;
         }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #footer-block .gototop {
+        width: 28px;
+        line-height: 28px;
+        border-radius: 28px;        
     }
 }
 </style>

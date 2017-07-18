@@ -4,8 +4,9 @@
             <div id="logo">
                 <router-link to="/">Velas</router-link>
             </div>
-            <button class="nav-btn" @click="isExpand = !isExpand">
+            <button class="nav-btn" @click="isExpand = !isExpand" @mousedown="btnHandleMouseDown">
                 <i class="fa fa-lg" :class="{'fa-bars': !isExpand, 'fa-times': isExpand}" aria-hidden="true"></i>
+                <div class="touch-ripple"></div>                
             </button>
         </div>
         <ul class="nav-list">
@@ -42,7 +43,13 @@ export default {
             this.isOnTop = top <= 50;
         },
         handleMouseDown(e) {
-            this.isExpand === false ? '' : this.isExpand = false;
+            touchripple.handleMouseDown(e);
+            let that = this;
+            setTimeout(function() {
+                that.isExpand === false ? '' : that.isExpand = false;
+            }, 300);
+        },
+        btnHandleMouseDown(e) {
             touchripple.handleMouseDown(e);
         }
     },
@@ -97,7 +104,7 @@ $font-size-p:16px; //过渡动画样式
         @include link-transition(0.3s);                
         background-color: rgba(255, 255, 255, 0.99);
         .nav-list {
-            height: 270px;
+            height: 280px;
             opacity: 1;
             li.nav-main,
             a.nav-sub {
@@ -132,6 +139,7 @@ $font-size-p:16px; //过渡动画样式
             }
         }
         .nav-btn {
+            position: relative;
             display: block;
             background: transparent;
             color: #8e24aa;
@@ -150,6 +158,7 @@ $font-size-p:16px; //过渡动画样式
         opacity: 0;
         li.nav-main,
         a.nav-sub {
+            user-select: none;
             position: relative;
             padding: 12px 0 12px;
             line-height: 30px;
@@ -178,6 +187,9 @@ $font-size-p:16px; //过渡动画样式
             p {
                 margin: 0;
             }
+        }
+        li.nav-main + a.nav-sub {
+            border-top: 2px solid #f8f8f8;
         }
     }
 }

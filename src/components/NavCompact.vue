@@ -180,7 +180,6 @@ $font-size-p:16px; //过渡动画样式
         a.nav-sub {
             text-decoration: none;
             display: block;
-            background-color: #f8f4fd;
         }
     }
 }

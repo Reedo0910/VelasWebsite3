@@ -15,8 +15,7 @@
                 <div class="touch-ripple"></div>
             </router-link>
             <a v-for="(slink, index) in sublinks" class="nav-sub" :key="slink.name" :href="slink.href" target="_blank" @mousedown="handleMouseDown">
-                <i :class="['fa', slink.iconClass]" aria-hidden="true"></i>
-                <p>{{slink.name}}</p>
+                <i :class="['fa', slink.iconClass]" aria-hidden="true"></i>{{slink.name}}
                 <div class="touch-ripple"></div>
             </a>
         </ul>
@@ -104,7 +103,7 @@ $font-size-p:16px; //过渡动画样式
         @include link-transition(0.3s);                
         background-color: rgba(255, 255, 255, 0.99);
         .nav-list {
-            height: 280px;
+            height: 270px;
             opacity: 1;
             li.nav-main,
             a.nav-sub {
@@ -168,28 +167,20 @@ $font-size-p:16px; //过渡动画样式
             &.router-link-active {
                 color: rgba(94, 53, 177, 0.5);
             }
+            i {
+                margin-right: .5em;
+            }
             outline: none;
         }
         li.nav-main {
             color: #666;
             list-style: none;
             cursor: pointer;
-            i {
-                margin-right: .5em;
-            }
         }
         a.nav-sub {
             text-decoration: none;
             display: block;
-            i, p {
-                display: inline-block;
-            }
-            p {
-                margin: 0;
-            }
-        }
-        li.nav-main + a.nav-sub {
-            border-top: 2px solid #f8f8f8;
+            background-color: #f8f4fd;
         }
     }
 }

@@ -158,6 +158,7 @@ export default {
 @media screen and (max-device-width: 1000px) {
     #music-card .artist_list {
         background-attachment: initial;
+        background-position: center 0;
     }
 }
 
@@ -166,6 +167,8 @@ export default {
     #music-card .artist_list .music_card_group {
         .artist_name {
             font-size: 3em;
+            width: 100%;
+            text-align: center;
         }
         .music_card {
             width: 400px;

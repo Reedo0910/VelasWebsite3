@@ -269,7 +269,7 @@ export default {
                     background-color: rgba(0, 0, 0, 0.31);
                 }
                 .card-content {
-                    padding: 80px 100px;
+                    padding: 80px;
                     position: relative;
                     z-index: 3;
                     box-sizing: border-box;       

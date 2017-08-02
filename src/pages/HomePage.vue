@@ -39,7 +39,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="color-bar" style="background-color:#888"></div>                
+                <div class="color-bar" style="background-color:#4c4c4c"></div>                
             </div>
             <footer-block></footer-block>
         </div>
@@ -76,7 +76,7 @@ export default {
                     title: '时间胶囊',
                     route: '/time-capsule',
                     icon: 'http://o7a3i0m1t.bkt.clouddn.com/image/time_capsule.png',
-                    intro: '咦？<br>我发现了什么？'
+                    intro: '咦？<br>这是什么东东？'
                 }
             ],
             cards: [
@@ -277,6 +277,8 @@ export default {
                         @include link-transition(0.2s);
                         display: inline-block;
                         padding: 50px;
+                        width: 152px;
+                        text-align: center;
                         box-sizing: border-box;
                         border: #fff 2px solid;
                         color: #fff;

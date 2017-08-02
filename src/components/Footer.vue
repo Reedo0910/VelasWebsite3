@@ -1,9 +1,7 @@
 <template>
   <div id="footer-block">
         <ul class="share-group">
-            <a href="mailto:sea.sand@live.cn"><li class="fa fa-envelope fa-lg"><p>Email</p></li></a>
-            <a href="http://weibo.com/reedo"><li class="fa fa-weibo fa-lg"><p>Weibo</p></li></a>
-            <a href="https://github.com/Reedo0910"><li class="fa fa-github fa-lg"><p>Github</p></li></a>
+            <a v-for="b in btns" :key="b.title" :href="b.href"><li class="fa fa-lg" :class="b.icon"><p>{{b.title}}</p></li></a>
         </ul>
         <a href="javaScript:void(0)" class="fa fa-angle-up fa-2x gototop" id="gototop" @click="gototop" :class="{ not_on_top: !isOnTop }"></a>
         <div class="footer-copy">
@@ -17,7 +15,27 @@ export default {
   name: 'FooterBlock',
   data () {
     return {
-        isOnTop: true
+        isOnTop: true,
+        btns: [
+            {
+                href: 'mailto:sea.sand@live.cn',
+                icon: 'fa-envelope',
+                title: 'Email',
+                color: '#17b2ec'
+            },
+            {
+                href: 'http://weibo.com/reedo',
+                icon: 'fa-weibo',
+                title: 'Weibo',
+                color: '#ff0000'
+            },
+            {
+                href: 'https://github.com/Reedo0910',
+                icon: 'fa-github',
+                title: 'Github',
+                color: '#545454'
+            }
+        ]
     }
   },
   methods: {
@@ -59,7 +77,7 @@ export default {
 }
 
 #footer-block {
-    background-color: rgb(0,87,55);
+    background-color: #333;
     color: #fff;
     width: 100%;
     min-height: 200px;
@@ -113,7 +131,6 @@ export default {
         }
     }
     .footer-copy p {
-        background-color: #333;
         padding: 15px 0 20px;
         font-size: 14px;
         margin: 0;

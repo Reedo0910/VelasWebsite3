@@ -1,13 +1,12 @@
 <template>
   <div id="footer-block">
-        <p class="footer-contact">如何找到我？</p>
         <ul class="share-group">
             <a href="mailto:sea.sand@live.cn"><li class="fa fa-envelope fa-lg"><p>Email</p></li></a>
             <a href="http://weibo.com/reedo"><li class="fa fa-weibo fa-lg"><p>Weibo</p></li></a>
             <a href="https://github.com/Reedo0910"><li class="fa fa-github fa-lg"><p>Github</p></li></a>
         </ul>
-        <div id="copy">
-            <a href="javaScript:void(0)" class="fa fa-angle-up fa-2x gototop" id="gototop" @click="gototop" :class="{ not_on_top: !isOnTop }"></a>
+        <a href="javaScript:void(0)" class="fa fa-angle-up fa-2x gototop" id="gototop" @click="gototop" :class="{ not_on_top: !isOnTop }"></a>
+        <div class="footer-copy">
             <p>Zeee@Velas 2017</p>
         </div>
     </div>
@@ -57,7 +56,7 @@ export default {
 }
 
 #footer-block {
-    background-color: #232323;
+    background-color: rgb(0,87,55);
     color: #fff;
     width: 100%;
     min-height: 200px;
@@ -66,23 +65,13 @@ export default {
         font-weight: 300;
         letter-spacing: 1px;
     }
-    .footer-contact {
-        width: 200px;
-        line-height: 50px;
-        margin: 0 auto;
-        position: relative;
-        background-color: green;
-        top: -25px;
-        box-shadow: #222 0 0 5px;
-        box-sizing: border-box;
-    }
     .hr {
         background-color: #fff;
         margin: 30px auto 10px;
         height: 1px;
     }
     .share-group {
-        padding: 20px 40px 40px;
+        padding: 50px 40px 20px;
         display: block;
         margin: 0 auto;
         a {
@@ -120,24 +109,22 @@ export default {
             }
         }
     }
-    #copy {
-        p {
-            padding: 20px 0 15px;
-            font-size: 14px;
-            margin: 0 auto;
-        }
+    .footer-copy p {
+        background-color: #333;
+        padding: 15px 0 20px;
+        font-size: 14px;
+        margin: 0;
     }
     .gototop {
+        display: block;
         position: fixed;
         z-index: 800;
         padding: 5px;
-        bottom: 60px;
+        bottom: 65px;
         right: 6%;
         width: 32px;
-        border-radius: 32px;
-        background-color: #2e7d32;
-        box-shadow: #0a520d 0 0 5px;
-        display: block;
+        border-radius: 100%;
+        background-color: rgb(0,87,55);
         text-decoration: none;
         color: #fff;
         opacity: 0;
@@ -147,11 +134,10 @@ export default {
         transition: all .2s ease;
         outline: none;
         &.not_on_top {
-        opacity: .9;
+        opacity: .8;
         transform: scale(1);
         &:hover {
-            background-color: #1B5E20;
-            box-shadow: #0a520d 0 0 10px;
+            background-color: #2e7d32;
             transform: scale(1.1);
             opacity: 1;
             -webkit-transition: all .2s ease;

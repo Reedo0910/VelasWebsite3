@@ -1,4 +1,10 @@
 const logJson = [{
+    date: '2017-8-3',
+    content: [
+        '页脚设计调整'
+    ]
+  },
+  {
     date: '2017-8-2',
     content: [
         '增加了时间胶囊功能',

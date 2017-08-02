@@ -39,6 +39,9 @@ export default {
           this.isOnTop = top <= 200;
       }
   },
+  created () {
+      this.handleScroll();
+  },
   mounted () {
       window.addEventListener('scroll', this.handleScroll);
   },

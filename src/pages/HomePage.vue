@@ -12,18 +12,34 @@
                 </div>
             </header>
             <div class="context">
+                <div class="color-bar" style="background-color:#ccc"></div>
                 <h2 class="context-big-headtitle">What is Velas?</h2>
                 <div class="hr"></div>
-                <p class="context-intro">这是我的个人博客型网站，
-                    <br>用于分享我的想法见解和个人爱好。
-                    <br>如果这里能为你带来一些灵感或是轻松愉悦的体验，
-                    <br id="tbr">那么这将是我的荣幸。</p>
-                <div class="card-group" id="card-group">
-                    <router-link v-for="card in cards" class="card" :to="card.href" :key="card.title">
-                        <span class="card-title">{{card.title}}</span>
-                        <span class="card-intro">{{card.intro}}</span>
-                    </router-link>
+                <p class="context-intro">这是我的个人博客型网站，<br>用于分享我的想法见解和个人爱好。<br>如果这里能为你带来一些灵感或是轻松愉悦的体验，<br id="tbr">那么这将是我的荣幸。</p>
+                <div class="link-btn-group">
+                    <div class="link-btn" v-for="l in linkBtns" :key="l.title">
+                        <a :href="l.href" :style="{'background-image': 'url(' + l.icon + ')'}" target="_blank"></a>
+                        <h3>{{l.title}}</h3>
+                        <p v-html="l.intro"></p>
+                    </div>
+                    <div class="link-btn" v-for="r in routeBtns" :key="r.title">
+                        <router-link :style="{'background-image': 'url(' + r.icon + ')'}" :to="r.route"></router-link>
+                        <h3>{{r.title}}</h3>
+                        <p v-html="r.intro"></p>
+                    </div>
                 </div>
+                <div class="color-bar" style="background-color:#ccc"></div>
+                <div class="card-group" id="card-group">
+                    <div v-for="card in cards" class="card"  :key="card.title" :style="{'background-image': 'url(' + card.background + ')'}">
+                        <div class="card-mask"></div>
+                        <div class="card-content">
+                            <router-link class="card-title" :to="card.href"><span>{{card.title}}</span><i class="fa fa-angle-right" aria-hidden="true"></i></router-link>
+                            <p class="card-intro">{{card.intro}}</p>
+                            <router-link :to="card.href" class="card-icon"><i class="fa fa-3x" :class="card.icon" aria-hidden="true"></i></router-link>
+                        </div>
+                    </div>
+                </div>
+                <div class="color-bar" style="background-color:#888"></div>                
             </div>
             <footer-block></footer-block>
         </div>
@@ -41,21 +57,51 @@ export default {
     },
     data () {
         return {
-            cards: [{
-                href: '/music',
-                title: '音乐',
-                intro: '我喜欢的'
-            },
-            {
-                href: '/tasty',
-                title: '美食',
-                intro: '好吃的(╹ڡ╹ )'
-            },
-            {
-                href: '/movie',
-                title: '电影',
-                intro: '另一种人生'
-            }]
+            linkBtns: [
+                {
+                    title: 'Camp',
+                    href: 'http://www.velascamp.cn/',
+                    icon: 'http://o7a3i0m1t.bkt.clouddn.com/image/website/Campfire_black.png',
+                    intro: '哐哐哐&%*#<br>奇思妙想的碰撞'
+                },
+                {
+                    title: 'Talk',
+                    href: 'http://blog.velas.xyz/',
+                    icon: 'http://o7a3i0m1t.bkt.clouddn.com/Bird.png',
+                    intro: '生而为处女座，<br>抱歉了'
+                }
+            ],
+            routeBtns: [
+                 {
+                    title: '时间胶囊',
+                    route: '/time-capsule',
+                    icon: 'http://o7a3i0m1t.bkt.clouddn.com/image/time_capsule.png',
+                    intro: '咦？<br>我发现了什么？'
+                }
+            ],
+            cards: [
+                {
+                    href: '/music',
+                    title: '音乐',
+                    background: 'http://o7a3i0m1t.bkt.clouddn.com/image/website/paramore-dallas.jpg',
+                    icon: 'fa-music',
+                    intro: '来场由耳朵到心灵的旅行'
+                },
+                {
+                    href: '/tasty',
+                    title: '美食',
+                    background: 'http://o7a3i0m1t.bkt.clouddn.com/image/website/oyakodon.jpg',
+                    icon: 'fa-cutlery',
+                    intro: '连味蕾也为之颤栗的美味'
+                },
+                {
+                    href: '/movie',
+                    title: '电影',
+                    background: 'http://o7a3i0m1t.bkt.clouddn.com/image/website/your_name.png',
+                    icon: 'fa-film',
+                    intro: '在萤幕里体验另一种人生'
+                }
+            ]
         }
     }
 }
@@ -128,17 +174,15 @@ export default {
             }
         }
     }
-
     .context {
         width: 100%;
         min-height: 750px;
         background-color: #f7f7f7;
         position: relative;
         text-align: center;
-        padding-bottom: 60px;
         .context-big-headtitle {
             text-transform: uppercase;
-            margin: 0;
+            margin: 50px 0 0;
             padding-top: 40px;
             font-weight: 300;
             font-size: 40px;
@@ -148,78 +192,115 @@ export default {
             color: #444;
             margin: 0 auto;
             line-height: 30px;
+            width: 90%;
         }
         .hr {
             margin: 20px auto;
             position: relative;
         }
-        .card-group {
+        .color-bar {
+            width: 100%;
+            height: 15px;
+        }
+        .link-btn-group {
             max-width: 765px;
-            margin: 50px auto;
+            margin: 50px auto 80px;
             display: flex;
             justify-content: space-around;
             align-content: space-around;
             flex-flow: row wrap;
+            text-align: center;
+            .link-btn {
+                width: 105px;
+                a {
+                    display: block;
+                    width: 80px;
+                    height: 80px;
+                    text-decoration: none;
+                    border: #ddd solid 1.5px;
+                    border-radius: 100%;
+                    margin: 0 auto;
+                    background: {
+                        size: 40px;
+                        repeat: no-repeat;
+                        position: center;
+                    }
+                    &:hover {
+                        background-color: #eee;
+                    }
+                }
+                h3 {
+                    font-weight: 500;
+                    margin: 5px;
+                    color: #333;
+                }
+                p {
+                    font-size: .8em;
+                    color: #888;
+                    margin: 0;
+                    font-weight: 300;
+                }
+            }
+        }
+        .card-group {
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
             .card {
-                height: 205px;
-                width: 205px;
+                flex-grow: 1;
                 position: relative;
-                box-shadow: 8px 6px 10px -8px #888;
-                text-align: center;
-                text-decoration: none;
-                margin-bottom: 30px;
+                z-index: 1;
                 color: #fff;
                 opacity: 0.85;
+                box-sizing: border-box;
                 background: {
                     size: cover;
                     repeat: no-repeat;
-                    position: 0 0;
+                    position: center top;
                 }
-                @include link-transition(0.2s);
-                .card-title,
-                .card-intro {
-                    position: relative;
-                    float: left;
+                .card-mask {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 2;
                     width: 100%;
-                    text-align: left;
-                    top: 140px;
-                    padding-left: 15px;
-                    box-sizing: border-box;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.31);
                 }
-                .card-title {
-                    font-size: 1.4em;
-                    text-shadow: #222 -1px 1px 3px;
-                }
-                .card-intro {
-                    font-size: .8em;
-                    text-shadow: #222 -1px 1px 3px;
-                    top: 130px;
-                    opacity: 0;
-                    @include link-transition(0.2s);
-                }
-                &:nth-child(1) {
-                    background: {
-                        image: url(http://o7a3i0m1t.bkt.clouddn.com/image/card1.jpg);
-                    }
-                }
-                &:nth-child(2) {
-                    background: {
-                        image: url(http://o7a3i0m1t.bkt.clouddn.com/image/card2.jpg);
-                    }
-                }
-                &:nth-child(3) {
-                    background: {
-                        image: url(http://o7a3i0m1t.bkt.clouddn.com/image/website/card4.jpg);
-                    }
-                }
-                &:hover {
-                    opacity: 1;
-                    box-shadow: 8px 6px 20px -8px #666;
-                    @include link-transition(0.2s);
-                    .card-intro {
-                        opacity: 0.9;
-                        top: 140px;
+                .card-content {
+                    padding: 80px 100px;
+                    position: relative;
+                    z-index: 3;
+                    box-sizing: border-box;       
+                    .card-icon {
                         @include link-transition(0.2s);
+                        display: inline-block;
+                        padding: 50px;
+                        box-sizing: border-box;
+                        border: #fff 2px solid;
+                        color: #fff;
+                        &:hover {
+                            @include link-transition(0.2s);
+                            background-color: rgba(238, 238, 238, 0.3);
+                        }
+                    }
+                    .card-title {
+                        color: #fff;
+                        font-size: 2em;
+                        text-decoration: none;
+                        span {
+                            padding-bottom: 2px;
+                        }
+                        i {
+                            padding-left: .5em; 
+                        }
+                        &:hover span {
+                            border-bottom: 1.5px solid;
+                        }
+                    }
+                    .card-intro {
+                        margin: 10px auto 20px;
                     }
                 }
             }

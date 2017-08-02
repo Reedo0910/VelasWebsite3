@@ -18,7 +18,7 @@
                         <a class="capsule-cover" :href="CC.link" target="_blank" :style="{'background-image': 'url(' + CC.screenshot + ')'}"></a>
                         <div class="capsule-intro">
                             <h2>{{CC.name}}</h2>
-                            <p>首次更新时间： {{CC.date}}</p>
+                            <p>上线时间： {{CC.date}}</p>
                             <p style="margin-bottom:5px">特色功能：</p>
                             <ul><li v-for="intro in CC.intros" :key="intro">{{intro}}</li></ul>
                             <a :href="CC.link" class="capsule-view" target="_blank">浏览</a><i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -48,7 +48,7 @@ export default {
                 screenshot: 'http://o7a3i0m1t.bkt.clouddn.com/image/website/screenshot-2016.velas.xyz.png',
                 name: 'Velas 2016',
                 link: 'http://2016.velas.xyz/',
-                date: '2016年5月3日',
+                date: '2016年5月3日 - 2017年2月10日',
                 intros: [
                     '瀑布流布局的Talk页面，支持折叠、月份列表、图片懒加载等',
                     '手风琴式伸缩特效的日志页面',
@@ -61,7 +61,7 @@ export default {
                 screenshot: 'http://o7a3i0m1t.bkt.clouddn.com/image/website/screenshot-2017.velas.xyz.png',
                 name: 'Velas 2017 春季更新',
                 link: 'http://2017.velas.xyz/',
-                date: '2017年2月11日',
+                date: '2017年2月11日 - 2017年7月9日',
                 intros: [
                     '有明、暗、透明三套主题的导航栏，支持折叠',
                     '初次引入Vue框架',
@@ -75,7 +75,7 @@ export default {
                 screenshot: 'http://o7a3i0m1t.bkt.clouddn.com/image/website/screenshot-velas.xyz.png',
                 name: 'Velas 2017 夏季更新',
                 link: 'http://www.velas.xyz/',
-                date: '2017年7月10日',
+                date: '2017年7月10日 至今',
                 intros: [
                     '使用Vue前端路由，可多页面快速切换',
                     '响应式设计，支持各种分辨率的设备',

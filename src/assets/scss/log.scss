@@ -1,226 +1,248 @@
 //过渡动画样式
 @mixin link-transition($time) {
-    -webkit-transition: all $time ease-out;
-    -moz-transition: all $time ease-out;
-    transition: all $time ease-out;
+  -webkit-transition: all $time ease-out;
+  -moz-transition: all $time ease-out;
+  transition: all $time ease-out;
 }
 
 //--Vue
 .fade-enter-active {
-    transition: opacity .8s
+  transition: opacity .8s
 }
 
 .fade-enter,
 .fade-leave {
-    opacity: 0
+  opacity: 0
 }
 
 //--
 header {
-    height: 440px;
-    background: #777 url(http://o7a3i0m1t.bkt.clouddn.com/image/website/raspberry.jpg) 0px -167px no-repeat;
-    background-size: cover;
-    width: 100%;
-    p {
-        color: #fff;
-        margin: 0 0 0 15%;
-        letter-spacing: 3px;
-    }
-    h1 {
-        margin: 0 11% 0;
-        text-align: center;
-        padding: 100px 16px 13px;
-        width: 15%;
-        color: #fff;
-        font-size: 2em;
-        letter-spacing: 1px;
-    }
+  height: 440px;
+  background: #777 url(http://o7a3i0m1t.bkt.clouddn.com/image/website/raspberry.jpg) 0px -167px no-repeat;
+  background-size: cover;
+  width: 100%;
+  p {
+    color: #fff;
+    margin: 0 0 0 15%;
+    letter-spacing: 3px;
+  }
+  h1 {
+    margin: 0 11% 0;
+    text-align: center;
+    padding: 100px 16px 13px;
+    width: 15%;
+    color: #fff;
+    font-size: 2em;
+    letter-spacing: 1px;
+  }
 }
 
 main {
-    position: relative;
-    width: 100%;
-    .catalog-list,
-    .day-list {
-        top: 30px;
-        float: left;
-        padding: 15px 0;
-        ul {
-            font-size: 14px;
-            width: 135px;
-            margin-left: 15px;
-            color: #444;
-            list-style: none;
-            padding: 0;
-            box-sizing: border-box;
-            cursor: pointer;
-            li {
-                padding: 5px 15px;
-                position: relative;
-                display: block;
-                list-style: none;
-                margin-left: -15px;
-            }
-            a {
-                text-decoration: none;
-            }
-        }
+  position: relative;
+  width: 100%;
+  .catalog-list,
+  .day-list {
+    top: 30px;
+    float: left;
+    padding: 15px 0;
+    ul {
+      font-size: 14px;
+      width: 135px;
+      margin-left: 15px;
+      color: #444;
+      list-style: none;
+      padding: 0;
+      box-sizing: border-box;
+      cursor: pointer;
+      li {
+        padding: 5px 15px;
+        position: relative;
+        display: block;
+        list-style: none;
+        margin-left: -15px;
+      }
+      a {
+        text-decoration: none;
+      }
     }
-    #date-selector {
-        display: none;
-        margin: 0 auto;
-        padding-top: 20px;
-        p,
-        select {
-          display: inline-block;
-        }
-        select {
-          padding: 0 10px;
-        }
-        p {
-          margin-right: 10px;
+  }
+  #date-selector {
+    display: none;
+    margin: 0 auto;
+    padding-top: 20px;
+    p,
+    select {
+      display: inline-block;
+    }
+    select {
+      padding: 0 10px;
+    }
+    p {
+      margin-right: 10px;
+      color: #444;
+    }
+  }
+  .catalog-list {
+    float: left;
+    padding: 15px 0;
+    position: absolute;
+    left: 50px;
+    .main-nav {
+      .panel {
+        padding-top: 0;
+        padding-bottom: 0;
+        .area:hover,
+        .area {
           color: #444;
+          border-left: 1px solid #ccc;
+          display: block;
+          padding: 8px 15px;
+          font-size: 16px;
+          position: relative;
+          font-weight: 500;
         }
-
+        ul {
+          margin-left: 0;
+          padding: inherit;
+          overflow: hidden;
+          height: 0;
+        }
+        li {
+          border-left: 1px solid #ccc;
+          padding-left: 25px;
+          @include link-transition(0.2s);
+          &:hover {
+            color: #000;
+            @include link-transition(0.2s);
+          }
+        }
+        &.expanded {
+          .area,
+          li {
+            border-color: #373277;
+          }
+          .area:hover {
+            background: url(/static/images/expand-up.svg) 100px 5px no-repeat;
+            background-size: 24px;
+          }
+        }
+        &.closed {
+          .area:hover {
+            background: url(/static/images/expand-down.svg) 100px 5px no-repeat;
+            background-size: 24px;
+            border-color: #373277;
+          }
+        }
+      }
     }
-    .catalog-list {
+  }
+  .day-list {
+    position: absolute;
+    right: 80px;
+    li {
+      @include link-transition(0.1s);
+      border-left: 1px solid #ccc;
+      padding-left: 25px;
+      &.active,
+      &.active:hover {
+        border-color: #000;
+        @include link-transition(0.1s);
+      }
+      &:hover {
+        border-color: #666;
+        @include link-transition(0.1s);
+      }
+    }
+  }
+  .updatelog-list {
+    padding-top: 20px;
+    width: 65%;
+    margin: 0 auto;
+    line-height: 26px;
+    li {
+      font-size: 16px;
+      &.singleList {
+        list-style-type: circle;
+      }
+    }
+    .date {
+      width: 100%;
+      position: relative;
+      background-color: rgba(255, 255, 255, 0.95);
+      i {
+        -webkit-transition: all 0.16s ease;
+        -o-transition: all 0.16s ease;
+        transition: all 0.16s ease;
+      }
+      h3 {
+        margin: 0;
+        padding: 0 10px;
+        color: #444;
+        line-height: 40px;
+        cursor: pointer;
+      }
+    }
+    .notecard {
+      overflow: hidden;
+      margin: 17px auto;
+      h2,
+      ol {
         float: left;
-        padding: 15px 0;
-        position: absolute;
-        left: 50px;
-        .main-nav {
-            .panel {
-                padding-top: 0;
-                padding-bottom: 0;
-                .area:hover,
-                .area {
-                    color: #444;
-                    border-left: 1px solid #ccc;
-                    display: block;
-                    padding: 8px 15px;
-                    font-size: 16px;
-                    position: relative;
-                    font-weight: 500;
-                }
-                ul {
-                    margin-left: 0;
-                    padding: inherit;
-                    overflow: hidden;
-                    height: 0;
-                }
-                li {
-                    border-left: 1px solid #ccc;
-                    padding-left: 25px;
-                    @include link-transition(0.2s);
-                    &:hover {
-                        color: #000;
-                        @include link-transition(0.2s);
-                    }
-                }
-                &.expanded {
-                    .area,
-                    li {
-                        border-color: #373277;
-                    }
-                    .area:hover {
-                        background: url(/static/images/expand-up.svg) 100px 5px no-repeat;
-                        background-size: 24px;
-                    }
-                }
-                &.closed {
-                    .area:hover {
-                        background: url(/static/images/expand-down.svg) 100px 5px no-repeat;
-                        background-size: 24px;
-                        border-color: #373277;
-                    }
-                }
-            }
+        max-height: 9999px;
+      }
+      ol {
+        width: 77%;
+      }
+      h2 {
+        width: 115px;
+        padding-left: 25px;
+        font-weight: 500;
+      }
+    }
+  }
+  .postscript {
+    max-height: 9999px;
+    text-align: center;
+    .hr {
+      background: #888;
+      margin: 50px auto 40px;
+      width: 50%;
+      height: 1px;
+    }
+    p {
+      line-height: 26px;
+      font-size: .8em;
+      color: #888;
+      span {
+        color: #444;
+      }
+    }
+  }
+  .blank {
+    height: 120px;
+  }
+  .time-capsule-notice {
+    margin: 30px auto 20px;
+    padding: 5px 10px 5px 80px;
+    border: #888 solid 1px;
+    width: 180px;
+    background-image: url(http://o7a3i0m1t.bkt.clouddn.com/image/time_capsule.png);
+    background-size: 50px;
+    background-repeat: no-repeat;
+    background-position: 15px 25px;
+    opacity: .8;
+    a {
+        text-decoration: none;
+        color: #666;
+        margin: 0 5px;
+        &:hover {
+            border-bottom: 1px solid #000;
         }
     }
-    .day-list {
-        position: absolute;
-        right: 80px;
-        li {
-            @include link-transition(0.1s);
-            border-left: 1px solid #ccc;
-            padding-left: 25px;
-            &.active,
-            &.active:hover {
-                border-color: #000;
-                @include link-transition(0.1s);
-            }
-            &:hover {
-                border-color: #666;
-                @include link-transition(0.1s);
-            }
-        }
+    i {
+        color: #666;
     }
-    .updatelog-list {
-        padding-top: 20px;
-        width: 65%;
-        margin: 0 auto;
-        line-height: 26px;
-        li {
-            font-size: 16px;
-            &.singleList {
-                list-style-type: circle;
-            }
-        }
-        .date {
-            width: 100%;
-            position: relative;
-            background-color: rgba(255, 255, 255, 0.95);
-            i {
-                -webkit-transition: all 0.16s ease;
-                -o-transition: all 0.16s ease;
-                transition: all 0.16s ease;
-            }
-            h3 {
-                margin: 0;
-                padding: 0 10px;
-                color: #444;
-                line-height: 40px;
-                cursor: pointer;
-            }
-        }
-        .notecard {
-            overflow: hidden;
-            margin: 17px auto;
-            h2,
-            ol {
-                float: left;
-                max-height: 9999px;
-            }
-            ol {
-                width: 77%;
-            }
-            h2 {
-                width: 115px;
-                padding-left: 25px;
-                font-weight: 500;
-            }
-        }
-        .postscript {
-            display: inline-block;
-            max-height: 9999px;
-            .hr {
-                background: #888;
-                margin: 50px 0 40px;
-                width: 30%;
-                height: 1px;
-            }
-            p {
-                line-height: 26px;
-                color: #888;
-                span {
-                    color: #444;
-                }
-            }
-        }
-        .blank {
-            height: 120px;
-        }
-    }
+  }
 }
 
 @media screen and (max-width: 900px) {
@@ -232,7 +254,7 @@ main {
       margin: 0;
       text-align: left;
       padding-left: 15%;
-      box-sizing: border-box;      
+      box-sizing: border-box;
     }
     p {
       margin: 0;
@@ -254,8 +276,12 @@ main {
         width: 95%;
         padding-top: 0;
       }
-      .postscript {
-        padding: 0 20px;
+    }
+    .postscript {
+      padding: 0 20px;
+      text-align: left;
+      .hr {
+        margin: 50px 0 40px;
       }
     }
   }

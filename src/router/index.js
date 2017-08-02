@@ -7,6 +7,7 @@ const MusicPage = resovle => { require(['@/pages/MusicPage.vue'], resovle) };
 const TastyPage = resovle => { require(['@/pages/TastyPage.vue'], resovle) };
 const MoviePage = resovle => { require(['@/pages/MoviePage.vue'], resovle) };
 const LogPage = resovle => { require(['@/pages/LogPage.vue'], resovle) };
+const TCPage = resovle => { require(['@/pages/TimeCapsulePage.vue'], resovle) };
 
 Vue.use(Router)
 
@@ -41,6 +42,12 @@ export default new Router({
             path: '/log',
             name: 'log-page',
             component: LogPage,
+            meta: { index: 2 }
+        },
+        {
+            path: '/time-capsule',
+            name: 'time-capsule-page',
+            component: TCPage,
             meta: { index: 2 }
         },
         {

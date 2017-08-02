@@ -14,19 +14,6 @@
                 </transition>
             </div>
         </transition>
-        <div class="postscript">
-            <div class="hr"></div>
-            <p>Zeee将把自己的奇思妙想和新学到的前端知识投入到Velas中。
-                <br> 每一天，在你看到或者看不到的地方，Velas都变得比昨天更成熟一些，更精致一些。
-                <br> 感谢你的到来，与Zeee一同将Velas变得更美好。
-                <br>
-                <br> *想获得本站的最佳体验，请在
-                <span>Firefox</span>、
-                <span>Chrome</span>、
-                <span>Microsoft Edge</span>上浏览，或将你的浏览器升级至最新版本。
-            </p>
-            <div class="blank"></div>
-        </div>
     </div>
 </template>
 

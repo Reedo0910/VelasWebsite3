@@ -14,7 +14,7 @@ export const Mainlinks = [
   {
     route: '/log',
     isExact: false,
-    iconClass: 'fa-tasks',
+    iconClass: 'fa-clock-o',
     name: 'Log'
   }
 ];

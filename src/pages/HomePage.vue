@@ -5,12 +5,12 @@
             <header :style="{height: winHeight}">
                 <div class="bg-mask"></div>
                 <div class="bg-decorate-box">
-                    <p class="mobile-sub-heading">Everything flows.</p>
+                    <p class="mobile-sub-heading">{{slogen}}</p>
                 </div>
                 <div id="banner">
                     <div class="inner">
                         <div class="velas_logo"></div>
-                        <p class="sub-heading">Everything flows.</p>                        
+                        <p class="sub-heading">{{slogen}}</p>                        
                     </div>
                 </div>
             </header>
@@ -69,6 +69,7 @@ export default {
     },
     data () {
         return {
+            slogen: 'Everything flows.',
             linkBtns: [
                 {
                     title: 'Camp',
@@ -185,7 +186,7 @@ export default {
             display: none;
             position: absolute;
             width: 70%;
-            height: 80%;
+            height: 70%;
             border: rgba(80, 80, 80, .8) solid 4px;
             box-sizing: border-box;
             z-index: 2;
@@ -344,7 +345,7 @@ export default {
                     background-color: rgba(0, 0, 0, 0.31);
                 }
                 .card-content {
-                    padding: 80px 80px 100px;
+                    padding: 80px 68px 100px;
                     position: relative;
                     z-index: 3;
                     box-sizing: border-box;       
@@ -431,7 +432,9 @@ export default {
         }
         .bg-decorate-box .mobile-sub-heading {
             font-size: 22px;
-            bottom: -16px;
+            bottom: -32px;
+            background-color: transparent;
+            width: 100%;
         }
     }
     #main-page .context .link-btn-group .link-btn {

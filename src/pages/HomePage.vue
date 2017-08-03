@@ -203,9 +203,13 @@ export default {
             .inner {
                 max-width: 70%;
                 display: flex;
-                margin: 0 auto;
-                position: relative;
-                top: 215px;
+                margin: auto;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 135px;
                 color: #fff;
                 box-sizing: border-box;
                 justify-content: space-between;
@@ -398,8 +402,8 @@ export default {
             }
             #banner .inner {
                 max-width: initial;
-                top: 0;
                 position: initial;
+                display: block;
                 .velas_logo {
                     position: absolute;
                     margin: auto;
@@ -432,9 +436,8 @@ export default {
         }
         .bg-decorate-box .mobile-sub-heading {
             font-size: 22px;
-            bottom: -32px;
-            background-color: transparent;
-            width: 100%;
+            bottom: -16px;
+            width: 90%;
         }
     }
     #main-page .context .link-btn-group .link-btn {
@@ -458,5 +461,21 @@ export default {
     }
 }
 
+@media screen and (max-width: 340px) {
+    #main-page header {
+        #banner .inner .velas_logo {
+            width: 240px;
+            height: 80px;
+        }
+        .bg-decorate-box .mobile-sub-heading {
+            background-color: transparent;
+            width: 100%;
+            bottom: -35px;
+        }
+    }
+    #main-page .context .card-group .card .card-content {
+        padding: 80px 56px 100px;
+    }
+} 
 
 </style>

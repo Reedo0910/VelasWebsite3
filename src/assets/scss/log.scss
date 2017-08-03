@@ -18,8 +18,9 @@
 //--
 header {
   height: 440px;
-  background: #777 url(http://o7a3i0m1t.bkt.clouddn.com/image/website/raspberry.jpg) 0px -167px no-repeat;
+  background: #777 url(http://o7a3i0m1t.bkt.clouddn.com/image/website/raspberry.jpg) no-repeat;
   background-size: cover;
+  background-position: center center;
   width: 100%;
   p {
     color: #fff;
@@ -235,7 +236,6 @@ main {
 @media screen and (max-width: 900px) {
   header {
     height: 300px;
-    background-position: 0 0;
     h1 {
       width: 100%;
       margin: 0;

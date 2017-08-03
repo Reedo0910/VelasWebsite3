@@ -286,11 +286,11 @@ export default {
             width: 90%;
             margin: 60px auto 120px;
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             flex-flow: row wrap;
             text-align: center;
             .link-btn {
-                width: 110px;
+                width: 230px;
                 a {
                     display: block;
                     width: 80px;
@@ -423,6 +423,12 @@ export default {
             .context-big-headtitle {
                 font-size: 2em;
             }
+            .link-btn-group{
+                justify-content: space-around;
+                .link-btn {
+                    width: 110px;
+                }
+            } 
         }
     }
 }
@@ -473,8 +479,13 @@ export default {
             bottom: -35px;
         }
     }
-    #main-page .context .card-group .card .card-content {
-        padding: 80px 56px 100px;
+    #main-page .context {
+        .link-btn-group {
+            width: 95%;
+        }
+        .card-group .card .card-content {
+            padding: 80px 56px 100px;
+        }
     }
 } 
 

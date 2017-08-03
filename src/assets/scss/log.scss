@@ -67,7 +67,6 @@ main {
     }
   }
   #date-selector {
-    display: none;
     margin: 0 auto;
     padding-top: 20px;
     p,
@@ -252,12 +251,7 @@ main {
   }
   main {
     #date-selector {
-      display: block;
       width: 85%;
-    }
-    .catalog-list,
-    .day-list {
-      display: none;
     }
     #log-item {
       .updatelog-list {

@@ -24,10 +24,11 @@ export default {
         DateFilter: DateFilter
     },
     mounted() {
-        let that = this;
-        bus.$on('logchange', function (y, m) {
-            that.selected = y + '-' + m;
-        });
+        let tar = this.logs[0].date;
+        let y = parseInt(tar.split('-')[0]);
+        let m = parseInt(tar.split('-')[1]);
+        this.selected = y + '-' + m;
+        bus.$emit('logchange', y, m);
     },
     methods: {
         setMAndY: function () {

@@ -200,6 +200,7 @@ export default {
             position: relative;
             z-index: 2;
             .inner {
+                width: 72%;
                 max-width: 72%;
                 display: flex;
                 margin: auto;
@@ -396,6 +397,7 @@ export default {
                 display: block;
             }
             #banner .inner {
+                width: initial;
                 max-width: initial;
                 position: initial;
                 display: block;

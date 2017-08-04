@@ -75,11 +75,13 @@ $font-size-p:16px; //过渡动画样式
 #navbar {
     width: 100%;
     position: fixed;
-    background-color: rgba(255, 255, 255, 0.99);
+    background-color: #fff;
     z-index: 1000;
     overflow: hidden;
+    box-shadow: 0 0 5px rgba(57, 70, 78, 0.2);
     @include link-transition(0.3s);
     &.ontop {
+        box-shadow: initial;
         padding-top: 8px;
         background-color: transparent;
         .nav-list {

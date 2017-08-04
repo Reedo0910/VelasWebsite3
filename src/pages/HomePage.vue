@@ -15,11 +15,11 @@
                 </div>
             </header>
             <div class="context">
-                <div class="color-bar" style="background-color:#efefef"></div>
+                <div class="color-bar" style="background-color:#fafafa"></div>
                 <h2 class="context-big-headtitle">What is Velas?</h2>
                 <div class="hr"></div>
                 <p class="context-intro">这是我的个人网站，<br>用于分享我的想法见解和个人爱好。<br>如果这里能为你带来一些灵感或是轻松愉悦的体验，<br id="tbr">那么这将是我的荣幸。</p>
-                <div class="color-bar" style="background-color:#efefef"></div>
+                <div class="color-bar" style="background-color:#fafafa"></div>
                 <div class="card-group" id="card-group">
                     <div v-for="card in cards" class="card"  :key="card.title" :style="{'background-image': 'url(' + card.background + ')'}">
                         <div class="card-mask"></div>
@@ -30,7 +30,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="color-bar" style="background-color:#efefef"></div>
+                <div class="color-bar" style="background-color:#fafafa"></div>
                 <h2 class="context-big-headtitle">到处逛逛</h2>                
                 <div class="link-btn-group">
                     <div class="link-btn" v-for="l in linkBtns" :key="l.title">
@@ -81,7 +81,7 @@ export default {
                     title: 'Talk',
                     href: 'http://blog.velas.xyz/',
                     icon: 'http://o7a3i0m1t.bkt.clouddn.com/Bird.png',
-                    intro: 'blablabla，<br>处女座的碎碎念'
+                    intro: 'blablabla<br>处女座的碎碎念'
                 }
             ],
             routeBtns: [
@@ -179,7 +179,6 @@ export default {
                 background-color: #000;
                 width: 80%;
                 text-align: center;
-                font-weight: 500;
                 font-size: 28px;
                 box-sizing: border-box;
             }
@@ -201,7 +200,7 @@ export default {
             position: relative;
             z-index: 2;
             .inner {
-                max-width: 70%;
+                max-width: 72%;
                 display: flex;
                 margin: auto;
                 position: absolute;
@@ -226,7 +225,6 @@ export default {
                 .sub-heading {
                     margin: 20px 0;
                     padding: 36px 0 0;
-                    font-weight: 300;
                     font-size: 36px;
                     box-sizing: border-box;
                     border-bottom: 1.5px solid #eee;
@@ -237,7 +235,7 @@ export default {
     .context {
         width: 100%;
         min-height: 750px;
-        background-color: #fafafa;
+        background-color: #fff;
         position: relative;
         text-align: center;
         .context-big-headtitle {
@@ -263,7 +261,7 @@ export default {
             text-align: center;
             padding: 50px 30px 80px;
             box-sizing: border-box;
-            background-color: #fff;
+            background-color: #fafafa;
             p {
                 line-height: 2em;
                 font-size: 1em;
@@ -296,7 +294,7 @@ export default {
                     width: 80px;
                     height: 80px;
                     text-decoration: none;
-                    border: #ccc solid 1.5px;
+                    border: #eee solid 1.5px;
                     border-radius: 100%;
                     margin: 0 auto;
                     background: {
@@ -309,16 +307,13 @@ export default {
                     }
                 }
                 h3 {
-                    font-weight: 500;
-                    margin: 5px;
-                    color: #444;
+                    margin: 12px 0 8px;
                     font-size: 1.1em;
                 }
                 p {
                     font-size: .8em;
                     color: #888;
                     margin: 0;
-                    font-weight: 300;
                 }
             }
         }
@@ -452,8 +447,6 @@ export default {
             display: none;
         }
         h3 {
-            color: #666;
-            margin-top: 10px;
             font-size: 1em;
         }
     }

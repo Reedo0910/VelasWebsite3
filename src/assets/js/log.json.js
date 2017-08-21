@@ -1,4 +1,10 @@
 const logJson = [{
+    date: '2017-8-21',
+    content: [
+      '一些搜索引擎优化工作（SEO）'
+    ]
+  },
+  {
     date: '2017-8-4',
     content: [
       '修复了IE9 - IE11的支持（由于HTML5支持问题，不建议使用IE9进行浏览）',

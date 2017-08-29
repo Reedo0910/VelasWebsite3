@@ -20,7 +20,7 @@
                     </div>
                     <div class="capsule-card" v-for="CC in CCs" :key="CC.verison" :style="{'background-image': 'url(' + CC.screenshot + ')'}">
                         <div class="capsule-intro">
-                            <h2>{{CC.name}}</h2>
+                            <a :href="CC.link" target="_blank"><h2>{{CC.name}}</h2></a>
                             <p>上线时间： {{CC.date}}</p>
                             <p style="margin-bottom:5px">特色功能：</p>
                             <ul>
@@ -233,11 +233,14 @@ main {
                 i {
                     color: #666666;
                 }
+                a {
+                    text-decoration: none;
+                    color: initial;
+                }
                 a.capsule-view {
                     display: inline-block;
                     margin: 1.5em .5em 0 0;
                     font-size: 1.3em;
-                    text-decoration: none;
                     color: #666;
                     line-height: 2em;
                     &:hover {
@@ -258,6 +261,9 @@ main {
                     background-color: #545454;
                     color: #fff;
                     left: 0;
+                    a {
+                        color: #ffffff;
+                    }
                     a.capsule-view,
                     i {
                         color: #eee;

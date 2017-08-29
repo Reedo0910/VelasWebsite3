@@ -9,7 +9,10 @@
                 <p>这周有什么新鲜事？</p>
             </header>
             <main>
-                <div class="time-capsule-notice">
+                <div class="wait">
+                    <p>新闻中心建设中，Coming Soon…</p>
+                </div>
+                <div class="notice time-capsule">
                     <p>
                         <strong>想找回以前的版本？</strong>
                     </p>
@@ -17,6 +20,13 @@
                         <router-link to="/news/time-capsule">时间胶囊</router-link>
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                     </p>
+                </div>
+                <div class="notice log">
+                    <p>
+                        <strong>想查看以前的更新日志？</strong>
+                    </p>
+                    <p>日志已于2017年8月29日停止更新，你仍可以在
+                        <router-link to="/news/log">这里</router-link> 找到他</p>
                 </div>
                 <div class="blank"></div>
             </main>
@@ -102,13 +112,20 @@ main {
     .blank {
         height: 120px;
     }
-    .time-capsule-notice {
+    .wait {
+        p {
+            text-align: center;
+            font-size: 3em;
+            margin: 150px 0;
+            color: #ccc;
+            font-weight: 300;
+        }
+    }
+    .notice {
         margin: 30px auto 20px;
         padding: 5px 10px 5px 80px;
-        border-left: #888 solid 3px;
         width: 60%;
         box-sizing: border-box;
-        background-image: url(http://o7a3i0m1t.bkt.clouddn.com/image/time_capsule.png);
         background-size: 40px;
         background-repeat: no-repeat;
         background-position: 20px center;
@@ -128,13 +145,18 @@ main {
         i {
             color: #444;
         }
+        &.time-capsule {
+            background-image: url(http://o7a3i0m1t.bkt.clouddn.com/image/time_capsule.png);
+        }
+        &.log {
+            background-image: url(http://o7a3i0m1t.bkt.clouddn.com/image/website/Book_easyicon.net.png);
+        }
     }
 }
 
 @media screen and (max-width: 900px) {
-
     main {
-        .time-capsule-notice {
+        .notice {
             width: 85%;
             p {
                 display: block;

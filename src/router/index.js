@@ -2,65 +2,120 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import NotFoundPage from '@/pages/NotFoundPage';
-const HomePage = resovle => { require(['@/pages/HomePage.vue'], resovle) };
-const MusicPage = resovle => { require(['@/pages/MusicPage.vue'], resovle) };
-const TastyPage = resovle => { require(['@/pages/TastyPage.vue'], resovle) };
-const MoviePage = resovle => { require(['@/pages/MoviePage.vue'], resovle) };
-const LogPage = resovle => { require(['@/pages/LogPage.vue'], resovle) };
-const TCPage = resovle => { require(['@/pages/TimeCapsulePage.vue'], resovle) };
+const HomePage = resovle => {
+  require(['@/pages/HomePage.vue'], resovle)
+};
+const MusicPage = resovle => {
+  require(['@/pages/MusicPage.vue'], resovle)
+};
+const TastyPage = resovle => {
+  require(['@/pages/TastyPage.vue'], resovle)
+};
+const MoviePage = resovle => {
+  require(['@/pages/MoviePage.vue'], resovle)
+};
+const LogPage = resovle => {
+  require(['@/pages/LogPage.vue'], resovle)
+};
+const NewsIndex = resovle => {
+  require(['@/pages/NewsIndex.vue'], resovle)
+};
+const NewsPage = resovle => {
+  require(['@/pages/NewsPage.vue'], resovle)
+};
+const TCPage = resovle => {
+  require(['@/pages/TimeCapsulePage.vue'], resovle)
+};
 
 Vue.use(Router)
 
 export default new Router({
-    mode: 'history',
-    routes: [
-        {
-            path: '/',
-            name: 'home-page',
-            component: HomePage,
-            meta: { index: 0 }
+  mode: 'history',
+  routes: [{
+      path: '/',
+      name: 'home-page',
+      component: HomePage,
+      meta: {
+        index: 0,
+        style: 'dark'
+      }
+    },
+    {
+      path: '/music',
+      name: 'music-page',
+      component: MusicPage,
+      meta: {
+        index: 1,
+        style: 'dark'
+      }
+    },
+    {
+      path: '/tasty',
+      name: 'tasty-page',
+      component: TastyPage,
+      meta: {
+        index: 1,
+        style: 'dark'
+      }
+    },
+    {
+      path: '/movie',
+      name: 'movie-page',
+      component: MoviePage,
+      meta: {
+        index: 1,
+        style: 'dark'
+      }
+    },
+    {
+      path: '/news',
+      component: NewsIndex,
+      children: [{
+          path: '/',
+          name: 'news-page',
+          component: NewsPage,
+          meta: {
+            index: 2,
+            style: 'light'
+          }
         },
         {
-            path: '/music',
-            name: 'music-page',
-            component: MusicPage,
-            meta: { index: 1 }
+          path: 'time-capsule',
+          name: 'time-capsule-page',
+          component: TCPage,
+          meta: {
+            index: 2,
+            style: 'light'
+          }
         },
         {
-            path: '/tasty',
-            name: 'tasty-page',
-            component: TastyPage,
-            meta: { index: 1 }
-        },
-        {
-            path: '/movie',
-            name: 'movie-page',
-            component: MoviePage,
-            meta: { index: 1 }
-        },
-        {
-            path: '/log',
-            name: 'log-page',
-            component: LogPage,
-            meta: { index: 2 }
-        },
-        {
-            path: '/time-capsule',
-            name: 'time-capsule-page',
-            component: TCPage,
-            meta: { index: 2 }
-        },
-        {
-            path: '*',
-            component: NotFoundPage,
-            meta: { index: 0 }
+          path: 'log',
+          name: 'log-page',
+          component: LogPage,
+          meta: {
+            index: 2,
+            style: 'light'
+          }
         }
-    ],
-    scrollBehavior(to, from, savedPosition) {
-        if (savedPosition) {
-            return savedPosition
-        } else {
-            return { x: 0, y: 0 }
-        }
+      ]
+    },
+    {
+      path: '*',
+      component: NotFoundPage,
+      meta: {
+        index: -1,
+        style: 'dark'
+      }
     }
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return {
+        x: 0,
+        y: 0
+      }
+    }
+  }
 })

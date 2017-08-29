@@ -1,12 +1,12 @@
 <template>
-    <div id="navbar" :class="{ontop: isOnTop, expanded: isExpand}">
+    <div id="navbar" :class="styleSeletor">
         <div class="main-bar">
             <div id="logo">
                 <router-link to="/">Velas</router-link>
             </div>
             <button class="nav-btn" @click="isExpand = !isExpand" @mousedown="btnHandleMouseDown">
                 <i class="fa fa-lg" :class="{'fa-bars': !isExpand, 'fa-times': isExpand}" aria-hidden="true"></i>
-                <div class="touch-ripple"></div>                
+                <div class="touch-ripple"></div>
             </button>
         </div>
         <ul class="nav-list">
@@ -33,6 +33,16 @@ export default {
             isExpand: false,
             links: Mainlinks,
             sublinks: Sublinks
+        }
+    },
+    computed: {
+        styleSeletor() {
+            return {
+                'expanded': this.isExpand,
+                'ontop': this.isOnTop,
+                'light-style': this.$route.meta.style === 'light',
+                'dark-style': this.$route.meta.style === 'dark'
+            }
         }
     },
     methods: {
@@ -84,6 +94,8 @@ $font-size-p:16px; //过渡动画样式
         box-shadow: initial;
         padding-top: 8px;
         background-color: transparent;
+    }
+    &.ontop.dark-style {
         .nav-list {
             li.nav-main,
             a.nav-sub {
@@ -102,8 +114,28 @@ $font-size-p:16px; //过渡动画样式
             }
         }
     }
-    &.expanded {
-        @include link-transition(0.3s);                
+    &.ontop.light-style {
+        .nav-list {
+            li.nav-main,
+            a.nav-sub {
+                color: #666;
+                &:hover,
+                &.router-link-active,
+                &:hover p {
+                    color: rgba(94, 53, 177, 0.5);
+                }
+            }
+        }
+        .main-bar {
+            #logo a,
+            .nav-btn {
+                color: #8e24aa;
+            }
+        }
+    }
+    &.expanded,
+    &.ontop.dark-style.expanded {
+        @include link-transition(0.3s);
         background-color: rgba(255, 255, 255, 0.99);
         .nav-list {
             height: 270px;
@@ -153,7 +185,7 @@ $font-size-p:16px; //过渡动画样式
     }
 
     .nav-list {
-        @include link-transition(0.3s);        
+        @include link-transition(0.3s);
         padding: 0;
         overflow-y: hidden;
         height: 0;

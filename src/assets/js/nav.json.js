@@ -12,10 +12,10 @@ export const Mainlinks = [
     name: 'Collection'
   },
   {
-    route: '/log',
+    route: '/news',
     isExact: false,
-    iconClass: 'fa-clock-o',
-    name: 'Log'
+    iconClass: 'fa-newspaper-o',
+    name: 'News'
   }
 ];
 

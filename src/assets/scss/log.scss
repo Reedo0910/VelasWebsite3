@@ -17,22 +17,15 @@
 
 //--
 header {
-  height: 440px;
-  background: #777 url(http://o7a3i0m1t.bkt.clouddn.com/image/website/raspberry.jpg) no-repeat;
-  background-size: cover;
-  background-position: center center;
-  width: 100%;
-  p {
-    color: #fff;
-    margin: 0 0 0 15%;
-    letter-spacing: 3px;
-  }
+  width: 90%;
+  margin: 0 auto;
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
   h1 {
-    margin: 0 11% 0;
-    text-align: center;
-    padding: 100px 16px 13px;
-    width: 15%;
-    color: #fff;
+    width: 70%;
+    margin: 0 auto;
+    padding: 30px 0 20px;
+    color: #000;
     font-size: 2em;
     letter-spacing: 1px;
   }
@@ -41,6 +34,8 @@ header {
 main {
   position: relative;
   width: 100%;
+  margin: 0 auto;
+  min-height: 400px;
   .catalog-list,
   .day-list {
     top: 30px;
@@ -200,7 +195,6 @@ main {
       }
     }
   }
-
   .blank {
     height: 120px;
   }
@@ -217,36 +211,26 @@ main {
     opacity: .8;
     background-color: #fafafa;
     p {
-        display: inline-block;
+      display: inline-block;
     }
     a {
-        text-decoration: none;
-        color: #444;
-        margin: 0 5px;
-        &:hover {
-            border-bottom: 1px solid #444;
-        }
+      text-decoration: none;
+      color: #444;
+      margin: 0 5px;
+      &:hover {
+        border-bottom: 1px solid #444;
+      }
     }
     i {
-        color: #444;
+      color: #444;
     }
   }
 }
 
 @media screen and (max-width: 900px) {
   header {
-    height: 300px;
     h1 {
-      width: 100%;
-      margin: 0;
-      text-align: left;
-      padding-left: 15%;
-      box-sizing: border-box;
-    }
-    p {
-      margin: 0;
-      padding-left: 15%;
-      text-align: left;
+      width: 95%;
     }
   }
   main {
@@ -260,10 +244,10 @@ main {
       }
     }
     .time-capsule-notice {
-        width: 85%;
-        p {
-            display: block;
-        }
+      width: 85%;
+      p {
+        display: block;
+      }
     }
   }
 }

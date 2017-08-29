@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import logJson from '../assets/js/log.json'
-import bus from '../assets/js/eventBus'
-import {autoFixed, listAction, YMFilter} from '../assets/js/log'
+import logJson from '../../assets/js/log.json'
+import bus from '../../assets/js/eventBus'
+import {autoFixed, listAction, YMFilter} from '../../assets/js/log'
 
 export default {
     name: 'CatalogList',
@@ -68,5 +68,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    @import '../assets/scss/log.scss';
+    @import '../../assets/scss/log.scss';
 </style>

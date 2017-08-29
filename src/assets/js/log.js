@@ -1,6 +1,6 @@
 // 元素固定
 export function autoFixed(element, eTop) {
-    var T1 = 390;
+    var T1 = 165;
     var T2 = 50;
     var top = document.documentElement.scrollTop || document.body.scrollTop;
     var fE = document.getElementById(element);

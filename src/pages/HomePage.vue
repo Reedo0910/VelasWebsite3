@@ -87,7 +87,7 @@ export default {
             routeBtns: [
                  {
                     title: '时间胶囊',
-                    route: '/time-capsule',
+                    route: '/news/time-capsule',
                     icon: 'http://o7a3i0m1t.bkt.clouddn.com/image/time_capsule.png',
                     intro: '咦？<br>这是什么东东？'
                 }

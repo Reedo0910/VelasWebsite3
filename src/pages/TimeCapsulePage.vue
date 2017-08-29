@@ -18,16 +18,20 @@
                         <p>若你正使用移动设备进行浏览，可能不能获得良好的体验。</p>
                         <button @click="isNotice = false, setCookie('notice', 'false', 10)">我知道了</button>
                     </div>
-                    <div class="capsule-card" v-for="CC in CCs" :key="CC.verison" :style="{'background-image': 'url(' + CC.screenshot + ')'}">
-                        <div class="capsule-intro">
-                            <a :href="CC.link" target="_blank"><h2>{{CC.name}}</h2></a>
-                            <p>上线时间： {{CC.date}}</p>
-                            <p style="margin-bottom:5px">特色功能：</p>
-                            <ul>
-                                <li v-for="intro in CC.intros" :key="intro">{{intro}}</li>
-                            </ul>
-                            <a :href="CC.link" class="capsule-view" target="_blank">浏览</a>
-                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <div class="capsule-card-group">
+                        <div class="capsule-card" v-for="CC in CCs" :key="CC.verison" :style="{'background-image': 'url(' + CC.screenshot + ')'}">
+                            <div class="capsule-intro">
+                                <a :href="CC.link" target="_blank">
+                                    <h2>{{CC.name}}</h2>
+                                </a>
+                                <p>上线时间： {{CC.date}}</p>
+                                <p style="margin-bottom:5px">特色功能：</p>
+                                <ul>
+                                    <li v-for="intro in CC.intros" :key="intro">{{intro}}</li>
+                                </ul>
+                                <a :href="CC.link" class="capsule-view" target="_blank">浏览</a>
+                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -211,6 +215,9 @@ main {
                 }
             }
         }
+        .capsule-card-group {
+            width: 100%;
+        }
         .capsule-card {
             width: 900px;
             height: 460px;
@@ -271,6 +278,17 @@ main {
                 }
             }
         }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    main {
+         .capsule-group {
+             .capsule-card {
+                 width: 700px;
+                 height: 500px;
+             }
+         }
     }
 }
 

@@ -167,4 +167,10 @@ main {
         }
     }
 }
+
+@media screen and (max-width: 500px) {
+    header {
+        width: 100%;
+    }
+}
 </style>

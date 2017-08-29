@@ -156,6 +156,9 @@ main {
 
 @media screen and (max-width: 900px) {
     main {
+        .wait p {
+            font-size: 1.5em;
+        }
         .notice {
             width: 85%;
             p {

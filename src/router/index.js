@@ -71,7 +71,7 @@ export default new Router({
       path: '/news',
       component: NewsIndex,
       children: [{
-          path: '/',
+          path: '',
           name: 'news-page',
           component: NewsPage,
           meta: {

@@ -35,6 +35,7 @@ module.exports = {
             "single"
         ],
         "no-console": 0,
+        'no-unused-expressions': 0,
         'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
     }
 }

@@ -23,8 +23,8 @@
 </template>
 
 <script>
-const touchripple = require('../assets/js/touchripple')
 import { Mainlinks, Sublinks } from '../assets/js/nav.json'
+const touchripple = require('../assets/js/touchripple')
 export default {
     name: 'NavbarCompact',
     data() {

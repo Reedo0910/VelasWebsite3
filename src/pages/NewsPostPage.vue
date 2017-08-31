@@ -6,6 +6,9 @@
             <news-header-compact :newsTitle="post.title" :newsDate="post.created_at"></news-header-compact>
             <article>
                 <loading-icon :isShow="isArticleLoading" :isError="isArticleError"></loading-icon>
+                <div class="article-labels">
+                    <span class="label" :style="{'background-color': '#' + l.color }" v-for="l in post.labels" :key="l.id">{{l.name}}</span>
+                </div>
                 <p v-html="post.body" class="content markdown-body">
                 </p>
                 <div class="coms">
@@ -93,6 +96,7 @@ export default {
                 })[0]
                 vm.post.body = md(vm.post.body);
                 vm.post.created_at = moment(vm.post.created_at).format('YYYY-MM-DD');
+                console.log(vm.post)
                 vm.isArticleLoading = false;
             })
             .catch(function(err) {
@@ -129,11 +133,23 @@ export default {
 }
 
 article {
-    padding: 40px 50px 60px;
+    padding: 10px 50px 50px;
     background: #FFF;
     width: 90%;
     margin: 0 auto 100px;
     box-sizing: border-box;
+    .article-labels {
+        text-align: right;
+        margin: 10px auto;
+        .label {
+            display: inline-block;
+            margin: 0 10px;
+            color: #fff;
+            padding: 5px 10px;
+            text-transform: uppercase;
+            opacity: .5;
+        }
+    }
     .leave {
         text-align: center;
         padding: 80px 0 20px 0;
@@ -207,7 +223,7 @@ article {
 @media screen and (max-width: 475px) {
     article {
         width: 100%;
-        padding: 40px 20px 40px;
+        padding: 10px 20px 40px;
     }
 }
 </style>

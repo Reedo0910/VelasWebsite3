@@ -26,6 +26,10 @@
                     <p>日志已于2017年8月29日停止更新，你仍可以在
                         <router-link to="/news/log">这里</router-link> 找到他</p>
                 </div>
+                <div class="notice thanks">
+                    <p>Velas' News的建成离不开<a href="https://github.com/cogons/issvue" target="_blank">issvue</a>的帮助</p>
+                    <p>数据均从GitHub获取</p>
+                </div>
             </main>
             <footer-block></footer-block>
         </div>
@@ -111,25 +115,14 @@ main {
     .blank {
         height: 120px;
     }
-    .wait {
-        p {
-            text-align: center;
-            font-size: 3em;
-            margin: 150px 0;
-            color: #ccc;
-            font-weight: 300;
-        }
-    }
     .notice {
         margin: 0px auto;
         padding: 5px 80px;
         width: 100%;
         box-sizing: border-box;
-        background-size: 40px;
-        background-repeat: no-repeat;
-        background-position: 20px center;
         opacity: .8;
         background-color: #fafafa;
+        text-align: center;
         &+& {
             margin-top: 30px;
         }
@@ -146,12 +139,11 @@ main {
         }
         i {
             color: #444;
-        } // &.time-capsule {
-        //     background-image: url(http://o7a3i0m1t.bkt.clouddn.com/image/time_capsule.png);
-        // }
-        // &.log {
-        //     background-image: url(http://o7a3i0m1t.bkt.clouddn.com/image/website/Book_easyicon.net.png);
-        // }
+        }
+        &.thanks p {
+            font-size: .8em;
+            color: #673ab7;
+        }
     }
 }
 

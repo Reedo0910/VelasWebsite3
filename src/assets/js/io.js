@@ -10,6 +10,10 @@ function getSession(key) {
   return JSON.parse(sessionStorage.getItem(key))
 }
 
+function clearSession() {
+  return sessionStorage.clear();
+}
+
 export function getIssue() {
   const url = api + 'Reedo0910/VelasWebsite3/issues?token=6358f49bd3470b96773373bb5aeb30ab96241393';
   if (!getSession('res')) {
@@ -25,7 +29,7 @@ export function getIssue() {
       });
   } else {
     return new Promise(function (resolve, reject) {
-    //   console.dir('from ss')
+      //   console.dir('from ss')
       resolve(getSession('res'));
     });
   }
@@ -46,8 +50,12 @@ export function getComs(id) {
       });
   } else {
     return new Promise(function (resolve, reject) {
-    //   console.dir('from ss')
+      //   console.dir('from ss')
       resolve(getSession('c' + id));
     });
   }
+}
+
+export function init() {
+  clearSession();
 }

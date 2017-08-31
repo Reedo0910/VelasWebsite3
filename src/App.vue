@@ -9,6 +9,8 @@
 <script>
 import Navbar from './components/Nav'
 import NavbarCompact from './components/NavCompact'
+import { init } from './assets/js/io'
+
 export default {
     name: 'app',
     components: {
@@ -31,6 +33,7 @@ export default {
         }
     },
     created() {
+        init(); // clear session storage
         this.displayCheck();
         window.addEventListener('resize', this.displayCheck);
     },

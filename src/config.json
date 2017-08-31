@@ -1,0 +1,14 @@
+{
+    "blog": {
+        "title": "Velas' News",
+        "welcome": "test test test",
+        "detail": "This is detail."
+    },
+    "repo": {
+        "user": "Reedo0910",
+        "repo": "VelasWebsite3",
+        "read_only_token": "6358f49bd3470b96773373bb5aeb30ab96241393",
+        "authors":["Reedo0910"]
+    },
+    "pin":[5]
+}

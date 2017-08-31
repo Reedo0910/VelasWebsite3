@@ -1,7 +1,7 @@
 <template>
     <transition name="switch-page" mode="out-in">
         <div>
-            <v-title>Velas - 新闻</v-title>
+            <v-title>Velas - News</v-title>
             <news-sub-nav></news-sub-nav>
             <header>
                 <div class="content-mask"></div>
@@ -9,9 +9,10 @@
                 <p>这周有什么新鲜事？</p>
             </header>
             <main>
-                <div class="wait">
+                <!-- <div class="wait">
                     <p>新闻中心建设中，Coming Soon…</p>
-                </div>
+                </div> -->
+                <news-main></news-main>
                 <div class="notice time-capsule">
                     <p>
                         <strong>想找回以前的版本？</strong>
@@ -39,12 +40,14 @@
 import VTitle from '../components/VTitle'
 import FooterBlock from '../components/Footer'
 import NewsSubNav from '../components/SubNav/NewsSubNav'
+import NewsMain from '../components/News/NewsMain'
 export default {
     name: 'News',
     components: {
         VTitle,
         FooterBlock,
-        NewsSubNav
+        NewsSubNav,
+        NewsMain
     }
 }
 </script>

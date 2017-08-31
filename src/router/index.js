@@ -23,6 +23,9 @@ const NewsIndex = resovle => {
 const NewsPage = resovle => {
   require(['@/pages/NewsPage.vue'], resovle)
 };
+const NewsPostPage = resovle => {
+  require(['@/pages/NewsPostPage.vue'], resovle)
+};
 const TCPage = resovle => {
   require(['@/pages/TimeCapsulePage.vue'], resovle)
 };
@@ -71,13 +74,22 @@ export default new Router({
       path: '/news',
       component: NewsIndex,
       children: [{
-          path: '',
+          path: '/',
           name: 'news-page',
           component: NewsPage,
           meta: {
             index: 2,
             style: 'light'
           }
+        },
+        {
+            path: '/post/:id',
+            name: 'news-post',
+            component: NewsPostPage,
+            meta: {
+              index: 2,
+              style: 'light'
+            }
         },
         {
           path: 'time-capsule',

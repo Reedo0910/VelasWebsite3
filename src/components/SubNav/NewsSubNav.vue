@@ -35,7 +35,7 @@ export default {
 
 <style lang="scss" scoped>
 #newsSubNav {
-    text-align: left;
+    text-align: right;
     padding: 90px 0 10px;
     width: 90%;
     margin: 0 auto;

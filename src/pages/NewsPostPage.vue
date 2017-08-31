@@ -1,0 +1,179 @@
+<template>
+    <transition name="switch-page" mode="out-in">
+        <div class="container">
+            <v-title>{{post.title}} - Velas' News</v-title>
+            <news-sub-nav></news-sub-nav>
+            <news-header-compact :newsTitle="post.title" :newsDate="post.created_at"></news-header-compact>
+            <article>
+                <p v-html="post.body" class="content markdown-body"></p>
+                <div class="coms">
+                    <div class="leave">
+                        <a :href="post.html_url" target="_blank">
+                            <i class="fa fa-github-alt" aria-hidden="true"></i>
+                            到GitHub留言</a>
+                    </div>
+                    <div class="com_area">
+                        <div class="hr"></div>
+                        <p class="note">GitHub的留言信息将在下面显示</p>
+                        <div v-for="c in coms" class="com" :key="c.user.id">
+                            <a :href="c.user.html_url" target="_blank"><img :src="c.user.avatar_url"></a>
+                            <div class="user_name">
+                                <a :href="c.user.html_url" target="_blank">{{c.user.login}}</a>
+                                <span v-if="c.author_association">{{tLC(c.author_association)}}</span>
+                            </div>
+                            <div class="date">{{fullTimeFormatter(c.created_at)}}</div>
+                            <p>{{c.body}}</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <footer-block></footer-block>
+        </div>
+    </transition>
+</template>
+
+
+<script>
+import * as github from '../assets/js/io'
+import moment from 'moment'
+import '../assets/css/github-markdown.css'
+import md from 'marked'
+import highlightjs from 'highlight.js'
+import 'highlight.js/styles/solarized-light.css'
+import VTitle from '../components/VTitle'
+import NewsHeaderCompact from '../components/News/NewsHeaderCompact'
+import NewsSubNav from '../components/SubNav/NewsSubNav'
+import FooterBlock from '../components/Footer'
+
+export default {
+    name: 'NewsPost',
+    components: {
+        VTitle,
+        NewsSubNav,
+        NewsHeaderCompact,
+        FooterBlock
+    },
+    data: function() {
+        return {
+            post: {},
+            coms: []
+        }
+    },
+    methods: {
+        tLC: function(text) {
+            return text.toLowerCase();
+        },
+        fullTimeFormatter: function(time) {
+            moment.locale('zh-cn');
+            return moment(time).fromNow();
+        }
+    },
+    mounted: function() {
+        const vm = this;
+        const id = vm.$route.params.id;
+        md.setOptions({
+            highlight: (code) => highlightjs.highlightAuto(code).value
+        })
+        github.getIssue(id)
+            .then(function(res) {
+                vm.post = res.filter((p) => {
+                    return p.number === Number(id)
+                })[0]
+                vm.post.body = md(vm.post.body);
+                vm.post.created_at = moment(vm.post.created_at).format('YYYY-MM-DD');
+            });
+        github.getComs(id)
+            .then(function(res) {
+                vm.coms = res
+            })
+    }
+};
+</script>
+<style lang="scss" scoped>
+.container {
+    background-color: #fbfbfb;
+}
+
+.hr {
+    width: 50px;
+    height: 1px;
+    background-color: #888;
+    margin: 0 auto;
+}
+
+article {
+    padding: 40px 50px 60px;
+    background: #FFF;
+    width: 90%;
+    margin: 0 auto 100px;
+    box-sizing: border-box;
+
+    .leave {
+        text-align: center;
+        padding: 80px 0 20px 0;
+        a {
+            padding: 12px 15px;
+            border-radius: 50px;
+            color: #737373;
+            font-size: .8em;
+            border: 1px solid #656565;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+    }
+
+    .com_area {
+        margin-top: 20px;
+        p.note {
+            text-align: center;
+            color: #4c4c4c;;
+            font-size: .9em;
+            margin: 14px 0 40px;
+        }
+        .com {
+            padding: 18px 0;
+            margin: 25px 0;
+            display: flex;
+            align-items: center;
+            position: relative;
+            .user_name {
+                position: absolute;
+                top: -10px;
+                left: 60px;
+                a {
+                    font-size: .8em;
+                    color: #888;
+                    text-decoration: none;
+                }
+                span {
+                    text-transform: capitalize;
+                    padding: 2px 5px;
+                    font-size: 12px;
+                    border: 1px solid rgba(27, 31, 35, 0.1);
+                    border-radius: 40px;
+                    font-weight: 600;
+                    color: darkred;
+                }
+            }
+            .date {
+                position: absolute;
+                top: -4px;
+                right: 38px;
+                font-size: .9em;
+                color: #888888;
+            }
+            img {
+                width: 40px;
+                height: 40px;
+                border-radius: 20px;
+            }
+            p {
+                padding: 20px 20px;
+                background: #f7f9fb;
+                width: 100%;
+                margin: 0 10px;
+            }
+        }
+    }
+}
+</style>

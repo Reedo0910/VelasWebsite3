@@ -9,9 +9,6 @@
                 <p>这周有什么新鲜事？</p>
             </header>
             <main>
-                <!-- <div class="wait">
-                    <p>新闻中心建设中，Coming Soon…</p>
-                </div> -->
                 <news-main></news-main>
                 <div class="notice time-capsule">
                     <p>
@@ -29,7 +26,6 @@
                     <p>日志已于2017年8月29日停止更新，你仍可以在
                         <router-link to="/news/log">这里</router-link> 找到他</p>
                 </div>
-                <div class="blank"></div>
             </main>
             <footer-block></footer-block>
         </div>
@@ -125,15 +121,18 @@ main {
         }
     }
     .notice {
-        margin: 30px auto 20px;
-        padding: 5px 10px 5px 80px;
-        width: 60%;
+        margin: 0px auto;
+        padding: 5px 80px;
+        width: 100%;
         box-sizing: border-box;
         background-size: 40px;
         background-repeat: no-repeat;
         background-position: 20px center;
         opacity: .8;
         background-color: #fafafa;
+        &+& {
+            margin-top: 30px;
+        }
         p {
             display: inline-block;
         }
@@ -147,23 +146,18 @@ main {
         }
         i {
             color: #444;
-        }
-        &.time-capsule {
-            background-image: url(http://o7a3i0m1t.bkt.clouddn.com/image/time_capsule.png);
-        }
-        &.log {
-            background-image: url(http://o7a3i0m1t.bkt.clouddn.com/image/website/Book_easyicon.net.png);
-        }
+        } // &.time-capsule {
+        //     background-image: url(http://o7a3i0m1t.bkt.clouddn.com/image/time_capsule.png);
+        // }
+        // &.log {
+        //     background-image: url(http://o7a3i0m1t.bkt.clouddn.com/image/website/Book_easyicon.net.png);
+        // }
     }
 }
 
 @media screen and (max-width: 900px) {
     main {
-        .wait p {
-            font-size: 1.5em;
-        }
         .notice {
-            width: 85%;
             p {
                 display: block;
             }
@@ -174,6 +168,11 @@ main {
 @media screen and (max-width: 500px) {
     header {
         width: 100%;
+    }
+    main {
+        .notice {
+            padding: 5px 40px;
+        }
     }
 }
 </style>

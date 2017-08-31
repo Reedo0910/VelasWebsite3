@@ -1,0 +1,100 @@
+.loading-icon,
+.icon-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -42px;
+  margin-left: -42px;
+  width: 80px;
+  height: 80px;
+  border: 2px solid #888;
+  border-radius: 30px;
+}
+
+.loading-icon {
+  animation: rotate 2s linear infinite, color 4s linear infinite;
+}
+
+.icon-inner {
+  animation: icon-inner 2s linear infinite, color 4s linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+  }
+}
+
+@-webkit-keyframes rotate {
+  to {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+  }
+}
+
+@keyframes icon-inner {
+  0% {
+    transform: scale(1) rotate(0deg);
+    -webkit-transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(0.86) rotate(45deg);
+    -webkit-transform: scale(0.86) rotate(45deg);
+  }
+  100% {
+    transform: scale(1) rotate(90deg);
+    -webkit-transform: scale(1) rotate(90deg);
+  }
+}
+
+@-webkit-keyframes icon-inner {
+  0% {
+    transform: scale(1) rotate(0deg);
+    -webkit-transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(0.86) rotate(45deg);
+    -webkit-transform: scale(0.86) rotate(45deg);
+  }
+  100% {
+    transform: scale(1) rotate(90deg);
+    -webkit-transform: scale(1) rotate(90deg);
+  }
+}
+
+@keyframes color {
+  0% {
+    border-color: #ff4a4a;
+  }
+  25% {
+    border-color: #ec900d;
+  }
+  50% {
+    border-color: #409dd3;
+  }
+  75% {
+    border-color: #9f4aff;
+  }
+  100% {
+    border-color: #ff4a4a;
+  }
+}
+
+@-webkit-keyframes color {
+  0% {
+    border-color: #ff4a4a;
+  }
+  25% {
+    border-color: #ec900d;
+  }
+  50% {
+    border-color: #009cff;
+  }
+  75% {
+    border-color: #9f4aff;
+  }
+  100% {
+    border-color: #ff4a4a;
+  }
+}

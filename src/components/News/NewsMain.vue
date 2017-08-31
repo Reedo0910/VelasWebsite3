@@ -1,6 +1,7 @@
 <template>
     <div class="container">
         <div class="post-grid">
+            <loading-icon :isShow="isLoading" :isError="isError"></loading-icon>
             <article v-for="p in posts" class="post-card" :key="p.id">
                 <header class="post-header">
                     <router-link class="title-link" :to="{ path: '/post/'+p.number }">
@@ -34,18 +35,25 @@
 <script>
 import * as github from '../../assets/js/io';
 import moment from 'moment';
+import LoadingIcon from '../LoadingIcon.vue';
 
 export default {
     name: 'NewsMain',
+    components: {
+        LoadingIcon
+    },
     data: function() {
         return {
-            posts: []
+            posts: [],
+            isLoading: true,
+            isError: false
         }
     },
     mounted: function() {
         const vm = this;
         github.getIssue()
             .then(this.filter)
+            .catch(this.errorHandler)
     },
     methods: {
         linkGenerator: function(seed) {
@@ -62,9 +70,12 @@ export default {
             return body.replace(/\s+/g, '').substr(0, 110) + ' …';
         },
         filter: function(posts) {
+            if (posts === 404) {
+                throw new Error('网络异常');
+            }
             const vm = this;
-            var res = []
-            const author = { 'Reedo0910': true }
+            var res = [];
+            const author = { 'Reedo0910': true };
             posts.map(function(p) {
                 if (author[p.user.login]) {
                     vm.posts.push({
@@ -75,9 +86,15 @@ export default {
                         body: vm.summary(p.body),
                         comments: p.comments,
                         image: vm.linkGenerator(p.created_at)
-                    })
+                    });
                 }
-            })
+            });
+            vm.isLoading = false;
+        },
+        errorHandler: function(error) {
+            console.log('article list: ' + error);
+            this.isLoading = false;
+            this.isError = true;
         }
     }
 };
@@ -88,18 +105,18 @@ export default {
 }
 
 .post-grid {
+    position: relative;
+    zoom: 1;
     display: flex;
     flex-wrap: wrap;
-    width: 85%;
     margin: 0 auto;
-    padding: 80px 30px 100px;
+    padding: 50px 30px 100px;
     min-width: 300px;
     box-sizing: border-box;
     background: #fff;
     .post-card {
         padding: 0 10px;
         box-sizing: border-box;
-        width: 33.332%;
         .title-link {
             text-decoration: none;
             &:hover {
@@ -187,6 +204,45 @@ export default {
                 }
             }
         }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .post-grid {
+        padding: 50px 10px;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .post-grid {
+        width: 100%;
+        .post-card {
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (min-width: 780px) {
+    .post-grid {
+        width: 760px;
+        .post-card {
+            width: 49.998%;
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .post-grid {
+        width: 1000px;
+        .post-card {
+            width: 33.332%;
+        }
+    }
+}
+
+@media screen and (min-width: 1420px) {
+    .post-grid {
+        width: 1400px;
     }
 }
 </style>

@@ -63,4 +63,23 @@ header {
         z-index: 2;
     }
 }
+
+@media screen and (max-width: 780px) {
+    header {
+        h1 {
+            font-size: 2em;
+        }
+    }
+}
+
+@media screen and (max-width: 475px) {
+    header {
+        width: 100%;
+        height: 220px;
+        padding-top: 60px;
+        h1 {
+            font-size: 1.5em;
+        }
+    }
+}
 </style>

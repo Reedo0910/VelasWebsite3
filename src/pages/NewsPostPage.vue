@@ -5,7 +5,9 @@
             <news-sub-nav></news-sub-nav>
             <news-header-compact :newsTitle="post.title" :newsDate="post.created_at"></news-header-compact>
             <article>
-                <p v-html="post.body" class="content markdown-body"></p>
+                <loading-icon :isShow="isArticleLoading" :isError="isArticleError"></loading-icon>
+                <p v-html="post.body" class="content markdown-body">
+                </p>
                 <div class="coms">
                     <div class="leave">
                         <a :href="post.html_url" target="_blank">
@@ -15,6 +17,7 @@
                     <div class="com_area">
                         <div class="hr"></div>
                         <p class="note">GitHub的留言信息将在下面显示</p>
+                        <loading-icon :isShow="isCommentLoading" :isError="isCommentError"></loading-icon>
                         <div v-for="c in coms" class="com" :key="c.user.id">
                             <a :href="c.user.html_url" target="_blank"><img :src="c.user.avatar_url"></a>
                             <div class="user_name">
@@ -44,6 +47,7 @@ import VTitle from '../components/VTitle'
 import NewsHeaderCompact from '../components/News/NewsHeaderCompact'
 import NewsSubNav from '../components/SubNav/NewsSubNav'
 import FooterBlock from '../components/Footer'
+import LoadingIcon from '../components/LoadingIcon'
 
 export default {
     name: 'NewsPost',
@@ -51,12 +55,17 @@ export default {
         VTitle,
         NewsSubNav,
         NewsHeaderCompact,
-        FooterBlock
+        FooterBlock,
+        LoadingIcon
     },
     data: function() {
         return {
             post: {},
-            coms: []
+            coms: [],
+            isArticleLoading: true,
+            isCommentLoading: true,
+            isArticleError: false,
+            isCommentError: false
         }
     },
     methods: {
@@ -76,15 +85,33 @@ export default {
         })
         github.getIssue(id)
             .then(function(res) {
+                if (res === 404) {
+                    throw new Error('网络异常');
+                }
                 vm.post = res.filter((p) => {
                     return p.number === Number(id)
                 })[0]
                 vm.post.body = md(vm.post.body);
                 vm.post.created_at = moment(vm.post.created_at).format('YYYY-MM-DD');
+                vm.isArticleLoading = false;
+            })
+            .catch(function(err) {
+                console.log('article: ' + err);
+                vm.isArticleLoading = false;
+                vm.isArticleError = true;
             });
         github.getComs(id)
             .then(function(res) {
+                if (res === 404) {
+                    throw new Error('网络异常');
+                }
                 vm.coms = res
+                vm.isCommentLoading = false
+            })
+            .catch(function(err) {
+                console.log('comment: ' + err)
+                vm.isCommentLoading = false
+                vm.isCommentError = true
             })
     }
 };
@@ -107,7 +134,6 @@ article {
     width: 90%;
     margin: 0 auto 100px;
     box-sizing: border-box;
-
     .leave {
         text-align: center;
         padding: 80px 0 20px 0;
@@ -126,7 +152,8 @@ article {
         margin-top: 20px;
         p.note {
             text-align: center;
-            color: #4c4c4c;;
+            color: #4c4c4c;
+            ;
             font-size: .9em;
             margin: 14px 0 40px;
         }
@@ -174,6 +201,13 @@ article {
                 margin: 0 10px;
             }
         }
+    }
+}
+
+@media screen and (max-width: 475px) {
+    article {
+        width: 100%;
+        padding: 40px 20px 40px;
     }
 }
 </style>

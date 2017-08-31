@@ -21,6 +21,7 @@ export function getIssue() {
       })
       .catch((error) => {
         console.log(error);
+        return 404;
       });
   } else {
     return new Promise(function (resolve, reject) {
@@ -41,6 +42,7 @@ export function getComs(id) {
       })
       .catch((error) => {
         console.log(error);
+        return 404;
       });
   } else {
     return new Promise(function (resolve, reject) {

@@ -2,6 +2,8 @@ import axios from 'axios';
 
 const api = 'https://api.github.com/repos/';
 
+const token = '6358f49bd3470b96773373bb5aeb30ab96241393';
+
 function setSession(key, val) {
   return sessionStorage.setItem(key, JSON.stringify(val));
 }
@@ -15,7 +17,7 @@ function clearSession() {
 }
 
 export function getIssue() {
-  const url = api + 'Reedo0910/VelasWebsite3/issues?token=6358f49bd3470b96773373bb5aeb30ab96241393';
+  const url = api + 'Reedo0910/VelasWebsite3/issues?token=' + token;
   if (!getSession('res')) {
     return axios.get(url)
       .then((res) => {
@@ -36,7 +38,7 @@ export function getIssue() {
 }
 
 export function getComs(id) {
-  const url = api + 'Reedo0910/VelasWebsite3/issues/' + id + '/comments?token=6358f49bd3470b96773373bb5aeb30ab96241393';
+  const url = api + 'Reedo0910/VelasWebsite3/issues/' + id + '/comments?token=' + token;
   if (!getSession('c' + id)) {
     return axios.get(url)
       .then((res) => {

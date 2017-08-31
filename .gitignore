@@ -9,6 +9,7 @@ test/e2e/reports
 selenium-debug.log
 Velas.conf
 etc/
+src/assets/js/io.js
 
 # Editor directories and files
 .vscode

@@ -19,7 +19,7 @@
                     </div>
                     <div class="com_area">
                         <div class="hr"></div>
-                        <p class="note">GitHub的留言信息将在下面显示</p>
+                        <p class="note">GitHub的留言信息将显示在下方</p>
                         <loading-icon :isShow="isCommentLoading" :isError="isCommentError"></loading-icon>
                         <div v-for="c in coms" class="com" :key="c.user.id">
                             <a :href="c.user.html_url" target="_blank"><img :src="c.user.avatar_url"></a>
@@ -88,7 +88,7 @@ export default {
         })
         github.getIssue(id)
             .then(function(res) {
-                if (res === 404) {
+                if (res === 404 || res.length === 0) {
                     throw new Error('网络异常');
                 }
                 vm.post = res.filter((p) => {
@@ -96,7 +96,6 @@ export default {
                 })[0]
                 vm.post.body = md(vm.post.body);
                 vm.post.created_at = moment(vm.post.created_at).format('YYYY-MM-DD');
-                console.log(vm.post)
                 vm.isArticleLoading = false;
             })
             .catch(function(err) {

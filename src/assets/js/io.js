@@ -16,7 +16,7 @@ function clearSession() {
 }
 
 export function getIssue() {
-  const url = api + 'Reedo0910/VelasWebsite3/issues?token=' + ROT;
+  const url = api + 'Reedo0910/VelasWebsite3/issues?creator=Reedo0910&token=' + ROT;
   if (!getSession('res')) {
     return axios.get(url)
       .then((res) => {

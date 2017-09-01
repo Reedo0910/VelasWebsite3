@@ -75,19 +75,16 @@ export default {
             }
             const vm = this;
             var res = [];
-            const author = { 'Reedo0910': true };
             posts.map(function(p) {
-                if (author[p.user.login]) {
-                    vm.posts.push({
-                        title: p.title,
-                        number: p.number,
-                        date: moment(p.created_at).format('LL'),
-                        labels: p.labels,
-                        body: vm.summary(p.body),
-                        comments: p.comments,
-                        image: vm.linkGenerator(p.created_at)
-                    });
-                }
+                vm.posts.push({
+                    title: p.title,
+                    number: p.number,
+                    date: moment(p.created_at).format('LL'),
+                    labels: p.labels,
+                    body: vm.summary(p.body),
+                    comments: p.comments,
+                    image: vm.linkGenerator(p.created_at)
+                });
             });
             vm.isLoading = false;
         },

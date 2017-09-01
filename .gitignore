@@ -9,7 +9,7 @@ test/e2e/reports
 selenium-debug.log
 Velas.conf
 etc/
-src/assets/js/io.js
+src/assets/js/read_only_token.js
 
 # Editor directories and files
 .vscode

@@ -60,11 +60,11 @@ export default {
             const url = 'http://o7a3i0m1t.bkt.clouddn.com/image/website/news/post-header/';
             const TOTAL = 19;
             let s = new Date(seed);
-            let result = this.shuffle(s.getUTCDate(), s.getUTCHours(), s.getUTCMinutes(), s.getUTCSeconds(), TOTAL);
+            let result = this.shuffle(s.getUTCHours(), s.getUTCMinutes(), s.getUTCSeconds(), TOTAL);
             return url + result + '.jpg';
         },
-        shuffle: function(a, b, c, d, t) {
-            return ((a + b) * c * d) % t + 1;
+        shuffle: function(a, b, c, t) {
+            return ((a + b) * c) % t + 1;
         },
         summary: function(body) {
             return body.replace(/\s+/g, '').substr(0, 110) + ' …';

@@ -1,5 +1,4 @@
 import axios from 'axios';
-import ROT from './read_only_token.js'
 
 const api = 'https://api.github.com/repos/';
 
@@ -16,11 +15,10 @@ function clearSession() {
 }
 
 export function getIssue() {
-  const url = api + 'Reedo0910/VelasWebsite3/issues?creator=Reedo0910&token=' + ROT;
+  const url = api + 'Reedo0910/VelasWebsite3/issues?creator=Reedo0910';
   if (!getSession('res')) {
     return axios.get(url)
       .then((res) => {
-        // console.dir('from axios')
         setSession('res', res.data)
         return res.data
       })
@@ -30,18 +28,35 @@ export function getIssue() {
       });
   } else {
     return new Promise(function (resolve, reject) {
-      //   console.dir('from ss')
       resolve(getSession('res'));
     });
   }
 }
 
+export function getIssueById(id) {
+    const url = api + 'Reedo0910/VelasWebsite3/issues/' + id;
+    if (!getSession('i' + id)) {
+      return axios.get(url)
+        .then((res) => {
+          setSession('i' + id, res.data)
+          return res.data
+        })
+        .catch((error) => {
+          console.log(error);
+          return 404;
+        });
+    } else {
+      return new Promise(function (resolve, reject) {
+        resolve(getSession('i' + id));
+      });
+    }
+  }
+
 export function getComs(id) {
-  const url = api + 'Reedo0910/VelasWebsite3/issues/' + id + '/comments?token=' + ROT;
+  const url = api + 'Reedo0910/VelasWebsite3/issues/' + id + '/comments';
   if (!getSession('c' + id)) {
     return axios.get(url)
       .then((res) => {
-        // console.dir('from axios')
         setSession('c' + id, res.data)
         return res.data;
       })
@@ -51,7 +66,6 @@ export function getComs(id) {
       });
   } else {
     return new Promise(function (resolve, reject) {
-      //   console.dir('from ss')
       resolve(getSession('c' + id));
     });
   }

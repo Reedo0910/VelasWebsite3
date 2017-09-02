@@ -5,7 +5,7 @@
             <news-sub-nav></news-sub-nav>
             <header>
                 <div class="content-mask"></div>
-                <h1>Velas' News</h1>
+                <h1>Velas News</h1>
                 <p>这周有什么新鲜事？</p>
             </header>
             <main>
@@ -27,7 +27,7 @@
                         <router-link to="/news/log">这里</router-link> 找到他</p>
                 </div>
                 <div class="notice thanks">
-                    <p>Velas' News的建成离不开<a href="https://github.com/cogons/issvue" target="_blank">issvue</a>的帮助</p>
+                    <p>Velas News的建成离不开<a href="https://github.com/cogons/issvue" target="_blank">issvue</a>的帮助</p>
                     <p>数据均从GitHub获取</p>
                 </div>
             </main>

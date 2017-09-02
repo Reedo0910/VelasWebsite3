@@ -1,7 +1,7 @@
 <template>
     <header class="header">
         <div class="content-mask"></div>
-        <router-link tag="h2" to="/news">Velas' News</router-link>
+        <router-link tag="h2" to="/news">Velas News</router-link>
         <h1>{{newsTitle}}</h1>
         <p>{{newsDate}}</p>
     </header>

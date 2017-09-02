@@ -1,10 +1,16 @@
 <template>
     <transition name="switch-page" mode="out-in">
         <div class="container">
-            <v-title>{{post.title}} - Velas' News</v-title>
+            <v-title>{{post.title}} - Velas News</v-title>
             <news-sub-nav></news-sub-nav>
             <news-header-compact :newsTitle="post.title" :newsDate="post.created_at"></news-header-compact>
             <article>
+                <div v-if="isClosed" class="notice closed">
+                    <p>
+                        <strong>该文章不可见</strong>
+                    </p>
+                    <p>由于文章已被删除或是由未知作者所发布，所以文章内容及留言不可见</p>
+                </div>
                 <loading-icon :isShow="isArticleLoading" :isError="isArticleError"></loading-icon>
                 <div class="article-labels">
                     <span class="label" :style="{'background-color': '#' + l.color }" v-for="l in post.labels" :key="l.id">{{l.name}}</span>
@@ -63,8 +69,11 @@ export default {
     },
     data: function() {
         return {
-            post: {},
+            post: {
+                title: 'News Title'
+            },
             coms: [],
+            isClosed: false,
             isArticleLoading: true,
             isCommentLoading: true,
             isArticleError: false,
@@ -86,36 +95,49 @@ export default {
         md.setOptions({
             highlight: (code) => highlightjs.highlightAuto(code).value
         })
-        github.getIssue(id)
+        github.getIssueById(id)
             .then(function(res) {
                 if (res === 404 || res.length === 0) {
                     throw new Error('网络异常');
                 }
-                vm.post = res.filter((p) => {
-                    return p.number === Number(id)
-                })[0]
+                if (res.state === 'closed' || res.user.login !== 'Reedo0910') {
+                    throw new Error('文章已关闭');
+                }
+                vm.post = res;
                 vm.post.body = md(vm.post.body);
                 vm.post.created_at = moment(vm.post.created_at).format('YYYY-MM-DD');
                 vm.isArticleLoading = false;
+                // 获取评论
+                github.getComs(id)
+                    .then(function(res) {
+                        if (res === 404) {
+                            throw new Error('网络异常');
+                        }
+                        vm.coms = res
+                        vm.isCommentLoading = false
+                    })
+                    .catch(function(err) {
+                        console.log('comment: ' + err)
+                        vm.isCommentLoading = false
+                        vm.isCommentError = true
+                    })
             })
             .catch(function(err) {
                 console.log('article: ' + err);
                 vm.isArticleLoading = false;
-                vm.isArticleError = true;
-            });
-        github.getComs(id)
-            .then(function(res) {
-                if (res === 404) {
-                    throw new Error('网络异常');
+                vm.isCommentLoading = false
+                switch (err.message) {
+                    case '网络异常':
+                        vm.isArticleError = true;
+                        break;
+                    case '文章已关闭':
+                        vm.isClosed = true;
+                        break;
+                    default:
+                        vm.isArticleError = true;
+                        break;
                 }
-                vm.coms = res
-                vm.isCommentLoading = false
-            })
-            .catch(function(err) {
-                console.log('comment: ' + err)
-                vm.isCommentLoading = false
-                vm.isCommentError = true
-            })
+            });
     }
 };
 </script>
@@ -153,6 +175,7 @@ article {
         text-align: center;
         padding: 80px 0 20px 0;
         a {
+            user-select: none;
             padding: 12px 15px;
             border-radius: 50px;
             color: #737373;
@@ -215,6 +238,44 @@ article {
                 width: 100%;
                 margin: 0 10px;
             }
+        }
+    }
+}
+
+.notice {
+    margin: 0px auto;
+    padding: 5px 80px;
+    width: 100%;
+    box-sizing: border-box;
+    opacity: .8;
+    background-color: #fafafa;
+    text-align: center;
+    &+& {
+        margin-top: 30px;
+    }
+    p {
+        display: inline-block;
+    }
+    a {
+        text-decoration: none;
+        color: #444;
+        margin: 0 5px;
+        &:hover {
+            border-bottom: 1px solid #444;
+        }
+    }
+    i {
+        color: #444;
+    }
+    &.closed {
+        background-color: rgba(244, 67, 54, 0.5);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .notice {
+        p {
+            display: block;
         }
     }
 }

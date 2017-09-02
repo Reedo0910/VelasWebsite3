@@ -1,7 +1,7 @@
 const logJson = [{
     date: '2017-8-29',
     content: [
-      '日志停止更新，更新总结由Velas\' News代替完成。'
+      '日志停止更新，更新总结由Velas News代替完成。'
     ]
   },
   {

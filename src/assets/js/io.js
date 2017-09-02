@@ -34,23 +34,23 @@ export function getIssue() {
 }
 
 export function getIssueById(id) {
-    const url = api + 'Reedo0910/VelasWebsite3/issues/' + id;
-    if (!getSession('i' + id)) {
-      return axios.get(url)
-        .then((res) => {
-          setSession('i' + id, res.data)
-          return res.data
-        })
-        .catch((error) => {
-          console.log(error);
-          return 404;
-        });
-    } else {
-      return new Promise(function (resolve, reject) {
-        resolve(getSession('i' + id));
+  const url = api + 'Reedo0910/VelasWebsite3/issues/' + id;
+  if (!getSession('i' + id)) {
+    return axios.get(url)
+      .then((res) => {
+        setSession('i' + id, res.data)
+        return res.data
+      })
+      .catch((error) => {
+        console.log(error);
+        return 404;
       });
-    }
+  } else {
+    return new Promise(function (resolve, reject) {
+      resolve(getSession('i' + id));
+    });
   }
+}
 
 export function getComs(id) {
   const url = api + 'Reedo0910/VelasWebsite3/issues/' + id + '/comments';

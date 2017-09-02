@@ -225,7 +225,7 @@ main {
             position: relative;
             background-repeat: no-repeat;
             background-size: cover;
-            box-shadow: rgba(128, 127, 127, 0.2) 0 0 30px;
+            box-shadow: rgba(128, 127, 127, 0.2) 0px 30px 0px 14px;
             .capsule-intro {
                 position: absolute;
                 vertical-align: middle;

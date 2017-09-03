@@ -114,8 +114,10 @@ export default {
     .post-card {
         padding: 0 10px;
         box-sizing: border-box;
+        margin-bottom: 40px;
         .title-link {
             text-decoration: none;
+            color: #000000;
             &:hover {
                 text-decoration: underline;
             }
@@ -170,7 +172,8 @@ export default {
                     vertical-align: middle;
                 }
                 span {
-                    color: #673AB7;
+                    // color: #673AB7;
+                    color: #000;
                 }
             }
         }

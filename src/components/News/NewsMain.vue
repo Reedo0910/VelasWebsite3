@@ -67,7 +67,7 @@ export default {
             return ((a + b) * c) % t + 1;
         },
         summary: function(body) {
-            return body.replace(/\s+/g, '').substr(0, 110) + ' …';
+            return body.replace(/[\\\`\*\_\[\]\#\+\-\!\>\x]/g, '').substr(0, 110) + ' …';
         },
         filter: function(posts) {
             if (posts === 404) {
@@ -172,7 +172,6 @@ export default {
                     vertical-align: middle;
                 }
                 span {
-                    // color: #673AB7;
                     color: #000;
                 }
             }

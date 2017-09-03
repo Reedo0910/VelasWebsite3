@@ -92,6 +92,18 @@ export default {
     mounted: function() {
         const vm = this;
         const id = vm.$route.params.id;
+        let renderer = new md.Renderer();
+        renderer.listitem = function(text) {
+            if (/^\s*\[[x ]\]\s*/.test(text)) {
+                text = text
+                    .replace(/^\s*\[ \]\s*/, '<i class="fa fa-square-o" aria-hidden="true"></i> ')
+                    .replace(/^\s*\[x\]\s*/, '<i class="fa fa-check-square" aria-hidden="true"></i> ');
+                return '<li style="list-style: none">' + text + '</li>';
+            } else {
+                return '<li>' + text + '</li>';
+            }
+        };
+
         md.setOptions({
             highlight: (code) => highlightjs.highlightAuto(code).value
         })
@@ -104,7 +116,7 @@ export default {
                     throw new Error('文章已关闭');
                 }
                 vm.post = res;
-                vm.post.body = md(vm.post.body);
+                vm.post.body = md(vm.post.body, { renderer: renderer });
                 vm.post.created_at = moment(vm.post.created_at).format('YYYY-MM-DD');
                 vm.isArticleLoading = false;
                 // 获取评论

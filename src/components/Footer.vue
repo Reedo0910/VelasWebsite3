@@ -24,7 +24,7 @@ export default {
                 color: '#17b2ec'
             },
             {
-                href: 'http://weibo.com/reedo',
+                href: 'https://weibo.com/reedo',
                 icon: 'fa-weibo',
                 title: 'Weibo',
                 color: '#ff0000'

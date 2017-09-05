@@ -65,7 +65,7 @@ export default {
     methods: {
         handleScroll() {
             const top = document.documentElement.scrollTop || document.body.scrollTop;
-            this.isOnTop = top <= 50;
+            this.isOnTop = top <= 25;
         },
         handleMouseDown(e) {
             touchripple.handleMouseDown(e);

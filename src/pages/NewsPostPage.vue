@@ -9,15 +9,35 @@
                     <p>
                         <strong>该文章不可见</strong>
                     </p>
-                    <p>由于文章已被删除或是由未知作者所发布，所以文章内容及留言不可见</p>
+                    <p>由于文章已被删除，所以文章内容及留言不可见</p>
                 </div>
                 <loading-icon :isShow="isArticleLoading" :isError="isArticleError"></loading-icon>
                 <div class="article-labels">
+                    <a class="label comment-anchor" @click="scrollToCom">{{post.comments}}条评论</a>
                     <span class="label" :style="{'background-color': '#' + l.color }" v-for="l in post.labels" :key="l.id">{{l.name}}</span>
                 </div>
-                <p v-html="post.body" class="content markdown-body">
+                <p v-html="post.body" class="content markdown-body"></p>
+            </article>
+            <nav class="adjacent-posts">
+                <p class="page-nav next">
+                    <router-link class="page-navigation" :to="{ path: '/news/post/'+ nextPage.id }" v-if="nextPage.id !== -1">
+                        <span class="nav-label">后一篇文章</span>
+                        <strong class="nav-name">{{ nextPage.name }}</strong>
+                        <span class="nav-time">{{ nextPage.time }}</span>
+                        <i class="arrow-icon fa fa-angle-left fa-3x" aria-hidden="true"></i>
+                    </router-link>
                 </p>
-                <div class="coms">
+                <p class="page-nav previous">
+                    <router-link class="page-navigation" :to="{ path: '/news/post/'+ previousPage.id }" v-if="previousPage.id !== -1">
+                        <span class="nav-label">前一篇文章</span>
+                        <strong class="nav-name">{{ previousPage.name }}</strong>
+                        <span class="nav-time">{{ previousPage.time }}</span>
+                        <i class="arrow-icon fa fa-angle-right fa-3x" aria-hidden="true"></i>
+                    </router-link>
+                </p>
+            </nav>
+            <article>
+                <div class="coms" id="comments">
                     <div class="leave">
                         <a :href="post.html_url" target="_blank">
                             <i class="fa fa-github-alt" aria-hidden="true"></i>
@@ -39,6 +59,7 @@
                     </div>
                 </div>
             </article>
+            <div class="post-blank"></div>
             <footer-block></footer-block>
         </div>
     </transition>
@@ -73,6 +94,16 @@ export default {
                 title: 'News Title'
             },
             coms: [],
+            previousPage: {
+                id: -1,
+                name: '',
+                time: ''
+            },
+            nextPage: {
+                id: -1,
+                name: '',
+                time: ''
+            },
             isClosed: false,
             isArticleLoading: true,
             isCommentLoading: true,
@@ -80,76 +111,136 @@ export default {
             isCommentError: false
         }
     },
+    watch: {
+        '$route'(to, from) {
+            this.initData();
+            this.init();
+        }
+    },
     methods: {
+        scrollToCom: function() {
+            return document.getElementById('comments').scrollIntoView();
+        },
         tLC: function(text) {
             return text.toLowerCase();
         },
         fullTimeFormatter: function(time) {
-            moment.locale('zh-cn');
             return moment(time).fromNow();
+        },
+        getPostOrder: function(source, id) {
+            let that = this;
+            let t = -1;
+            for (let i = 0; i < source.length; i++) {
+                if (source[i].number === id) {
+                    t = i;
+                    break;
+                }
+            }
+            if (t === -1) { return; }
+            if (t !== 0) {
+                that.nextPage.id = source[t - 1].number;
+                that.nextPage.name = source[t - 1].title;
+                that.nextPage.time = moment(source[t - 1].created_at).format('ll');
+            }
+            if (t !== source.length - 1) {
+                that.previousPage.id = source[t + 1].number;
+                that.previousPage.name = source[t + 1].title;
+                that.previousPage.time = moment(source[t + 1].created_at).format('ll');
+            }
+        },
+        init: function() {
+            const vm = this;
+            const id = vm.$route.params.id;
+            moment.locale('zh-cn');
+            let renderer = new md.Renderer();
+            renderer.listitem = function(text) {
+                if (/^\s*\[[x ]\]\s*/.test(text)) {
+                    text = text
+                        .replace(/^\s*\[ \]\s*/, '<i class="fa fa-square-o" aria-hidden="true"></i> ')
+                        .replace(/^\s*\[x\]\s*/, '<i class="fa fa-check-square" aria-hidden="true"></i> ');
+                    return '<li style="list-style: none">' + text + '</li>';
+                } else {
+                    return '<li>' + text + '</li>';
+                }
+            };
+
+            md.setOptions({
+                highlight: (code) => highlightjs.highlightAuto(code).value
+            })
+            github.getIssue()
+                .then(function(res) {
+                    if (res === 404 || res.length === 0) {
+                        throw new Error('网络异常');
+                    }
+                    if (res.state === 'closed') {
+                        throw new Error('文章已关闭');
+                    }
+                    vm.post = res.filter((p) => {
+                        return p.number === Number(id)
+                    })[0]
+                    vm.post.body = md(vm.post.body, { renderer: renderer });
+                    vm.post.created_at = moment(vm.post.created_at).format('ll');
+                    vm.isArticleLoading = false;
+
+                    vm.getPostOrder(res, Number(id));
+                    // 获取评论
+                    github.getComs(id)
+                        .then(function(res) {
+                            if (res === 404) {
+                                throw new Error('网络异常');
+                            }
+                            vm.coms = res
+                            vm.isCommentLoading = false
+                        })
+                        .catch(function(err) {
+                            console.log('comment: ' + err)
+                            vm.isCommentLoading = false
+                            vm.isCommentError = true
+                        })
+                })
+                .catch(function(err) {
+                    console.log('article: ' + err);
+                    vm.isArticleLoading = false;
+                    vm.isCommentLoading = false
+                    switch (err.message) {
+                        case '网络异常':
+                            vm.isArticleError = true;
+                            break;
+                        case '文章已关闭':
+                            vm.isClosed = true;
+                            break;
+                        default:
+                            vm.isArticleError = true;
+                            break;
+                    }
+                });
+        },
+        initData: function() {
+            let that = this;
+            that.post = {}
+            that.previousPage = {}
+            that.nextPage = {}
+            that.post.title = 'News Title'
+            that.coms.length = 0
+            that.previousPage = {
+                id: -1,
+                name: '',
+                time: ''
+            }
+            that.nextPage = {
+                id: -1,
+                name: '',
+                time: ''
+            }
+            that.isClosed = false
+            that.isArticleLoading = true
+            that.isCommentLoading = true
+            that.isArticleError = false
+            that.isCommentError = false
         }
     },
     mounted: function() {
-        const vm = this;
-        const id = vm.$route.params.id;
-        let renderer = new md.Renderer();
-        renderer.listitem = function(text) {
-            if (/^\s*\[[x ]\]\s*/.test(text)) {
-                text = text
-                    .replace(/^\s*\[ \]\s*/, '<i class="fa fa-square-o" aria-hidden="true"></i> ')
-                    .replace(/^\s*\[x\]\s*/, '<i class="fa fa-check-square" aria-hidden="true"></i> ');
-                return '<li style="list-style: none">' + text + '</li>';
-            } else {
-                return '<li>' + text + '</li>';
-            }
-        };
-
-        md.setOptions({
-            highlight: (code) => highlightjs.highlightAuto(code).value
-        })
-        github.getIssueById(id)
-            .then(function(res) {
-                if (res === 404 || res.length === 0) {
-                    throw new Error('网络异常');
-                }
-                if (res.state === 'closed' || res.user.login !== 'Reedo0910') {
-                    throw new Error('文章已关闭');
-                }
-                vm.post = res;
-                vm.post.body = md(vm.post.body, { renderer: renderer });
-                vm.post.created_at = moment(vm.post.created_at).format('YYYY-MM-DD');
-                vm.isArticleLoading = false;
-                // 获取评论
-                github.getComs(id)
-                    .then(function(res) {
-                        if (res === 404) {
-                            throw new Error('网络异常');
-                        }
-                        vm.coms = res
-                        vm.isCommentLoading = false
-                    })
-                    .catch(function(err) {
-                        console.log('comment: ' + err)
-                        vm.isCommentLoading = false
-                        vm.isCommentError = true
-                    })
-            })
-            .catch(function(err) {
-                console.log('article: ' + err);
-                vm.isArticleLoading = false;
-                vm.isCommentLoading = false
-                switch (err.message) {
-                    case '网络异常':
-                        vm.isArticleError = true;
-                        break;
-                    case '文章已关闭':
-                        vm.isClosed = true;
-                        break;
-                    default:
-                        vm.isArticleError = true;
-                        break;
-                }
-            });
+        this.init();
     }
 };
 </script>
@@ -165,11 +256,16 @@ export default {
     margin: 0 auto;
 }
 
+.post-blank {
+    height: 100px;
+    width: 100%;
+}
+
 article {
     padding: 10px 50px 50px;
     background: #FFF;
     width: 90%;
-    margin: 0 auto 100px;
+    margin: 0 auto;
     box-sizing: border-box;
     .article-labels {
         text-align: right;
@@ -182,7 +278,16 @@ article {
             text-transform: uppercase;
             opacity: .5;
         }
+        .comment-anchor {
+            color: #000000;
+            border: 2px solid #000;
+            text-decoration: none;
+            box-sizing: border-box;
+            padding: 3px 10px;
+            cursor: pointer;
+        }
     }
+
     .leave {
         text-align: center;
         padding: 80px 0 20px 0;
@@ -203,7 +308,6 @@ article {
         p.note {
             text-align: center;
             color: #4c4c4c;
-            ;
             font-size: .9em;
             margin: 14px 0 40px;
         }
@@ -254,6 +358,77 @@ article {
     }
 }
 
+.adjacent-posts {
+    overflow: hidden;
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    background-color: #eeeeee;
+    color: #000000;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    .page-nav {
+        margin: 0;
+        box-sizing: border-box;
+        display: inline-block;
+        width: 50%;
+        &.next {
+            border-right: 1px solid #ccc;
+            margin-right: -1px;
+        }
+        .page-navigation {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            .nav-label,
+            .nav-name,
+            .nav-time {
+                display: block;
+                line-height: 1.5;
+            }
+            .nav-label {
+                font-size: .75em;
+            }
+            .nav-time {
+                font-size: .85em;
+            }
+            .nav-name {
+                font-size: 1em;
+                margin-top: 10px;
+            }
+            &:hover .nav-name {
+                text-decoration: underline;
+            }
+        }
+        .arrow-icon {
+            display: block;
+            position: absolute;
+            width: 18px;
+            height: 48px;
+            top: 50%;
+            margin-top: -24px;
+            transition: left 250ms cubic-bezier(0.3, -0.5, 0.6, 1.5), right 250ms cubic-bezier(0.3, -0.5, 0.6, 1.5);
+            &.fa-angle-left {
+                left: 10px;
+            }
+            &.fa-angle-right {
+                right: 10px;
+            }
+        }
+        &:hover .arrow-icon {
+            transition: left 250ms cubic-bezier(0.3, -0.5, 0.6, 1.5), right 250ms cubic-bezier(0.3, -0.5, 0.6, 1.5);
+            &.fa-angle-left {
+                left: 0;
+            }
+            &.fa-angle-right {
+                right: 0;
+            }
+        }
+    }
+}
+
 .notice {
     margin: 0px auto;
     padding: 5px 80px;
@@ -296,6 +471,17 @@ article {
     article {
         width: 100%;
         padding: 10px 20px 40px;
+    }
+    .adjacent-posts {
+        width: 100%;
+        flex-wrap: wrap;
+        .page-nav {
+            width: 100%;
+            &.next {
+                border-right: none;
+                margin-right: 0;
+            }
+        }
     }
 }
 </style>

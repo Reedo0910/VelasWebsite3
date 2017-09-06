@@ -4,7 +4,7 @@
             <loading-icon :isShow="isLoading" :isError="isError"></loading-icon>
             <article v-for="p in posts" class="post-card" :key="p.id">
                 <header class="post-header">
-                    <router-link class="title-link" :to="{ path: '/post/'+p.number }">
+                    <router-link class="title-link" :to="{ path: '/news/post/'+p.number }">
                         <div class="post-image-container"><img class="post-image" :src="p.image" width="600" height="330"></div>
                         <h2 class="post-title">{{ p.title }}</h2>
                     </router-link>
@@ -22,7 +22,7 @@
                 <div class="post-summary">
                     <p>{{p.body}}</p>
                     <div class="post-entry">
-                        <router-link class="entry-link" :to="{ path: '/post/'+p.number }">阅读文章
+                        <router-link class="entry-link" :to="{ path: '/news/post/'+p.number }">阅读文章
                             <i class="fa fa-angle-right" aria-hidden="true"></i>
                         </router-link>
                     </div>
@@ -67,7 +67,7 @@ export default {
             return ((a + b) * c) % t + 1;
         },
         summary: function(body) {
-            return body.replace(/[\\\`\*\_\[\]\#\+\-\!\>\x]/g, '').substr(0, 110) + ' …';
+            return body.replace(/[\\\`\*\~\_\[\]\#\+\-\!\>\x]/g, '').substr(0, 110) + ' …';
         },
         filter: function(posts) {
             if (posts === 404) {
@@ -75,11 +75,12 @@ export default {
             }
             const vm = this;
             var res = [];
+            moment.locale('zh-cn');
             posts.map(function(p) {
                 vm.posts.push({
                     title: p.title,
                     number: p.number,
-                    date: moment(p.created_at).format('LL'),
+                    date: moment(p.created_at).format('ll'),
                     labels: p.labels,
                     body: vm.summary(p.body),
                     comments: p.comments,

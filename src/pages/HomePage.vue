@@ -50,7 +50,7 @@
                 <section class="collection-section">
                     <h2 class="context-big-headtitle">Collection</h2>
                     <div class="hr"></div>
-                    <p class="context-intro">不是很丰富，但绝对的真心推荐</p>
+                    <p class="context-intro">虽然算不上丰富，但绝对是真心推荐</p>
                     <router-link class="arrow-link light" to="/collection">
                         <span>查看更多</span>
                         <i class="fa fa-angle-right" aria-hidden="true"></i>

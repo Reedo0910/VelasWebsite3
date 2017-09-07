@@ -184,7 +184,7 @@ export default {
 
                     vm.getPostOrder(res, Number(id));
                     // 获取评论
-                    github.getComs(id)
+                    github.getComs('VelasWebsite3', id)
                         .then(function(res) {
                             if (res === 404) {
                                 throw new Error('网络异常');

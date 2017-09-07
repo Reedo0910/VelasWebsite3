@@ -33,12 +33,12 @@ export function getIssue() {
   }
 }
 
-export function getIssueById(id) {
-  const url = api + 'Reedo0910/VelasWebsite3/issues/' + id;
-  if (!getSession('i' + id)) {
+export function getIssueById(repo, id) {
+  const url = api + 'Reedo0910/' + repo + '/issues/' + id;
+  if (!getSession('i' + repo + id)) {
     return axios.get(url)
       .then((res) => {
-        setSession('i' + id, res.data)
+        setSession('i' + repo + id, res.data)
         return res.data
       })
       .catch((error) => {
@@ -47,17 +47,17 @@ export function getIssueById(id) {
       });
   } else {
     return new Promise(function (resolve, reject) {
-      resolve(getSession('i' + id));
+      resolve(getSession('i' + repo + id));
     });
   }
 }
 
-export function getComs(id) {
-  const url = api + 'Reedo0910/VelasWebsite3/issues/' + id + '/comments';
-  if (!getSession('c' + id)) {
+export function getComs(repo, id) {
+  const url = api + 'Reedo0910/' + repo + '/issues/' + id + '/comments';
+  if (!getSession('c' + repo + id)) {
     return axios.get(url)
       .then((res) => {
-        setSession('c' + id, res.data)
+        setSession('c' + repo + id, res.data)
         return res.data;
       })
       .catch((error) => {
@@ -66,7 +66,7 @@ export function getComs(id) {
       });
   } else {
     return new Promise(function (resolve, reject) {
-      resolve(getSession('c' + id));
+      resolve(getSession('c' + repo + id));
     });
   }
 }

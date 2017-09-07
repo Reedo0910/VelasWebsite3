@@ -16,6 +16,7 @@
             </header>
             <div class="context">
                 <section class="intro-velas-section">
+                    <div class="blankspace"></div>
                     <h2 class="context-big-headtitle">What is Velas?</h2>
                     <div class="hr"></div>
                     <p class="context-intro">这是我的个人网站，<br>用于分享我的想法见解和个人爱好。<br>如果这里能为你带来一些灵感或是轻松愉悦的体验，<br id="tbr">那么这将是我的荣幸。</p>
@@ -49,7 +50,7 @@
                 <section class="collection-section">
                     <h2 class="context-big-headtitle">Collection</h2>
                     <div class="hr"></div>
-                    <p class="context-intro">不一定是最丰富的，但一定是最用心的收藏</p>
+                    <p class="context-intro">不是很丰富，但绝对的真心推荐</p>
                     <router-link class="arrow-link light" to="/collection">
                         <span>查看更多</span>
                         <i class="fa fa-angle-right" aria-hidden="true"></i>

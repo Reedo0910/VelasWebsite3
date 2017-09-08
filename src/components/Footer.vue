@@ -1,9 +1,9 @@
 <template>
   <div id="footer-block">
         <ul class="share-group">
-            <a v-for="b in btns" :key="b.title" :href="b.href"><li class="fa fa-lg" :class="b.icon"><p>{{b.title}}</p></li></a>
+            <a v-for="b in btns" :key="b.title" :href="b.href" target="_blank"><li class="fa fa-lg" :class="b.icon"><p>{{b.title}}</p></li></a>
         </ul>
-        <a href="javaScript:void(0)" target="_blank" class="fa fa-angle-up fa-2x gototop" id="gototop" @click="gototop" :class="{ not_on_top: !isOnTop }"></a>
+        <a href="javaScript:void(0)" class="fa fa-angle-up fa-2x gototop" id="gototop" @click="gototop" :class="{ not_on_top: !isOnTop }"></a>
         <div class="footer-copy">
             <p>Zeee@Velas 2017</p>
         </div>

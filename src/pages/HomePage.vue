@@ -22,7 +22,7 @@
                     <p class="context-intro">这是我的个人网站，<br>用于分享我的想法见解和个人爱好。<br>如果这里能为你带来一些灵感或是轻松愉悦的体验，<br id="tbr">那么这将是我的荣幸。</p>
                     <div class="blankspace"></div>
                 </section>
-                <section class="news-section">
+                <section class="news-section lt">
                     <h2 class="context-big-headtitle">News</h2>
                     <div class="hr"></div>
                     <p class="context-intro">一切关于Velas的新鲜事</p>
@@ -38,7 +38,7 @@
                                 <p class="date">{{ p.date }}</p>
                                 <h3 class="title">{{ p.title }}</h3>
                                 <p class="body">{{ p.body }}</p>
-                                <router-link class="arrow-link light" :to="{ path: '/news/post/' + p.number }">
+                                <router-link class="arrow-link" :to="{ path: '/news/post/' + p.number }">
                                     <span>阅读全文</span>
                                     <i class="fa fa-angle-right" aria-hidden="true"></i>
                                 </router-link>
@@ -47,11 +47,11 @@
                     </div>
                     <div class="blankspace"></div>
                 </section>
-                <section class="collection-section">
+                <section class="collection-section dk">
                     <h2 class="context-big-headtitle">Collection</h2>
                     <div class="hr"></div>
                     <p class="context-intro">虽然算不上丰富，但绝对是真心推荐</p>
-                    <router-link class="arrow-link light" to="/collection">
+                    <router-link class="arrow-link" to="/collection">
                         <span>查看更多</span>
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                     </router-link>
@@ -72,7 +72,7 @@
                         </div>
                     </div>
                 </section>
-                <section class="talk-section">
+                <section class="talk-section lt">
                     <h2 class="context-big-headtitle">Talk</h2>
                     <p class="jump-icon">blog.velas.xyz</p>
                     <div class="hr"></div>
@@ -89,7 +89,7 @@
                                 <p class="date">{{talkpost.date}}</p>
                                 <h3 class="title">{{talkpost.title}}</h3>
                                 <p class="body">{{talkpost.body}}</p>
-                                <a class="arrow-link light" :href="talkpost.url" target="_blank">
+                                <a class="arrow-link" :href="talkpost.url" target="_blank">
                                     <span>阅读全文</span>
                                     <i class="fa fa-angle-right" aria-hidden="true"></i>
                                 </a>
@@ -98,12 +98,12 @@
                     </div>
                     <div class="blankspace"></div>
                 </section>
-                <section class="camp-section">
+                <section class="camp-section dk">
                     <h2 class="context-big-headtitle">Camp</h2>
                     <p class="jump-icon">www.velascamp.cn</p>
                     <div class="hr"></div>
                     <p class="context-intro">无数的奇思妙想从这里诞生</p>
-                    <a class="arrow-link light" href="http://www.velascamp.cn/" target="_blank">
+                    <a class="arrow-link" href="http://www.velascamp.cn/" target="_blank">
                         <span>查看更多</span>
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                     </a>
@@ -123,6 +123,19 @@
                             <div class="swiper-button-prev  swiper-button-white" slot="button-prev"></div>
                             <div class="swiper-button-next  swiper-button-white" slot="button-next"></div>
                         </swiper>
+                    </div>
+                </section>
+                <section class="time-capsule-section dk">
+                    <div class="bg-layer"></div>
+                    <div class="ft-content">
+                        <h2 class="context-big-headtitle">Time Capsule</h2>
+                        <div class="hr"></div>
+                        <p class="context-intro">聆听时间讲的故事</p>
+                        <router-link class="arrow-link" to="/news/time-capsule">
+                            <span>查看详情</span>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </router-link>
+                        <div class="blankspace"></div>
                     </div>
                 </section>
             </div>
@@ -205,11 +218,10 @@ export default {
             swiperOption: {
                 autoHeight: true,
                 autoplayDisableOnInteraction: false,
-                autoplay: 5000,
+                autoplay: 3000,
                 speed: 1000,
                 loop: true,
                 paginationClickable: true,
-                mousewheelControl: true,
                 observeParents: true,
                 prevButton: '.swiper-button-prev',
                 nextButton: '.swiper-button-next',
@@ -430,12 +442,7 @@ export default {
             text-decoration: none;
             padding-bottom: 2px;
             border-bottom: 1px solid transparent;
-            &.light {
-                color: #eee;
-                &:hover {
-                    border-color: #eee;
-                }
-            }
+
             span {
                 font-size: 16px;
             }
@@ -509,13 +516,17 @@ export default {
                         h3 {
                             line-height: 2;
                         }
+                        .arrow-link {
+                            color: #eee;
+                            &:hover {
+                                border-color: #eee;
+                            }
+                        }
                     }
                 }
             }
         }
         .collection-section {
-            background-color: #444;
-            color: #fff;
             .card-group {
                 margin: 0 auto;
                 display: flex;
@@ -583,8 +594,6 @@ export default {
             }
         }
         .news-section {
-            color: #000;
-            background-color: #eee;
             .news-post {
                 background-repeat: no-repeat;
                 background-position: center;
@@ -592,8 +601,6 @@ export default {
             }
         }
         .talk-section {
-            color: #000000;
-            background-color: #eee;
             .blog-post {
                 background-image: url(http://o7a3i0m1t.bkt.clouddn.com/image/blog/background/background-min.jpg);
                 background-repeat: no-repeat;
@@ -657,6 +664,40 @@ export default {
                     }
                 }
             }
+        }
+        .time-capsule-section {
+            position: relative;
+            .bg-layer {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url(http://o7a3i0m1t.bkt.clouddn.com/image/website/hourglass.jpg);
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                opacity: .4;
+                z-index: 1;
+            }
+            .ft-content {
+                position: relative;
+                z-index: 2;
+            }
+        }
+        .dk {
+            color: #fff;
+            background-color: #444;
+            .arrow-link {
+                color: #eee;
+                &:hover {
+                    border-color: #eee;
+                }
+            }
+        }
+        .lt {
+            color: #000;
+            background-color: #eee;
         }
     }
 }

@@ -35,6 +35,12 @@
                         </div>
                     </div>
                 </div>
+                <div class="postscript">
+                    <div class="hr"></div>
+                    <p>每一天，我将把自己新的想法和知识投入到Velas中。
+                        <br>在你看到或者看不到的地方，Velas都将变得比昨天更成熟一些、更精致一些。
+                        <br>感谢你的到来，与我一起将Velas变得更美好。</p>
+                </div>
             </main>
             <footer-block></footer-block>
         </div>
@@ -279,16 +285,27 @@ main {
             }
         }
     }
+    .postscript {
+        max-height: 999px;
+        text-align: center;
+        padding: 50px 30px 80px;
+        box-sizing: border-box;
+        p {
+            line-height: 2em;
+            font-size: 1em;
+            color: #444;
+        }
+    }
 }
 
 @media screen and (max-width: 1200px) {
     main {
-         .capsule-group {
-             .capsule-card {
-                 width: 700px;
-                 height: 500px;
-             }
-         }
+        .capsule-group {
+            .capsule-card {
+                width: 700px;
+                height: 500px;
+            }
+        }
     }
 }
 
@@ -303,7 +320,7 @@ main {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            padding-bottom: 50px;
+            padding-bottom: 20px;
             .capsule-card {
                 background-position: center 0;
                 width: 400px;
@@ -317,6 +334,11 @@ main {
                     right: initial;
                     bottom: 0;
                 }
+            }
+        }
+        .postscript {
+            p {
+                font-size: .8em;
             }
         }
     }

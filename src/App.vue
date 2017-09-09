@@ -40,7 +40,7 @@ export default {
     },
     beforeDestroy() {
         window.removeEventListener('resize', this.displayCheck);
-        document.body.removeEventListener('touchstart', function () {});        
+        document.body.removeEventListener('touchstart', function () {});
     }
 }
 </script>

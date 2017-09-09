@@ -144,10 +144,9 @@ export default {
         right: 6%;
         width: 32px;
         border-radius: 100%;
-        background-color: #fff;
+        background-color: #eee;
         text-decoration: none;
         color: #444;
-        opacity: 0;
         transform: scale(0);
         -webkit-transition: all .2s ease;
         -moz-transition: all .2s ease;
@@ -155,13 +154,11 @@ export default {
         outline: none;
         cursor: pointer;
         &.not_on_top {
-        opacity: .8;
         transform: scale(1);
         &:hover {
-            background-color: #eee;
+            background-color: #fff;
             color: #000000;
             transform: scale(1.1);
-            opacity: 1;
             -webkit-transition: all .2s ease;
             -moz-transition: all .2s ease;
             transition: all .2s ease;

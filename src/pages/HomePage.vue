@@ -31,20 +31,25 @@
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                     </router-link>
                     <div class="blankspace1"></div>
-                    <div class="post-group">
-                        <router-link v-for="p in newsposts" :key="p.number" :to="{ path: '/news/post/' + p.number }" :style="{'background-image': 'url(' + p.image + ')'}" class="skeleton news-post">
-                            <div class="post-mask"></div>
-                            <div class="post-content">
-                                <p class="date">{{ p.date }}</p>
-                                <h3 class="title">{{ p.title }}</h3>
-                                <p class="body">{{ p.body }}</p>
-                                <router-link class="arrow-link" :to="{ path: '/news/post/' + p.number }">
-                                    <span>阅读全文</span>
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                </router-link>
-                            </div>
-                        </router-link>
+                    <div class="post-group" v-if="newsposts.length === 0">
+                        <div class="skeleton" v-for="n in 2" :key="n"></div>
                     </div>
+                    <transition name="fade">
+                        <div class="post-group" v-if="newsposts.length !== 0">
+                            <router-link v-for="p in newsposts" :key="p.number" :to="{ path: '/news/post/' + p.number }" :style="{'background-image': 'url(' + p.image + ')'}" class="skeleton news-post">
+                                <div class="post-mask"></div>
+                                <div class="post-content">
+                                    <p class="date">{{ p.date }}</p>
+                                    <h3 class="title">{{ p.title }}</h3>
+                                    <p class="body">{{ p.body }}</p>
+                                    <router-link class="arrow-link" :to="{ path: '/news/post/' + p.number }">
+                                        <span>阅读全文</span>
+                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    </router-link>
+                                </div>
+                            </router-link>
+                        </div>
+                    </transition>
                     <div class="blankspace"></div>
                 </section>
                 <section class="collection-section dk">
@@ -83,17 +88,24 @@
                     </a>
                     <div class="blankspace1"></div>
                     <div class="post-group">
-                        <a class="skeleton blog-post" :href="talkpost.url" target="_blank">
-                            <div class="post-mask"></div>
-                            <div class="post-content">
-                                <p class="date">{{talkpost.date}}</p>
-                                <h3 class="title">{{talkpost.title}}</h3>
-                                <p class="body">{{talkpost.body}}</p>
-                                <a class="arrow-link" :href="talkpost.url" target="_blank">
-                                    <span>阅读全文</span>
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                </a>
-                            </div>
+                        <a class="skeleton" :href="talkpost.url" target="_blank">
+                            <transition name="fade">
+                                <div class="blog-post" v-if="talkpost.url !== '' && talkpost.date !== ''"></div>
+                            </transition>
+                            <transition name="fade">
+                                <div class="post-mask" v-if="talkpost.url !== '' && talkpost.date !== ''"></div>
+                            </transition>
+                            <transition name="fade">
+                                <div class="post-content" v-if="talkpost.url !== '' && talkpost.date !== ''">
+                                    <p class="date">{{talkpost.date}}</p>
+                                    <h3 class="title">{{talkpost.title}}</h3>
+                                    <p class="body">{{talkpost.body}}</p>
+                                    <a class="arrow-link" :href="talkpost.url" target="_blank">
+                                        <span>阅读全文</span>
+                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </transition>
                         </a>
                     </div>
                     <div class="blankspace"></div>
@@ -344,6 +356,15 @@ export default {
     -webkit-transition: all $time ease-out;
     -moz-transition: all $time ease-out;
     transition: all $time ease-out;
+}
+
+.fade-enter-active {
+    transition: opacity 1s
+}
+
+.fade-enter,
+.fade-leave {
+    opacity: 0
 }
 
 #main-page {
@@ -602,6 +623,12 @@ export default {
         }
         .talk-section {
             .blog-post {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 2;
                 background-image: url(http://o7a3i0m1t.bkt.clouddn.com/image/blog/background/background-min.jpg);
                 background-repeat: no-repeat;
                 background-position: center;

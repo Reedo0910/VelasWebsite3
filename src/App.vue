@@ -36,9 +36,11 @@ export default {
         init(); // clear session storage
         this.displayCheck();
         window.addEventListener('resize', this.displayCheck);
+        document.body.addEventListener('touchstart', function () {});
     },
     beforeDestroy() {
         window.removeEventListener('resize', this.displayCheck);
+        document.body.removeEventListener('touchstart', function () {});        
     }
 }
 </script>

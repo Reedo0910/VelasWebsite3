@@ -31,25 +31,24 @@
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                     </router-link>
                     <div class="blankspace1"></div>
-                    <div class="post-group" v-if="newsposts.length === 0">
-                        <div class="skeleton" v-for="n in 2" :key="n"></div>
-                    </div>
-                    <transition name="fade">
-                        <div class="post-group" v-if="newsposts.length !== 0">
-                            <router-link v-for="p in newsposts" :key="p.number" :to="{ path: '/news/post/' + p.number }" :style="{'background-image': 'url(' + p.image + ')'}" class="skeleton news-post">
-                                <div class="post-mask"></div>
-                                <div class="post-content">
-                                    <p class="date">{{ p.date }}</p>
-                                    <h3 class="title">{{ p.title }}</h3>
-                                    <p class="body">{{ p.body }}</p>
-                                    <router-link class="arrow-link" :to="{ path: '/news/post/' + p.number }">
-                                        <span>阅读全文</span>
-                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                    </router-link>
+                    <div class="post-group">
+                        <router-link v-for="(p, index) in newsposts" :key="index" :to="{ path: '/news/post/' + p.number }" class="skeleton">
+                            <transition name="fade">
+                                <div class="post" v-if="newsIsLoadFinish" :style="{'background-image': 'url(' + p.image + ')'}">
+                                    <div class="post-mask"></div>
+                                    <div class="post-content">
+                                        <p class="date">{{ p.date }}</p>
+                                        <h3 class="title">{{ p.title }}</h3>
+                                        <p class="body">{{ p.body }}</p>
+                                        <router-link class="arrow-link" :to="{ path: '/news/post/' + p.number }">
+                                            <span>阅读全文</span>
+                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        </router-link>
+                                    </div>
                                 </div>
-                            </router-link>
-                        </div>
-                    </transition>
+                            </transition>
+                        </router-link>
+                    </div>
                     <div class="blankspace"></div>
                 </section>
                 <section class="collection-section dk">
@@ -90,20 +89,17 @@
                     <div class="post-group">
                         <a class="skeleton" :href="talkpost.url" target="_blank">
                             <transition name="fade">
-                                <div class="blog-post" v-if="talkpost.url !== '' && talkpost.date !== ''"></div>
-                            </transition>
-                            <transition name="fade">
-                                <div class="post-mask" v-if="talkpost.url !== '' && talkpost.date !== ''"></div>
-                            </transition>
-                            <transition name="fade">
-                                <div class="post-content" v-if="talkpost.url !== '' && talkpost.date !== ''">
-                                    <p class="date">{{talkpost.date}}</p>
-                                    <h3 class="title">{{talkpost.title}}</h3>
-                                    <p class="body">{{talkpost.body}}</p>
-                                    <a class="arrow-link" :href="talkpost.url" target="_blank">
-                                        <span>阅读全文</span>
-                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                    </a>
+                                <div class="post" v-if="talkIsLoadFinish">
+                                    <div class="post-mask"></div>
+                                    <div class="post-content">
+                                        <p class="date">{{talkpost.date}}</p>
+                                        <h3 class="title">{{talkpost.title}}</h3>
+                                        <p class="body">{{talkpost.body}}</p>
+                                        <a class="arrow-link" :href="talkpost.url" target="_blank">
+                                            <span>阅读全文</span>
+                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </transition>
                         </a>
@@ -176,13 +172,29 @@ export default {
     data() {
         return {
             slogen: 'Everything flows.',
-            newsposts: [],
+            newsposts: [
+                {
+                    number: -1,
+                    image: '',
+                    date: '',
+                    title: '',
+                    body: ''
+                },
+                {
+                    number: -1,
+                    image: '',
+                    date: '',
+                    title: '',
+                    body: ''
+                }],
+            newsIsLoadFinish: false,
             talkpost: {
                 title: '',
                 body: '',
                 date: '',
                 url: ''
             },
+            talkIsLoadFinish: false,
             cards: [
                 {
                     href: '/music',
@@ -209,8 +221,8 @@ export default {
             slides: [
                 {
                     href: 'https://savewhales.velascamp.cn/',
-                    title: '拯救鲸鱼',
-                    des: '关于鲸鱼的这些事，你知道吗？',
+                    title: '保护鲸鱼',
+                    des: '宣传保护鲸鱼知识的公益网站',
                     image: 'savewhales'
                 },
                 {
@@ -279,8 +291,15 @@ export default {
         shuffle: function(a, b, c, t) {
             return ((a + b) * c) % t + 1;
         },
-        summary: function(body) {
+        summaryBody: function(body) {
             return body.replace(/[\\\`\*\~\_\[\]\#\+\-\!\>\x]/g, '').substr(0, 45) + ' …';
+        },
+        summaryTitle: function(title) {
+            console.log(title.length)
+            if (title.length > 21) {
+                title = title.substr(0, 21) + ' …';
+            }
+            return title;
         },
         filter: function(posts) {
             if (posts === 404) {
@@ -289,14 +308,13 @@ export default {
             const vm = this;
             moment.locale('zh-cn');
             for (let i = 0; i < 2; i++) {
-                vm.newsposts.push({
-                    title: posts[i].title,
-                    number: posts[i].number,
-                    date: moment(posts[i].created_at).format('ll'),
-                    body: vm.summary(posts[i].body),
-                    image: vm.linkGenerator(posts[i].created_at)
-                })
+                vm.newsposts[i].title = vm.summaryTitle(posts[i].title);
+                vm.newsposts[i].number = posts[i].number;
+                vm.newsposts[i].date = moment(posts[i].created_at).format('ll');
+                vm.newsposts[i].body = vm.summaryBody(posts[i].body);
+                vm.newsposts[i].image = vm.linkGenerator(posts[i].created_at);
             }
+            vm.newsIsLoadFinish = true;
         },
         errorHandler: function(error) {
             console.log('news: ' + error);
@@ -314,9 +332,10 @@ export default {
                 if (res === 404 || res.length === 0) {
                     throw new Error('网络异常');
                 }
-                vm.talkpost.title = res.title;
-                vm.talkpost.body = vm.summary(res.body);
+                vm.talkpost.title = vm.summaryTitle(res.title);
+                vm.talkpost.body = vm.summaryBody(res.body);
                 vm.talkpost.date = moment(res.updated_at).format('ll');
+                vm.talkIsLoadFinish = true;
             })
             .catch(function(err) {
                 console.log('talk: ' + err);
@@ -521,18 +540,37 @@ export default {
                     display: block;
                     text-decoration: none;
                     color: #fff;
+                }
+                .post {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 1;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: cover;
                     .post-mask {
                         position: absolute;
+                        top: 0;
+                        left: 0;
                         width: 100%;
                         height: 100%;
                         background-color: rgba(0, 0, 0, 0.5);
-                        z-index: 3;
+                        z-index: 2;
                     }
                     .post-content {
-                        padding: 60px 80px 0;
                         color: #ffffff;
-                        position: relative;
-                        z-index: 5;
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        top: 0;
+                        bottom: 0;
+                        margin: auto;
+                        width: 80%;
+                        height: 230px;
+                        z-index: 3;
                         p,
                         h3 {
                             line-height: 2;
@@ -553,6 +591,7 @@ export default {
                 display: flex;
                 justify-content: center;
                 flex-wrap: wrap;
+                overflow: hidden;
                 .card {
                     flex-grow: 1;
                     position: relative;
@@ -614,26 +653,8 @@ export default {
                 }
             }
         }
-        .news-section {
-            .news-post {
-                background-repeat: no-repeat;
-                background-position: center;
-                background-size: cover;
-            }
-        }
-        .talk-section {
-            .blog-post {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                z-index: 2;
-                background-image: url(http://o7a3i0m1t.bkt.clouddn.com/image/blog/background/background-min.jpg);
-                background-repeat: no-repeat;
-                background-position: center;
-                background-size: cover;
-            }
+        .talk-section .post {
+            background-image: url(http://o7a3i0m1t.bkt.clouddn.com/image/blog/background/background-min.jpg);
         }
         .camp-section {
             color: #fff;
@@ -786,7 +807,7 @@ export default {
 }
 
 @media screen and (max-width: 500px) {
-    #main-page .context section .post-group .skeleton .post-content {
+    #main-page .context section .post-group .post .post-content {
         p,
         h3 {
             line-height: 1.25;
@@ -806,13 +827,8 @@ export default {
             bottom: -35px;
         }
     }
-    #main-page .context {
-        .card-group .card .card-content {
-            padding: 80px 56px 100px;
-        }
-    }
-    .context section .post-group .skeleton .post-content p.body {
-        display: none;
+    #main-page .context .card-group .card .card-content {
+        padding: 80px 56px 100px;
     }
 }
 </style>

@@ -89,7 +89,7 @@
                     <div class="post-group">
                         <a class="skeleton" :href="talkpost.url" target="_blank">
                             <transition name="fade">
-                                <div class="post" v-if="talkIsLoadFinish">
+                                <div class="post" v-if="talkIsLoadFinish && talkURLIsLoadFinish">
                                     <div class="post-mask"></div>
                                     <div class="post-content">
                                         <p class="date">{{talkpost.date}}</p>
@@ -195,6 +195,7 @@ export default {
                 url: ''
             },
             talkIsLoadFinish: false,
+            talkURLIsLoadFinish: false,
             cards: [
                 {
                     href: '/music',
@@ -295,11 +296,14 @@ export default {
             return body.replace(/[\\\`\*\~\_\[\]\#\+\-\!\>\x]/g, '').substr(0, 45) + ' …';
         },
         summaryTitle: function(title) {
-            console.log(title.length)
             if (title.length > 21) {
                 title = title.substr(0, 21) + ' …';
             }
             return title;
+        },
+        securityCheck: function(res) {
+            let tar = res.body.trim().split('//')[1].split('/');
+            return res.user.login === 'Reedo0910' && tar.length === 2 && tar[0] === 'blog.velas.xyz';
         },
         filter: function(posts) {
             if (posts === 404) {
@@ -338,7 +342,7 @@ export default {
                 vm.talkIsLoadFinish = true;
             })
             .catch(function(err) {
-                console.log('talk: ' + err);
+                console.log('Talk: ' + err);
             });
 
         github.getComs('reedo0910.github.io', 1)
@@ -346,10 +350,15 @@ export default {
                 if (res === 404 || res.length === 0) {
                     throw new Error('网络异常');
                 }
-                vm.talkpost.url = res[0].body;
+                if (!vm.securityCheck(res[0])) {
+                    throw new Error('跳转目标网站安全性异常');
+                } else {
+                    vm.talkpost.url = res[0].body.trim();
+                    vm.talkURLIsLoadFinish = true;
+                }
             })
             .catch(function(err) {
-                console.log('talk: ' + err);
+                console.log('Talk: ' + err);
             });
     },
     created() {

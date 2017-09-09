@@ -3,7 +3,7 @@
         <ul class="share-group">
             <a v-for="b in btns" :key="b.title" :href="b.href" target="_blank"><li class="fa fa-lg" :class="b.icon"><p>{{b.title}}</p></li></a>
         </ul>
-        <a href="javaScript:void(0)" class="fa fa-angle-up fa-2x gototop" id="gototop" @click="gototop" :class="{ not_on_top: !isOnTop }"></a>
+        <a class="fa fa-angle-up fa-2x gototop" id="gototop" @click="gototop" :class="{ not_on_top: !isOnTop }"></a>
         <div class="footer-copy">
             <p>Zeee@Velas 2017</p>
         </div>
@@ -144,20 +144,22 @@ export default {
         right: 6%;
         width: 32px;
         border-radius: 100%;
-        background-color: rgb(0,87,55);
+        background-color: #fff;
         text-decoration: none;
-        color: #fff;
+        color: #444;
         opacity: 0;
         transform: scale(0);
         -webkit-transition: all .2s ease;
         -moz-transition: all .2s ease;
         transition: all .2s ease;
         outline: none;
+        cursor: pointer;
         &.not_on_top {
         opacity: .8;
         transform: scale(1);
         &:hover {
-            background-color: #2e7d32;
+            background-color: #eee;
+            color: #000000;
             transform: scale(1.1);
             opacity: 1;
             -webkit-transition: all .2s ease;

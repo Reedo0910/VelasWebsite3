@@ -6,7 +6,7 @@ export const Mainlinks = [
     name: 'Home'
   },
   {
-    route: '/music',
+    route: '/collection',
     isExact: false,
     iconClass: 'fa-eercast',
     name: 'Collection'

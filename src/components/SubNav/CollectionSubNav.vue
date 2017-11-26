@@ -8,24 +8,29 @@
 
 <script>
 export default {
-    name: 'NewsSubNav',
+    name: 'CollectionSubNav',
     data() {
         return {
             links: [
                 {
-                    route: '/news',
+                    route: '/collection',
                     isExact: true,
                     name: '主页'
                 },
                 {
-                    route: '/news/time-capsule',
+                    route: '/collection/music',
                     isExact: false,
-                    name: '时间胶囊'
+                    name: '音乐'
                 },
                 {
-                    route: '/news/log',
+                    route: '/collection/tasty',
                     isExact: false,
-                    name: '更新日志'
+                    name: '美食'
+                },
+                {
+                    route: '/collection/movie',
+                    isExact: false,
+                    name: '电影'
                 }
             ]
         }

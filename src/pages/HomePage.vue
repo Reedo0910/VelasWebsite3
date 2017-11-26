@@ -15,13 +15,6 @@
                 </div>
             </header>
             <div class="context">
-                <section class="intro-velas-section">
-                    <div class="blankspace1"></div>
-                    <h2 class="context-big-headtitle">What is Velas?</h2>
-                    <div class="hr"></div>
-                    <p class="context-intro">这是我的个人网站，<br>用于分享我的想法见解和个人爱好。<br>如果这里能为你带来一些灵感或是轻松愉悦的体验，<br id="tbr">那么这将是我的荣幸。</p>
-                    <div class="blankspace"></div>
-                </section>
                 <section class="news-section lt">
                     <h2 class="context-big-headtitle">News</h2>
                     <div class="hr"></div>
@@ -133,6 +126,13 @@
                         </swiper>
                     </div>
                 </section>
+                <section class="intro-velas-section lt">
+                    <div class="blankspace1"></div>
+                    <h2 class="context-big-headtitle">What is Velas?</h2>
+                    <div class="hr"></div>
+                    <p class="context-intro">这是我的个人网站，<br>用于分享我的想法见解和个人爱好。<br>如果这里能为你带来一些灵感或是轻松愉悦的体验，<br id="tbr">那么这将是我的荣幸。</p>
+                    <div class="blankspace"></div>
+                </section>
                 <section class="time-capsule-section dk">
                     <div class="bg-layer"></div>
                     <div class="ft-content">
@@ -198,21 +198,21 @@ export default {
             talkURLIsLoadFinish: false,
             cards: [
                 {
-                    href: '/music',
+                    href: '/collection/music',
                     title: '音乐',
                     background: 'paramore-dallas.jpg',
                     icon: 'fa-music',
                     intro: '来场由耳朵到心灵的旅行'
                 },
                 {
-                    href: '/tasty',
+                    href: '/collection/tasty',
                     title: '美食',
                     background: 'oyakodon.jpg',
                     icon: 'fa-cutlery',
                     intro: '连味蕾也为之颤栗的美味'
                 },
                 {
-                    href: '/movie',
+                    href: '/collection/movie',
                     title: '电影',
                     background: 'your_name.png',
                     icon: 'fa-film',
@@ -531,10 +531,10 @@ export default {
             margin: 20px auto;
             position: relative;
         }
-        .intro-velas-section {
-            background: radial-gradient(farthest-side at bottom, #121212, #000);
-            color: #eee;
-        }
+        // .intro-velas-section {
+        //     background: radial-gradient(farthest-side at bottom, #121212, #000);
+        //     color: #eee;
+        // }
         section {
             .post-group {
                 display: flex;

@@ -1,7 +1,7 @@
 <template>
     <transition name="switch-page" mode="out-in">
         <div>
-            <v-title>Velas - 日志</v-title>
+            <v-title>Velas - 更新日志</v-title>
             <div class="blankspace"></div>
             <news-sub-nav></news-sub-nav>
             <header>

@@ -6,7 +6,22 @@ import router from './router'
 
 import 'babel-polyfill';
 
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+
 Vue.config.productionTip = false
+
+NProgress.configure({ easing: 'ease', speed: 500, showSpinner: false })
+NProgress.inc(0.2)
+
+router.beforeEach((to, from, next) => {
+  NProgress.start()
+  next()
+})
+
+router.afterEach(() => {
+  NProgress.done()
+})
 
 /* eslint-disable no-new */
 new Vue({

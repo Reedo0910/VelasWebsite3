@@ -446,5 +446,8 @@
       main .co {
         width: 100%;
       }
+      main .collection .shelf {
+          width: 95%;
+      }
     }
 </style>

@@ -5,14 +5,14 @@
         </div>
         <div class="nav-sub">
             <a v-for="(slink, index) in sublinks" :key="slink.name" :href="slink.href" target="_blank" @mouseover.stop="hoverIndex = index + links.length" @mouseout.stop="hoverIndex = -1" @mousedown="handleMouseDown">
-                <i :class="['fa', slink.iconClass]" aria-hidden="true"></i>
+                <i :class="['fa', slink.iconClass, 'iconfont']" aria-hidden="true"></i>
                 <p>{{slink.name}}</p>
                 <div class="touch-ripple"></div>
             </a>
         </div>
         <div class="nav-main" id="nav_main">
             <router-link v-for="(link, index) in links" @mouseover.native.stop="hoverIndex = index" :key="link.name" :to="link.route" :exact="link.isExact" @mouseout.native.stop="hoverIndex = -1" @mousedown.native="handleMouseDown">
-                <i :class="[link.iconClass, 'fa']" aria-hidden="true"></i>{{link.name}}
+                <i :class="[link.iconClass, 'fa', 'iconfont']" aria-hidden="true"></i>{{link.name}}
                 <div class="touch-ripple"></div>
             </router-link>
         </div>

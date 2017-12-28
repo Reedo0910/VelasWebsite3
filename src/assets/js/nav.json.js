@@ -2,19 +2,19 @@ export const Mainlinks = [
   {
     route: '/',
     isExact: true,
-    iconClass: 'fa-bandcamp',
+    iconClass: 'icon-fshome',
     name: 'Home'
   },
   {
     route: '/collection',
     isExact: false,
-    iconClass: 'fa-eercast',
+    iconClass: 'icon-iconcollectionp',
     name: 'Collection'
   },
   {
     route: '/news',
     isExact: false,
-    iconClass: 'fa-newspaper-o',
+    iconClass: 'icon-News',
     name: 'News'
   }
 ];
@@ -22,12 +22,12 @@ export const Mainlinks = [
 export const Sublinks = [
   {
     href: 'http://www.velascamp.cn/',
-    iconClass: 'fa-free-code-camp',
+    iconClass: 'icon-luyingcamping1',
     name: 'Camp'
   },
   {
     href: 'http://blog.velas.xyz/',
-    iconClass: 'fa-twitch',
+    iconClass: 'icon-bird',
     name: 'Talk'
   }
 ]

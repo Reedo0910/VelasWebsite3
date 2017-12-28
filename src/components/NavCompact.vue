@@ -11,11 +11,11 @@
         </div>
         <ul class="nav-list">
             <router-link tag="li" class="nav-main" v-for="(link, index) in links" :key="link.name" :to="link.route" :exact="link.isExact" @mousedown.native="handleMouseDown">
-                <i :class="[link.iconClass, 'fa']" aria-hidden="true"></i>{{link.name}}
+                <i :class="[link.iconClass, 'fa', 'iconfont']" aria-hidden="true"></i>{{link.name}}
                 <div class="touch-ripple"></div>
             </router-link>
             <a v-for="(slink, index) in sublinks" class="nav-sub" :key="slink.name" :href="slink.href" target="_blank" @mousedown="handleMouseDown">
-                <i :class="['fa', slink.iconClass]" aria-hidden="true"></i>{{slink.name}}
+                <i :class="['fa', 'iconfont', slink.iconClass]" aria-hidden="true"></i>{{slink.name}}
                 <div class="touch-ripple"></div>
             </a>
         </ul>

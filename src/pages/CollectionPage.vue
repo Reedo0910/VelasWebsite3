@@ -6,7 +6,7 @@
             <header>
                 <div class="content-mask"></div>
                 <h1>Collection</h1>
-                <p>绝对的真心推荐</p>
+                <p>珍藏我生活中的美好</p>
             </header>
             <main>
                 <section class="memorabilia co">
@@ -16,7 +16,7 @@
                     <div class="m-content">
                         <div class="m-cover" :style="{'background-image':'url('+ mCover +')'}"></div>
                         <ul class="mcard-list">
-                            <li v-for="(m, index) in mCards" :key="m.title" :class="{top: index===0}" :style="getMColor(index)">
+                            <li v-for="(m, index) in mCards" :key="m.title" :class="{top: index===0}" :style="getMColor(index)" v-if="index < 4">
                                 <h5 class="date">{{m.date}}</h5>
                                 <h4 class="title">{{m.title}}</h4>
                                 <p>{{m.description}}</p>
@@ -78,9 +78,14 @@
         },
         data() {
             return {
-                mCover: 'http://o7a3i0m1t.bkt.clouddn.com/image/website/collection/COVER.jpg',
-                mColor: '#a8477c',
+                mCover: 'http://o7a3i0m1t.bkt.clouddn.com/image/website/collection/cover18-1-15.jpg',
+                mColor: '#A8A3A7',
                 mCards: [{
+                    title: 'ALTER EGO - EGOIST',
+                    date: '12月22日',
+                    description: 'EGOIST出道五年以来的第一张精选辑'
+                },
+                {
                     title: 'behind - やなぎなぎ',
                     date: '11月22日',
                     description: '『Just Because!』片尾曲发售'

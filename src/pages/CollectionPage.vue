@@ -6,7 +6,7 @@
             <header>
                 <div class="content-mask"></div>
                 <h1>Collection</h1>
-                <p>珍藏我生活中的美好</p>
+                <p>珍藏每一样美好的东西</p>
             </header>
             <main>
                 <section class="memorabilia co">

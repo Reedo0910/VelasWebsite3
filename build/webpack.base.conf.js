@@ -25,6 +25,16 @@ module.exports = {
       '@': resolve('src')
     }
   },
+  externals: {
+      'lodash': '_',
+      'babel-polyfill': 'window',
+      vue: 'Vue',
+      nprogress: 'NProgress',
+      axios: 'axios',
+      moment: 'moment',
+      marked: 'marked',
+      'highlight.js': 'hljs'
+  },
   module: {
     rules: [
       {

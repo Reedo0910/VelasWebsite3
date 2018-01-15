@@ -7,7 +7,6 @@ import router from './router'
 import 'babel-polyfill';
 
 import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
 
 Vue.config.productionTip = false
 

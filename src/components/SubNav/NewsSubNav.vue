@@ -15,7 +15,7 @@ export default {
                 {
                     route: '/news',
                     isExact: true,
-                    name: '主页'
+                    name: '新鲜事'
                 },
                 {
                     route: '/news/time-capsule',

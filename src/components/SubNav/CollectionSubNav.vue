@@ -15,7 +15,7 @@ export default {
                 {
                     route: '/collection',
                     isExact: true,
-                    name: '主页'
+                    name: '概览'
                 },
                 {
                     route: '/collection/music',

@@ -69,7 +69,6 @@
 <script>
 import * as github from '../assets/js/io'
 import moment from 'moment'
-import '../assets/css/github-markdown.css'
 import md from 'marked'
 import highlightjs from 'highlight.js'
 import VTitle from '../components/VTitle'

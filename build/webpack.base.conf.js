@@ -28,11 +28,14 @@ module.exports = {
   externals: {
       'lodash': '_',
       'babel-polyfill': 'window',
-      vue: 'Vue',
-      nprogress: 'NProgress',
-      axios: 'axios',
-      moment: 'moment',
-      marked: 'marked',
+      'vue': 'Vue',
+      'vue-router': 'VueRouter',
+      'nprogress': 'NProgress',
+      'axios': 'axios',
+      'swiper': 'Swiper',
+      'vue-awesome-swiper': 'VueAwesomeSwiper',
+      'moment': 'moment',
+      'marked': 'marked',
       'highlight.js': 'hljs'
   },
   module: {

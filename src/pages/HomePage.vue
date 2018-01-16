@@ -159,8 +159,6 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import * as github from '../assets/js/io';
 import moment from 'moment';
 
-require('swiper/dist/css/swiper.css')
-
 export default {
     name: 'Home',
     components: {
@@ -242,16 +240,22 @@ export default {
             winHeight: '0px',
             swiperOption: {
                 autoHeight: true,
-                autoplayDisableOnInteraction: false,
-                autoplay: 3000,
+                autoplay: {
+                    disableOnInteraction: false
+                },
                 speed: 1000,
                 loop: true,
-                paginationClickable: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true
+                },
+                observer: true,
                 observeParents: true,
-                prevButton: '.swiper-button-prev',
-                nextButton: '.swiper-button-next',
+                navigation: {
+                    prevEl: '.swiper-button-prev',
+                    nextEl: '.swiper-button-next'
+                },
                 centeredSlides: true,
-                pagination: '.swiper-pagination',
                 slidesPerView: 3,
                 breakpoints: {
                     1440: {

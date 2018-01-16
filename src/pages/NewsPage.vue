@@ -31,21 +31,18 @@
                     <p>数据均从GitHub获取</p>
                 </div>
             </main>
-            <footer-block></footer-block>
         </div>
     </transition>
 </template>
 
 <script>
 import VTitle from '../components/VTitle'
-import FooterBlock from '../components/Footer'
 import NewsSubNav from '../components/SubNav/NewsSubNav'
 import NewsMain from '../components/News/NewsMain'
 export default {
     name: 'News',
     components: {
         VTitle,
-        FooterBlock,
         NewsSubNav,
         NewsMain
     }

@@ -11,7 +11,6 @@
                 <log-item></log-item>
                 <div class="blank"></div>
             </main>
-            <footer-block></footer-block>
         </div>
     </transition>
 </template>
@@ -19,14 +18,12 @@
 <script>
 import VTitle from '../components/VTitle'
 import LogItem from '../components/Log/LogItems'
-import FooterBlock from '../components/Footer'
 import NewsSubNav from '../components/SubNav/NewsSubNav'
 export default {
     name: 'Log',
     components: {
         LogItem,
         VTitle,
-        FooterBlock,
         NewsSubNav
     }
 }

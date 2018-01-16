@@ -3,19 +3,22 @@
         <navbar v-if="!isCompact"></navbar>
         <navbar-compact v-else></navbar-compact>
         <router-view></router-view>
+        <footer-block></footer-block>
     </div>
 </template>
 
 <script>
 import Navbar from './components/Nav'
 import NavbarCompact from './components/NavCompact'
+import FooterBlock from './components/Footer'
 import { init } from './assets/js/io'
 
 export default {
     name: 'app',
     components: {
         Navbar,
-        NavbarCompact
+        NavbarCompact,
+        FooterBlock
     },
     data() {
         return {

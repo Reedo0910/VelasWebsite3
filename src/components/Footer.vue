@@ -1,5 +1,5 @@
 <template>
-  <div id="footer-block">
+  <div id="footer-block" v-if="blackList()">
         <ul class="share-group">
             <a v-for="b in btns" :key="b.title" :href="b.href" target="_blank"><li class="fa fa-lg" :class="b.icon"><p>{{b.title}}</p></li></a>
         </ul>
@@ -55,6 +55,9 @@ export default {
       handleScroll () {
           let top = document.documentElement.scrollTop || document.body.scrollTop;
           this.isOnTop = top <= 200;
+      },
+      blackList () {
+          return this.$route.name !== '404Page'
       }
   },
   created () {

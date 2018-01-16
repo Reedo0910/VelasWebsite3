@@ -60,20 +60,17 @@
                     </ul>
                 </section>
             </main>
-            <footer-block></footer-block>
         </div>
     </transition>
 </template>
 
 <script>
     import VTitle from '../components/VTitle';
-    import FooterBlock from '../components/Footer';
     import CollectionSubNav from '../components/SubNav/CollectionSubNav';
     export default {
         name: 'Collection',
         components: {
             VTitle,
-            FooterBlock,
             CollectionSubNav
         },
         data() {

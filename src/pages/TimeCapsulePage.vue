@@ -42,20 +42,17 @@
                         <br>感谢你的到来，与我一起将Velas变得更美好。</p>
                 </div>
             </main>
-            <footer-block></footer-block>
         </div>
     </transition>
 </template>
 
 <script>
 import VTitle from '../components/VTitle'
-import FooterBlock from '../components/Footer'
 import NewsSubNav from '../components/SubNav/NewsSubNav'
 export default {
     name: 'TimeCapsule',
     components: {
         VTitle,
-        FooterBlock,
         NewsSubNav
     },
     data() {

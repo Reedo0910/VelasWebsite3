@@ -130,6 +130,7 @@ export default new Router({
     },
     {
       path: '*',
+      name: '404Page',
       component: NotFoundPage,
       meta: {
         index: -1,

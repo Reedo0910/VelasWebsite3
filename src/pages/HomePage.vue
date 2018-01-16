@@ -147,14 +147,12 @@
                     </div>
                 </section>
             </div>
-            <footer-block></footer-block>
         </div>
     </transition>
 </template>
 
 <script>
 import VTitle from '../components/VTitle'
-import FooterBlock from '../components/Footer'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import * as github from '../assets/js/io';
 import moment from 'moment';
@@ -163,7 +161,6 @@ export default {
     name: 'Home',
     components: {
         VTitle,
-        FooterBlock,
         swiper,
         swiperSlide
     },

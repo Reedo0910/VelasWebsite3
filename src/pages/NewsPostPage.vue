@@ -60,7 +60,6 @@
                 </div>
             </article>
             <div class="post-blank"></div>
-            <footer-block></footer-block>
         </div>
     </transition>
 </template>
@@ -74,7 +73,6 @@ import highlightjs from 'highlight.js'
 import VTitle from '../components/VTitle'
 import NewsHeaderCompact from '../components/News/NewsHeaderCompact'
 import NewsSubNav from '../components/SubNav/NewsSubNav'
-import FooterBlock from '../components/Footer'
 import LoadingIcon from '../components/LoadingIcon'
 
 export default {
@@ -83,7 +81,6 @@ export default {
         VTitle,
         NewsSubNav,
         NewsHeaderCompact,
-        FooterBlock,
         LoadingIcon
     },
     data: function() {

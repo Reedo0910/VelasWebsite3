@@ -1,144 +1,150 @@
 <template>
-  <div id="footer-block" v-if="blackList()">
+    <div id="footer-block" v-show="blackList">
         <ul class="share-group">
-            <a v-for="b in btns" :key="b.title" :href="b.href" target="_blank"><li class="fa fa-lg" :class="b.icon"><p>{{b.title}}</p></li></a>
+            <a v-for="b in btns" :key="b.title" :href="b.href" target="_blank">
+                <li class="fa fa-lg" :class="b.icon">
+                    <p>{{b.title}}</p>
+                </li>
+            </a>
         </ul>
         <a class="fa fa-angle-up fa-2x gototop" id="gototop" @click="gototop" :class="{ not_on_top: !isOnTop }"></a>
         <div class="footer-copy">
-            <p>Zeee@Velas 2017</p>
+            <p>Zeee@Velas 2016 - 2018</p>
         </div>
     </div>
 </template>
 
 <script>
-export default {
-  name: 'FooterBlock',
-  data () {
-    return {
-        isOnTop: true,
-        btns: [
-            {
-                href: 'mailto:sea.sand@live.cn',
-                icon: 'fa-envelope',
-                title: 'Email',
-                color: '#17b2ec'
-            },
-            {
-                href: 'https://weibo.com/reedo',
-                icon: 'fa-weibo',
-                title: 'Weibo',
-                color: '#ff0000'
-            },
-            {
-                href: 'https://github.com/Reedo0910',
-                icon: 'fa-github',
-                title: 'Github',
-                color: '#545454'
+    export default {
+        name: 'FooterBlock',
+        data() {
+            return {
+                isOnTop: true,
+                btns: [
+                    {
+                        href: 'mailto:sea.sand@live.cn',
+                        icon: 'fa-envelope',
+                        title: 'Email',
+                        color: '#17b2ec'
+                    },
+                    {
+                        href: 'https://weibo.com/reedo',
+                        icon: 'fa-weibo',
+                        title: 'Weibo',
+                        color: '#ff0000'
+                    },
+                    {
+                        href: 'https://github.com/Reedo0910',
+                        icon: 'fa-github',
+                        title: 'Github',
+                        color: '#545454'
+                    }
+                ]
             }
-        ]
+        },
+        methods: {
+            gototop() {
+                const dd = document.documentElement;
+                const db = document.body;
+                let top = dd.scrollTop || db.scrollTop;
+                const step = Math.floor(top / 15);
+                (function fn() {
+                    top -= step;
+                    if (top > -step) {
+                        dd.scrollTop === 0 ? db.scrollTop = top : dd.scrollTop = top;
+                        setTimeout(fn, 10);
+                    }
+                })();
+            },
+            handleScroll() {
+                let top = document.documentElement.scrollTop || document.body.scrollTop;
+                this.isOnTop = top <= 200;
+            }
+        },
+        computed: {
+            blackList() {
+                return this.$route.name !== '404Page';
+            }
+        },
+        created() {
+            this.handleScroll();
+        },
+        mounted() {
+            window.addEventListener('scroll', this.handleScroll);
+        },
+        beforeDestroy() {
+            window.removeEventListener('scroll', this.handleScroll);
+        }
     }
-  },
-  methods: {
-      gototop () {
-        const dd = document.documentElement;
-        const db = document.body;
-        let top = dd.scrollTop || db.scrollTop;
-        const step = Math.floor(top / 15);
-        (function fn () {
-            top -= step;
-            if (top > -step) {
-                dd.scrollTop === 0 ? db.scrollTop = top : dd.scrollTop = top;
-                setTimeout(fn, 10);
-            }
-        })();
-      },
-      handleScroll () {
-          let top = document.documentElement.scrollTop || document.body.scrollTop;
-          this.isOnTop = top <= 200;
-      },
-      blackList () {
-          return this.$route.name !== '404Page'
-      }
-  },
-  created () {
-      this.handleScroll();
-  },
-  mounted () {
-      window.addEventListener('scroll', this.handleScroll);
-  },
-  beforeDestroy () {
-      window.removeEventListener('scroll', this.handleScroll);
-  }
-}
 </script>
 
 <style lang="scss" scoped>
-@mixin link-transition($time, $type:all) {
-    -webkit-transition: $type $time ease-out;
-    -moz-transition: $type $time ease-out;
-    transition: $type $time ease-out;
-}
+    @mixin link-transition($time, $type:all) {
+      -webkit-transition: $type $time ease-out;
+      -moz-transition: $type $time ease-out;
+      transition: $type $time ease-out;
+    }
 
-#footer-block {
-    background-color: #333;
-    color: #fff;
-    width: 100%;
-    min-height: 200px;
-    text-align: center;
-    p {
+    #footer-block {
+      background-color: #333;
+      color: #fff;
+      width: 100%;
+      min-height: 200px;
+      text-align: center;
+      p {
         font-weight: 300;
         letter-spacing: 1px;
-    }
-    .hr {
+      }
+      .hr {
         background-color: #fff;
         margin: 30px auto 10px;
         height: 1px;
-    }
-    .share-group {
+      }
+      .share-group {
         padding: 50px 40px 20px;
         display: block;
         margin: 0 auto;
         a {
-            color: #fff;
-            text-decoration: none;
+          color: #fff;
+          text-decoration: none;
+          @include link-transition(0.2s);
+          li {
+            display: inline-block;
+            padding: 10px;
+            p {
+              color: #fff;
+              opacity: 0;
+              font-family: Arial, Helvetica, sans-serif;
+              font-size: 12px;
+              @include link-transition(0.2s);
+            }
+          }
+          &:hover li {
+            transform: translateY(-5px);
             @include link-transition(0.2s);
-            li {
-                display: inline-block;
-                padding: 10px;
-                p {
-                    color: #fff;
-                    opacity: 0;
-                    font-family: Arial, Helvetica, sans-serif;
-                    font-size: 12px;
-                    @include link-transition(0.2s);
-                }
+            p {
+              opacity: 0.9;
+              transform: translateY(5px);
+              @include link-transition(0.2s);
             }
-            &:hover li {
-                transform: translateY(-5px);
-                @include link-transition(0.2s);
-                p {
-                    opacity: 0.9;
-                    transform: translateY(5px);
-                    @include link-transition(0.2s);
-                }
-            }
-            &:nth-child(1):hover li {
-                color: #17b2ec;
-            }
-            &:nth-child(2):hover li {
-                color: #ff0000;
-            }
-            &:nth-child(3):hover li {
-                color: #545454;
-            }
+          }
+          &:nth-child(1):hover li {
+            color: #17b2ec;
+          }
+          &:nth-child(2):hover li {
+            color: #ff0000;
+          }
+          &:nth-child(3):hover li {
+            color: #545454;
+          }
         }
-    }
-    .footer-copy p {
+      }
+      .footer-copy p {
         padding: 15px 0 20px;
         font-size: 14px;
         margin: 0;
-    }
-    .gototop {
+      }
+      .gototop {
         display: block;
         position: fixed;
         z-index: 800;
@@ -151,30 +157,30 @@ export default {
         text-decoration: none;
         color: #444;
         transform: scale(0);
-        -webkit-transition: all .2s ease;
-        -moz-transition: all .2s ease;
-        transition: all .2s ease;
+        -webkit-transition: all 0.2s ease;
+        -moz-transition: all 0.2s ease;
+        transition: all 0.2s ease;
         outline: none;
         cursor: pointer;
         &.not_on_top {
-        transform: scale(1);
-        &:hover {
+          transform: scale(1);
+          &:hover {
             background-color: #fff;
             color: #000000;
             transform: scale(1.1);
-            -webkit-transition: all .2s ease;
-            -moz-transition: all .2s ease;
-            transition: all .2s ease;
+            -webkit-transition: all 0.2s ease;
+            -moz-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+          }
         }
-        }
+      }
     }
-}
 
-@media screen and (max-width: 600px) {
-    #footer-block .gototop {
+    @media screen and (max-width: 600px) {
+      #footer-block .gototop {
         width: 28px;
         line-height: 28px;
-        border-radius: 28px;        
+        border-radius: 28px;
+      }
     }
-}
 </style>

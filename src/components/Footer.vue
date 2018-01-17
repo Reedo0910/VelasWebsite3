@@ -63,7 +63,7 @@
         },
         computed: {
             blackList() {
-                return this.$route.name !== '404Page';
+                return this.$route.meta.index !== -1 && document.body.clientHeight >= 300;
             }
         },
         created() {

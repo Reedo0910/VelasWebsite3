@@ -4,13 +4,10 @@
             <v-title>Velas - 首页</v-title>
             <header :style="{height: winHeight}">
                 <div class="bg-mask"></div>
-                <div class="bg-decorate-box">
-                    <p class="mobile-sub-heading">{{slogen}}</p>
-                </div>
                 <div id="banner">
                     <div class="inner">
                         <div class="velas_logo"></div>
-                        <p class="sub-heading">{{slogen}}</p>
+                        <!-- <p class="sub-heading">{{slogen}}</p> -->
                     </div>
                 </div>
             </header>
@@ -375,10 +372,11 @@ export default {
 <style lang="scss" scoped>
 @mixin link-background {
     background: {
-        image: url(http://o7a3i0m1t.bkt.clouddn.com/image/website/rain_drop.jpg);
+        image: url(http://o7a3i0m1t.bkt.clouddn.com/image/website/background-18-6-13.jpg);
         repeat: no-repeat;
         size: cover;
         position: center;
+        // attachment: fixed;
     }
 } //过渡动画样式
 @mixin link-transition($time) {
@@ -411,70 +409,37 @@ export default {
             width: 100%;
             height: 100%;
             z-index: 1;
-            background-color: rgba(1, 1, 0, 0.5);
-            display: none;
-        }
-        .bg-decorate-box {
-            .mobile-sub-heading {
-                position: absolute;
-                color: #fff;
-                margin: auto;
-                bottom: -20px;
-                left: 0;
-                right: 0;
-                background-color: #000;
-                width: 80%;
-                text-align: center;
-                font-size: 28px;
-                box-sizing: border-box;
-            }
-            display: none;
-            position: absolute;
-            width: 70%;
-            height: 70%;
-            border: rgba(80, 80, 80, .8) solid 4px;
-            box-sizing: border-box;
-            z-index: 2;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            margin: auto;
+            background-color: rgba(255, 255, 255, .65);
         }
         #banner {
             height: 100%;
             position: relative;
             z-index: 2;
             .inner {
-                width: 72%;
-                max-width: 72%;
-                display: flex;
                 margin: auto;
                 position: absolute;
                 top: 0;
                 bottom: 0;
                 left: 0;
                 right: 0;
-                height: 135px;
-                color: #fff;
+                width: 543px;
+                height: 156px;
+                color: #000;
                 box-sizing: border-box;
-                justify-content: space-between;
-                flex-wrap: wrap;
+                text-align: center;
                 .velas_logo {
-                    width: 288px;
-                    height: 100px;
-                    margin: 20px 0 20px;
+                    display: inline-block;
+                    width: 543px;
+                    height: 156px;
                     background: {
-                        image: url('/static/images/logo-with-text.png');
+                        image: url('/static/images/logo-with-text-black.png');
                         size: cover;
                     }
                 }
                 .sub-heading {
-                    margin: 20px 0;
-                    padding: 36px 0 0;
-                    font-size: 36px;
+                    margin: 0;
+                    font-size: 32px;
                     box-sizing: border-box;
-                    border-bottom: 1.5px solid #eee;
                 }
             }
         }
@@ -763,18 +728,8 @@ export default {
 @media screen and (max-width: 900px) {
     #main-page {
         header {
-            min-height: 560px;
-            .bg-mask {
-                display: block;
-            }
-            .bg-decorate-box {
-                display: block;
-            }
             #banner .inner {
-                width: initial;
-                max-width: initial;
                 position: initial;
-                display: block;
                 .velas_logo {
                     position: absolute;
                     margin: auto;
@@ -782,8 +737,8 @@ export default {
                     right: 0;
                     top: 0;
                     bottom: 0;
-                    width: 350px;
-                    height: 115px;
+                    width: 452.5px;
+                    height: 130px;
                 }
                 .sub-heading {
                     display: none;
@@ -805,11 +760,6 @@ export default {
             width: 280px;
             height: 90px;
         }
-        .bg-decorate-box .mobile-sub-heading {
-            font-size: 22px;
-            bottom: -16px;
-            width: 90%;
-        }
     }
     #tbr {
         display: none;
@@ -828,13 +778,8 @@ export default {
 @media screen and (max-width: 340px) {
     #main-page header {
         #banner .inner .velas_logo {
-            width: 240px;
-            height: 80px;
-        }
-        .bg-decorate-box .mobile-sub-heading {
-            background-color: transparent;
-            width: 100%;
-            bottom: -35px;
+            width: 280px;
+            height: 90px;
         }
     }
     #main-page .context .card-group .card .card-content {

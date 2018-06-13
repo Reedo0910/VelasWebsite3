@@ -43,7 +43,7 @@ export default new Router({
       component: HomePage,
       meta: {
         index: 0,
-        style: 'dark'
+        style: 'light'
       }
     },
     {

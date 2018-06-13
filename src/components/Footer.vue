@@ -9,7 +9,7 @@
         </ul>
         <a class="fa fa-angle-up fa-2x gototop" id="gototop" @click="gototop" :class="{ not_on_top: !isOnTop }"></a>
         <div class="footer-copy">
-            <p>Zeee@Velas 2016 - 2018</p>
+            <p>©2016-2018 by Eric R. Lee. All rights reserved.</p>
         </div>
     </div>
 </template>
@@ -22,7 +22,7 @@
                 isOnTop: true,
                 btns: [
                     {
-                        href: 'mailto:sea.sand@live.cn',
+                        href: 'mailto:ericrlee@outlook.com',
                         icon: 'fa-envelope',
                         title: 'Email',
                         color: '#17b2ec'

@@ -395,12 +395,12 @@ export default {
 }
 
 #main-page {
-    background-color: #444;
+    background-color: #eee;
     header {
         @include link-background;
         width: 100%;
         min-height: 600px;
-        background-color: #000;
+        background-color: #e0dfea;
         position: relative;
         .bg-mask {
             position: absolute;

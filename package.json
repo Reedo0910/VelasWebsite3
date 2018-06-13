@@ -14,7 +14,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
-    "node-sass": "^4.5.3"
+    "node-sass": "^4.9.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",

@@ -1,6 +1,6 @@
-# Velas (2017 Summer Version)
+# Velas (2018 Version)
 
-Velas Website 2017 Summer Update based on Vue.
+Velas Website 2018 Update based on Vue.
 
 Using new responsive design. And more pages is coming soon.
 
@@ -8,5 +8,5 @@ Using new responsive design. And more pages is coming soon.
 
 ## Snapshot
 
-![Home Page](http://o7a3i0m1t.bkt.clouddn.com/image/website/screenshot-velas.xyz.png)
+![Home Page](https://github.com/Reedo0910/VelasWebsite3/blob/master/doc/Screenshot_2018-06-13.png)
 Home Page

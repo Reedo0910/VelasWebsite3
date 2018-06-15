@@ -423,16 +423,16 @@ export default {
                 left: 0;
                 right: 0;
                 width: 100%;
-                height: 55px;
+                height: 89px;
                 color: #000;
                 box-sizing: border-box;
                 text-align: center;
                 .velas_logo {
                     display: inline-block;
-                    width: 286px;
-                    height: 55px;
+                    width: 317px;
+                    height: 89px;
                     background: {
-                        image: url('/static/images/logo-with-text-black.png');
+                        image: url('/static/images/logo-with-text-black-shadow.png');
                         size: cover;
                     }
                 }
@@ -736,8 +736,8 @@ export default {
                     right: 0;
                     top: 0;
                     bottom: 0;
-                    width: 208px;
-                    height: 40px;
+                    width: 214px;
+                    height: 60px;
                 }
                 .sub-heading {
                     display: none;
@@ -756,8 +756,8 @@ export default {
 @media screen and (max-width: 600px) {
     #main-page header {
         #banner .inner .velas_logo {
-            width: 156px;
-            height: 30px;
+            width: 178.1px;
+            height: 50px;
         }
     }
     #tbr {

@@ -1,7 +1,7 @@
 <template>
     <transition name="switch-page" mode="out-in">
         <div>
-            <v-title>Velas - 音乐</v-title>
+            <v-title>音乐 - Velas</v-title>
             <header>
                 <div id="banner">
                     <div class="inner">

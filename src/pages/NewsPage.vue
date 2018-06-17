@@ -1,7 +1,7 @@
 <template>
     <transition name="switch-page" mode="out-in">
         <div>
-            <v-title>Velas - 新闻</v-title>
+            <v-title>新闻 - Velas</v-title>
             <news-sub-nav></news-sub-nav>
             <header>
                 <div class="content-mask"></div>

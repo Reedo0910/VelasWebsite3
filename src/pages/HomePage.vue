@@ -1,7 +1,7 @@
 <template>
     <transition name="switch-page" mode="out-in">
         <div id="main-page">
-            <v-title>Velas - 首页</v-title>
+            <v-title>首页 - Velas</v-title>
             <header :style="{height: winHeight}">
                 <div class="bg-mask"></div>
                 <div id="banner">

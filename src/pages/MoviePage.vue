@@ -1,7 +1,7 @@
 <template>
     <transition name="switch-page" mode="out-in">
         <div>
-            <v-title>Velas - 电影</v-title>
+            <v-title>电影 - Velas</v-title>
             <header>
                 <div id="banner">
                     <div class="inner">

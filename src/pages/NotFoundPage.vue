@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-title>404 Not Found</v-title>
+        <v-title>页面不见了 - Velas</v-title>
         <div id="context" :style="{height: winHeight}">
             <div class="bg" :class="{disappear : !isAppear}"></div>
             <div class="ft">

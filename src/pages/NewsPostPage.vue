@@ -1,7 +1,7 @@
 <template>
     <transition name="switch-page" mode="out-in">
         <div class="container">
-            <v-title>{{post.title}} - Velas News</v-title>
+            <v-title>新闻: {{post.title}} - Velas</v-title>
             <news-sub-nav></news-sub-nav>
             <news-header-compact :newsTitle="post.title" :newsDate="post.created_at"></news-header-compact>
             <article>

@@ -1,7 +1,7 @@
 <template>
     <transition name="switch-page" mode="out-in">
         <div>
-            <v-title>Velas - 收藏</v-title>
+            <v-title>收藏 - Velas</v-title>
             <collection-sub-nav></collection-sub-nav>
             <header>
                 <div class="content-mask"></div>

@@ -10,11 +10,11 @@
             </button>
         </div>
         <ul class="nav-list">
-            <router-link tag="li" class="nav-main" v-for="(link, index) in links" :key="link.name" :to="link.route" :exact="link.isExact" @mousedown.native="handleMouseDown">
+            <router-link tag="li" class="nav-main" v-for="link in links" :key="link.name" :to="link.route" :exact="link.isExact" @mousedown.native="handleMouseDown">
                 <i :class="[link.iconClass, 'fa', 'iconfont']" aria-hidden="true"></i>{{link.name}}
                 <div class="touch-ripple"></div>
             </router-link>
-            <a v-for="(slink, index) in sublinks" class="nav-sub" :key="slink.name" :href="slink.href" target="_blank" @mousedown="handleMouseDown">
+            <a v-for="slink in sublinks" class="nav-sub" :key="slink.name" :href="slink.href" target="_blank" @mousedown="handleMouseDown">
                 <i :class="['fa', 'iconfont', slink.iconClass]" aria-hidden="true"></i>{{slink.name}}
                 <div class="touch-ripple"></div>
             </a>
@@ -127,9 +127,11 @@ $font-size-p:16px; //过渡动画样式
             }
         }
         .main-bar {
-            #logo a,
+            #logo a {
+                color: #5d1272;
+            }
             .nav-btn {
-                color: #8e24aa;
+                color: #666;
             }
         }
     }
@@ -151,9 +153,11 @@ $font-size-p:16px; //过渡动画样式
             }
         }
         .main-bar {
-            #logo a,
+            #logo a {
+                color: #5d1272;
+            }
             .nav-btn {
-                color: #8e24aa;
+                color: #666;
             }
         }
     }
@@ -168,7 +172,8 @@ $font-size-p:16px; //过渡动画样式
             letter-spacing: 1px;
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             a {
-                color: #8e24aa;
+                text-transform: uppercase;
+                color: #5d1272;
                 text-decoration: none;
             }
         }
@@ -176,7 +181,7 @@ $font-size-p:16px; //过渡动画样式
             position: relative;
             display: block;
             background: transparent;
-            color: #8e24aa;
+            color: #666;
             border: none;
             outline: none;
             cursor: pointer;

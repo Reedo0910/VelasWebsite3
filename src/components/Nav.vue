@@ -141,7 +141,7 @@ $font-size-p:16px; //过渡动画样式
             }
         }
         #logo a {
-            color: #8e24aa;
+            color: #5d1272;
         }
         .tab-indicator {
             background-color: #2196f3;
@@ -199,7 +199,9 @@ $font-size-p:16px; //过渡动画样式
         margin-left: 25px;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         a {
-            color: #8e24aa;
+            text-transform: uppercase;
+            color: #5d1272;
+            text-decoration: none;
         }
     }
     #logo a,

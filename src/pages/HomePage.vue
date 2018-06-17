@@ -24,7 +24,7 @@
                     <div class="post-group">
                         <router-link v-for="(p, index) in newsposts" :key="index" :to="{ path: '/news/post/' + p.number }" class="skeleton">
                             <transition name="fade">
-                                <div class="post" v-if="newsIsLoadFinish" :style="{'background-image': 'url(' + p.image + ')'}">
+                                <div class="post" v-if="isNewsLoaded" :style="{'background-image': 'url(' + p.image + ')'}">
                                     <div class="post-mask"></div>
                                     <div class="post-content">
                                         <p class="date">{{ p.date }}</p>
@@ -79,7 +79,7 @@
                     <div class="post-group">
                         <a class="skeleton" :href="talkpost.url" target="_blank">
                             <transition name="fade">
-                                <div class="post" v-if="talkIsLoadFinish && talkURLIsLoadFinish">
+                                <div class="post" v-if="isTalkLoaded" :style="{'background-image': 'url(' + talkpost.bg + ')' }">
                                     <div class="post-mask"></div>
                                     <div class="post-content">
                                         <p class="date">{{talkpost.date}}</p>
@@ -151,7 +151,7 @@
 <script>
 import VTitle from '../components/VTitle'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
-import * as github from '../assets/js/io';
+import * as io from '../assets/js/io';
 import moment from 'moment';
 
 export default {
@@ -179,15 +179,15 @@ export default {
                     title: '',
                     body: ''
                 }],
-            newsIsLoadFinish: false,
+            isNewsLoaded: false,
             talkpost: {
                 title: '',
                 body: '',
                 date: '',
-                url: ''
+                url: '',
+                bg: ''
             },
-            talkIsLoadFinish: false,
-            talkURLIsLoadFinish: false,
+            isTalkLoaded: false,
             cards: [
                 {
                     href: '/collection/music',
@@ -291,17 +291,18 @@ export default {
             return ((a + b) * c) % t + 1;
         },
         summaryBody: function(body) {
-            return body.replace(/[\\\`\*\~\_\[\]\#\+\-\!\>\x]/g, '').substr(0, 45) + ' …';
+            body = body.trim().replace('[Figure]', '').replace(/[\\\`\*\~\_\[\]\#\+\-\!\>\x]/g, '').substr(0, 45);
+            if (body.length === 0) {
+                return '';
+            } else {
+                return body + ' …';
+            }
         },
         summaryTitle: function(title) {
             if (title.length > 21) {
                 title = title.substr(0, 21) + ' …';
             }
             return title;
-        },
-        securityCheck: function(res) {
-            let tar = res.body.trim().split('//')[1].split('/');
-            return res.user.login === 'Reedo0910' && tar.length === 2 && tar[0] === 'blog.velas.xyz';
         },
         filter: function(posts) {
             if (posts === 404) {
@@ -316,7 +317,7 @@ export default {
                 vm.newsposts[i].body = vm.summaryBody(posts[i].body);
                 vm.newsposts[i].image = vm.linkGenerator(posts[i].created_at);
             }
-            vm.newsIsLoadFinish = true;
+            vm.isNewsLoaded = true;
         },
         errorHandler: function(error) {
             console.log('news: ' + error);
@@ -324,40 +325,27 @@ export default {
     },
     mounted() {
         const vm = this;
-        github.getIssue()
+        io.getIssue()
             .then(this.filter)
             .catch(this.errorHandler)
 
-        github.getIssueById('reedo0910.github.io', 1)
-            .then(function(res) {
+        io.getBlogList(1)
+            .then(res => {
                 moment.locale('zh-cn');
                 if (res === 404 || res.length === 0) {
                     throw new Error('网络异常');
                 }
-                vm.talkpost.title = vm.summaryTitle(res.title);
-                vm.talkpost.body = vm.summaryBody(res.body);
-                vm.talkpost.date = moment(res.updated_at).format('ll');
-                vm.talkIsLoadFinish = true;
+                const post = res.data[0];
+                vm.talkpost.title = vm.summaryTitle(post.title);
+                vm.talkpost.body = vm.summaryBody(post.excerpt);
+                vm.talkpost.bg = post.cover || 'http://o7a3i0m1t.bkt.clouddn.com/image/blog/background/background-min.jpg';
+                vm.talkpost.date = moment(post.date).format('ll');
+                vm.talkpost.url = `http://blog.velas.xyz/${moment(post.date).format('YYYY-MM-DD')}-${post.slug}.html`;
+                vm.isTalkLoaded = true;
             })
-            .catch(function(err) {
+            .catch(err => {
                 console.log('Talk: ' + err);
-            });
-
-        github.getComs('reedo0910.github.io', 1)
-            .then(function(res) {
-                if (res === 404 || res.length === 0) {
-                    throw new Error('网络异常');
-                }
-                if (!vm.securityCheck(res[0])) {
-                    throw new Error('跳转目标网站安全性异常');
-                } else {
-                    vm.talkpost.url = res[0].body.trim();
-                    vm.talkURLIsLoadFinish = true;
-                }
             })
-            .catch(function(err) {
-                console.log('Talk: ' + err);
-            });
     },
     created() {
         this.getHeight();
@@ -627,9 +615,6 @@ export default {
                     }
                 }
             }
-        }
-        .talk-section .post {
-            background-image: url(http://o7a3i0m1t.bkt.clouddn.com/image/blog/background/background-min.jpg);
         }
         .camp-section {
             color: #fff;

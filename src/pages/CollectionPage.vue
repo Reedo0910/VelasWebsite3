@@ -4,7 +4,7 @@
             <collection-sub-nav></collection-sub-nav>
             <header>
                 <div class="content-mask"></div>
-                <h1>Collection</h1>
+                <h1>我的收藏</h1>
                 <p>珍藏每一样美好的东西</p>
             </header>
             <main>

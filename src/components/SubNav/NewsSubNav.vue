@@ -1,6 +1,6 @@
 <template>
     <div id="newsSubNav">
-        <router-link v-for="(link, index) in links" :key="link.name" :to="link.route" :exact="link.isExact">
+        <router-link v-for="link in links" :key="link.name" :to="link.route" :exact="link.isExact">
             {{link.name}}
         </router-link>
     </div>
@@ -15,7 +15,7 @@ export default {
                 {
                     route: '/news',
                     isExact: true,
-                    name: '新鲜事'
+                    name: '每周新闻'
                 },
                 {
                     route: '/news/time-capsule',

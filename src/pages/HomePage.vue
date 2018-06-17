@@ -11,8 +11,63 @@
                 </div>
             </header>
             <div class="context">
+                <section class="talk-section lt">
+                    <h2 class="context-big-headtitle">博客</h2>
+                    <!-- <p class="jump-icon">blog.velas.xyz</p> -->
+                    <div class="hr"></div>
+                    <p class="context-intro">某处女座的碎碎念</p>
+                    <a class="arrow-link" href="http://blog.velas.xyz/" target="_blank">
+                        <span>查看更多</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+                    <div class="blankspace1"></div>
+                    <div class="post-group">
+                        <a class="skeleton" v-for="(t, index) in talkposts" :key="index" :href="t.url" target="_blank">
+                            <transition name="fade">
+                                <div class="post" v-if="isTalkLoaded" :style="{'background-image': 'url(' + t.bg + ')' }">
+                                    <div class="post-mask"></div>
+                                    <div class="post-content">
+                                        <p class="date">{{t.date}}</p>
+                                        <h3 class="title">{{t.title}}</h3>
+                                        <p class="body">{{t.body}}</p>
+                                        <a class="arrow-link" :href="t.url" target="_blank">
+                                            <span>阅读全文</span>
+                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </transition>
+                        </a>
+                    </div>
+                    <div class="blankspace"></div>
+                </section>
+                <section class="collection-section dk">
+                    <h2 class="context-big-headtitle">收藏</h2>
+                    <div class="hr"></div>
+                    <p class="context-intro">虽然算不上丰富，但绝对是真心推荐</p>
+                    <router-link class="arrow-link" to="/collection">
+                        <span>查看更多</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </router-link>
+                    <div class="blankspace1"></div>
+                    <div class="card-group" id="card-group">
+                        <div v-for="card in cards" class="card" :key="card.title" :style="{'background-image': 'url(http://o7a3i0m1t.bkt.clouddn.com/image/website/' + card.background + ')'}">
+                            <div class="card-mask"></div>
+                            <div class="card-content">
+                                <router-link class="card-title" :to="card.href">
+                                    <span>{{card.title}}</span>
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </router-link>
+                                <p class="card-intro">{{card.intro}}</p>
+                                <router-link :to="card.href" class="card-icon">
+                                    <i class="fa fa-3x" :class="card.icon" aria-hidden="true"></i>
+                                </router-link>
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 <section class="news-section lt">
-                    <h2 class="context-big-headtitle">News</h2>
+                    <h2 class="context-big-headtitle">新闻</h2>
                     <div class="hr"></div>
                     <p class="context-intro">一切关于Velas的新鲜事</p>
                     <router-link class="arrow-link" to="/news">
@@ -40,64 +95,9 @@
                     </div>
                     <div class="blankspace"></div>
                 </section>
-                <section class="collection-section dk">
-                    <h2 class="context-big-headtitle">Collection</h2>
-                    <div class="hr"></div>
-                    <p class="context-intro">虽然算不上丰富，但绝对是真心推荐</p>
-                    <router-link class="arrow-link" to="/collection">
-                        <span>查看更多</span>
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </router-link>
-                    <div class="blankspace1"></div>
-                    <div class="card-group" id="card-group">
-                        <div v-for="card in cards" class="card" :key="card.title" :style="{'background-image': 'url(http://o7a3i0m1t.bkt.clouddn.com/image/website/' + card.background + ')'}">
-                            <div class="card-mask"></div>
-                            <div class="card-content">
-                                <router-link class="card-title" :to="card.href">
-                                    <span>{{card.title}}</span>
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                </router-link>
-                                <p class="card-intro">{{card.intro}}</p>
-                                <router-link :to="card.href" class="card-icon">
-                                    <i class="fa fa-3x" :class="card.icon" aria-hidden="true"></i>
-                                </router-link>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section class="talk-section lt">
-                    <h2 class="context-big-headtitle">Talk</h2>
-                    <p class="jump-icon">blog.velas.xyz</p>
-                    <div class="hr"></div>
-                    <p class="context-intro">某处女座的碎碎念</p>
-                    <a class="arrow-link" href="http://blog.velas.xyz/" target="_blank">
-                        <span>查看更多</span>
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </a>
-                    <div class="blankspace1"></div>
-                    <div class="post-group">
-                        <a class="skeleton" :href="talkpost.url" target="_blank">
-                            <transition name="fade">
-                                <div class="post" v-if="isTalkLoaded" :style="{'background-image': 'url(' + talkpost.bg + ')' }">
-                                    <div class="post-mask"></div>
-                                    <div class="post-content">
-                                        <p class="date">{{talkpost.date}}</p>
-                                        <h3 class="title">{{talkpost.title}}</h3>
-                                        <p class="body">{{talkpost.body}}</p>
-                                        <a class="arrow-link" :href="talkpost.url" target="_blank">
-                                            <span>阅读全文</span>
-                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </transition>
-                        </a>
-                    </div>
-                    <div class="blankspace"></div>
-                </section>
                 <section class="camp-section dk">
-                    <h2 class="context-big-headtitle">Camp</h2>
-                    <p class="jump-icon">www.velascamp.cn</p>
+                    <h2 class="context-big-headtitle">探索</h2>
+                    <!-- <p class="jump-icon">www.velascamp.cn</p> -->
                     <div class="hr"></div>
                     <p class="context-intro">无数的奇思妙想从这里诞生</p>
                     <a class="arrow-link" href="http://www.velascamp.cn/" target="_blank">
@@ -124,7 +124,7 @@
                 </section>
                 <section class="intro-velas-section lt">
                     <div class="blankspace1"></div>
-                    <h2 class="context-big-headtitle">What is Velas?</h2>
+                    <h2 class="context-big-headtitle">这是哪？</h2>
                     <div class="hr"></div>
                     <p class="context-intro">这是我的个人网站，<br>用于分享我的想法见解和个人爱好。<br>如果这里能为你带来一些灵感或是轻松愉悦的体验，<br id="tbr">那么这将是我的荣幸。</p>
                     <div class="blankspace"></div>
@@ -132,7 +132,7 @@
                 <section class="time-capsule-section dk">
                     <div class="bg-layer"></div>
                     <div class="ft-content">
-                        <h2 class="context-big-headtitle">Time Capsule</h2>
+                        <h2 class="context-big-headtitle">时间胶囊</h2>
                         <div class="hr"></div>
                         <p class="context-intro">聆听时间讲的故事</p>
                         <router-link class="arrow-link" to="/news/time-capsule">
@@ -177,13 +177,21 @@ export default {
                     body: ''
                 }],
             isNewsLoaded: false,
-            talkpost: {
+            talkposts: [
+              {
                 title: '',
                 body: '',
                 date: '',
                 url: '',
                 bg: ''
-            },
+              },
+              {
+                title: '',
+                body: '',
+                date: '',
+                url: '',
+                bg: ''
+              }],
             isTalkLoaded: false,
             cards: [
                 {
@@ -332,12 +340,15 @@ export default {
                 if (res === 404 || res.length === 0) {
                     throw new Error('网络异常');
                 }
-                const post = res.data[0];
-                vm.talkpost.title = vm.summaryTitle(post.title);
-                vm.talkpost.body = vm.summaryBody(post.excerpt);
-                vm.talkpost.bg = post.cover || 'http://o7a3i0m1t.bkt.clouddn.com/image/blog/background/background-min.jpg';
-                vm.talkpost.date = moment(post.date).format('ll');
-                vm.talkpost.url = `http://blog.velas.xyz/${moment(post.date).format('YYYY-MM-DD')}-${post.slug}.html`;
+                for (let i = 0; i < 2; i++) {
+                    const post = res.data[i];
+                    const tarPost = vm.talkposts[i];
+                    tarPost.title = vm.summaryTitle(post.title);
+                    tarPost.body = vm.summaryBody(post.excerpt);
+                    tarPost.bg = post.cover || 'http://o7a3i0m1t.bkt.clouddn.com/image/blog/background/background-min.jpg';
+                    tarPost.date = moment(post.date).format('ll');
+                    tarPost.url = `http://blog.velas.xyz/${moment(post.date).format('YYYY-MM-DD')}-${post.slug}.html`;
+                }
                 vm.isTalkLoaded = true;
             })
             .catch(err => {

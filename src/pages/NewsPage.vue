@@ -4,7 +4,7 @@
             <news-sub-nav></news-sub-nav>
             <header>
                 <div class="content-mask"></div>
-                <h1>Velas News</h1>
+                <h1>每周新闻</h1>
                 <p>这周有什么新鲜事？</p>
             </header>
             <main>

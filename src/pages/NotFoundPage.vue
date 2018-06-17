@@ -1,6 +1,5 @@
 <template>
     <div>
-        <v-title>页面不见了 - Velas</v-title>
         <div id="context" :style="{height: winHeight}">
             <div class="bg" :class="{disappear : !isAppear}"></div>
             <div class="ft">
@@ -14,7 +13,6 @@
 </template>
 
 <script>
-import VTitle from '../components/VTitle'
 export default {
     name: 'NotFound',
     data () {
@@ -46,9 +44,6 @@ export default {
     beforeDestroy() {
         clearInterval(this.timer);
         window.removeEventListener('resize', this.getHeight);
-    },
-    components: {
-        VTitle
     }
 }
 </script>

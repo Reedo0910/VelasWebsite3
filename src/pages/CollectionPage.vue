@@ -1,7 +1,6 @@
 <template>
     <transition name="switch-page" mode="out-in">
         <div>
-            <v-title>收藏 - Velas</v-title>
             <collection-sub-nav></collection-sub-nav>
             <header>
                 <div class="content-mask"></div>
@@ -65,12 +64,10 @@
 </template>
 
 <script>
-    import VTitle from '../components/VTitle';
     import CollectionSubNav from '../components/SubNav/CollectionSubNav';
     export default {
         name: 'Collection',
         components: {
-            VTitle,
             CollectionSubNav
         },
         data() {

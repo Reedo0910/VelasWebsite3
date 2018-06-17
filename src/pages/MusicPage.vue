@@ -1,7 +1,6 @@
 <template>
     <transition name="switch-page" mode="out-in">
         <div>
-            <v-title>音乐 - Velas</v-title>
             <header>
                 <div id="banner">
                     <div class="inner">
@@ -17,12 +16,10 @@
 
 <script>
 import MusicCard from '../components/MusicCards'
-import VTitle from '../components/VTitle'
 export default {
   name: 'Music',
   components: {
-      MusicCard,
-      VTitle
+      MusicCard
   }
 }
 </script>

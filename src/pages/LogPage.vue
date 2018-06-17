@@ -1,7 +1,6 @@
 <template>
     <transition name="switch-page" mode="out-in">
         <div>
-            <v-title>更新日志 - Velas</v-title>
             <div class="blankspace"></div>
             <news-sub-nav></news-sub-nav>
             <header>
@@ -16,14 +15,12 @@
 </template>
 
 <script>
-import VTitle from '../components/VTitle'
 import LogItem from '../components/Log/LogItems'
 import NewsSubNav from '../components/SubNav/NewsSubNav'
 export default {
     name: 'Log',
     components: {
         LogItem,
-        VTitle,
         NewsSubNav
     }
 }

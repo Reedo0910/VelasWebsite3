@@ -1,7 +1,6 @@
 <template>
     <transition name="switch-page" mode="out-in">
         <div class="container">
-            <v-title>新闻: {{post.title}} - Velas</v-title>
             <news-sub-nav></news-sub-nav>
             <news-header-compact :newsTitle="post.title" :newsDate="post.created_at"></news-header-compact>
             <article>
@@ -70,7 +69,6 @@ import * as github from '../assets/js/io'
 import moment from 'moment'
 import md from 'marked'
 import highlightjs from 'highlight.js'
-import VTitle from '../components/VTitle'
 import NewsHeaderCompact from '../components/News/NewsHeaderCompact'
 import NewsSubNav from '../components/SubNav/NewsSubNav'
 import LoadingIcon from '../components/LoadingIcon'
@@ -78,7 +76,6 @@ import LoadingIcon from '../components/LoadingIcon'
 export default {
     name: 'NewsPost',
     components: {
-        VTitle,
         NewsSubNav,
         NewsHeaderCompact,
         LoadingIcon
@@ -113,6 +110,9 @@ export default {
         }
     },
     methods: {
+        updateTitle: function () {
+            document.title = `${this.post.title} - Velas 新闻`;
+        },
         scrollToCom: function() {
             return document.getElementById('comments').scrollIntoView();
         },
@@ -176,7 +176,7 @@ export default {
                     vm.post.body = md(vm.post.body, { renderer: renderer });
                     vm.post.created_at = moment(vm.post.created_at).format('ll');
                     vm.isArticleLoading = false;
-
+                    vm.updateTitle();
                     vm.getPostOrder(res, Number(id));
                     // 获取评论
                     github.getComs('VelasWebsite3', id)

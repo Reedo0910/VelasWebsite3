@@ -1,7 +1,6 @@
 <template>
     <transition name="switch-page" mode="out-in">
         <div>
-            <v-title>新闻 - Velas</v-title>
             <news-sub-nav></news-sub-nav>
             <header>
                 <div class="content-mask"></div>
@@ -36,13 +35,11 @@
 </template>
 
 <script>
-import VTitle from '../components/VTitle'
 import NewsSubNav from '../components/SubNav/NewsSubNav'
 import NewsMain from '../components/News/NewsMain'
 export default {
     name: 'News',
     components: {
-        VTitle,
         NewsSubNav,
         NewsMain
     }

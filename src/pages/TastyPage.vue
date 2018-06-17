@@ -1,7 +1,6 @@
 <template>
     <transition name="switch-page" mode="out-in">
         <div>
-            <v-title>美食 - Velas</v-title>
             <header>
                 <div id="banner">
                     <div class="inner">
@@ -16,12 +15,8 @@
 </template>
 
 <script>
-import VTitle from '../components/VTitle'
 export default {
-    name: 'Tasty',
-    components: {
-        VTitle
-    }
+    name: 'Tasty'
 }
 </script>
 

@@ -1,13 +1,12 @@
 <template>
     <transition name="switch-page" mode="out-in">
         <div id="main-page">
-            <v-title>首页 - Velas</v-title>
             <header :style="{height: winHeight}">
                 <div class="bg-mask"></div>
                 <div id="banner">
                     <div class="inner">
-                        <div class="velas_logo"></div>
-                        <!-- <p class="sub-heading">{{slogen}}</p> -->
+                        <div class="velas-logo"></div>
+                        <p class="sub-heading">{{slogen}}</p>
                     </div>
                 </div>
             </header>
@@ -149,7 +148,6 @@
 </template>
 
 <script>
-import VTitle from '../components/VTitle'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import * as io from '../assets/js/io';
 import moment from 'moment';
@@ -157,13 +155,12 @@ import moment from 'moment';
 export default {
     name: 'Home',
     components: {
-        VTitle,
         swiper,
         swiperSlide
     },
     data() {
         return {
-            slogen: 'Everything flows.',
+            slogen: '',
             newsposts: [
                 {
                     number: -1,
@@ -415,7 +412,7 @@ export default {
                 color: #000;
                 box-sizing: border-box;
                 text-align: center;
-                .velas_logo {
+                .velas-logo {
                     display: inline-block;
                     width: 317px;
                     height: 89px;
@@ -426,7 +423,7 @@ export default {
                 }
                 .sub-heading {
                     margin: 0;
-                    font-size: 32px;
+                    font-size: 1em;
                     box-sizing: border-box;
                 }
             }
@@ -714,18 +711,12 @@ export default {
     #main-page {
         header {
             #banner .inner {
-                .velas_logo {
-                    position: absolute;
-                    margin: auto;
-                    left: 0;
-                    right: 0;
-                    top: 0;
-                    bottom: 0;
+                .velas-logo {
                     width: 214px;
                     height: 60px;
                 }
                 .sub-heading {
-                    display: none;
+                    font-size: .8em;
                 }
             }
         }
@@ -740,7 +731,7 @@ export default {
 
 @media screen and (max-width: 600px) {
     #main-page header {
-        #banner .inner .velas_logo {
+        #banner .inner .velas-logo {
             width: 178.1px;
             height: 50px;
         }

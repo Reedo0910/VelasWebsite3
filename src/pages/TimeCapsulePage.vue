@@ -1,7 +1,6 @@
 <template>
     <transition name="switch-page" mode="out-in">
         <div class="template-content">
-            <v-title>时间胶囊 - Velas</v-title>
             <news-sub-nav></news-sub-nav>
             <header>
                 <div class="content-mask"></div>
@@ -47,12 +46,10 @@
 </template>
 
 <script>
-import VTitle from '../components/VTitle'
 import NewsSubNav from '../components/SubNav/NewsSubNav'
 export default {
     name: 'TimeCapsule',
     components: {
-        VTitle,
         NewsSubNav
     },
     data() {

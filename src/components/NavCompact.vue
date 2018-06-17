@@ -191,7 +191,7 @@ $font-size-p:16px; //过渡动画样式
 
     .nav-list {
         @include link-transition(0.3s);
-        padding: 0;
+        padding: 0 0 5px;
         overflow-y: hidden;
         height: 0;
         opacity: 0;

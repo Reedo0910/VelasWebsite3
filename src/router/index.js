@@ -55,7 +55,7 @@ export default new Router({
           name: 'collection-page',
           component: CollectionPage,
           meta: {
-            index: 1,
+            index: 2,
             title: '收藏',
             style: 'light'
           }
@@ -65,7 +65,7 @@ export default new Router({
           name: 'music-page',
           component: MusicPage,
           meta: {
-            index: 1,
+            index: 2,
             title: '音乐',
             style: 'dark'
           }
@@ -75,7 +75,7 @@ export default new Router({
           name: 'tasty-page',
           component: TastyPage,
           meta: {
-            index: 1,
+            index: 2,
             title: '美食',
             style: 'dark'
           }
@@ -85,7 +85,7 @@ export default new Router({
           name: 'movie-page',
           component: MoviePage,
           meta: {
-            index: 1,
+            index: 2,
             title: '电影',
             style: 'dark'
           }
@@ -100,7 +100,7 @@ export default new Router({
           name: 'news-page',
           component: NewsPage,
           meta: {
-            index: 2,
+            index: 3,
             title: '新闻',
             style: 'light'
           }
@@ -110,7 +110,7 @@ export default new Router({
           name: 'news-post',
           component: NewsPostPage,
           meta: {
-            index: 2,
+            index: 3,
             title: '新闻',
             style: 'light'
           }
@@ -120,7 +120,7 @@ export default new Router({
           name: 'time-capsule-page',
           component: TCPage,
           meta: {
-            index: 2,
+            index: 3,
             title: '时间胶囊',
             style: 'light'
           }
@@ -130,7 +130,7 @@ export default new Router({
           name: 'log-page',
           component: LogPage,
           meta: {
-            index: 2,
+            index: 3,
             title: '更新日志',
             style: 'light'
           }

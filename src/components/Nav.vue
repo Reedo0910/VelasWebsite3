@@ -3,7 +3,7 @@
         <div id="logo">
             <router-link to="/">Velas</router-link>
         </div>
-        <div class="nav-sub">
+        <div class="nav-sub" v-if="false">
             <a v-for="(slink, index) in sublinks" :key="slink.name" :href="slink.href" target="_blank" @mouseover.stop="hoverIndex = index + links.length" @mouseout.stop="hoverIndex = -1" @mousedown="handleMouseDown">
                 <i :class="['fa', slink.iconClass, 'iconfont']" aria-hidden="true"></i>
                 <p>{{slink.name}}</p>
@@ -35,22 +35,23 @@ export default {
     },
     computed: {
         indicatorPos() {
-            const MainTabWidth = 125;
+            const MainTabWidth = 110;
             const SubTabWidth = 70;
             const diff = 45 / 2;
+            const offset = 25;
             const subWidth = SubTabWidth * this.sublinks.length;
             const Tab = this.links.length + this.sublinks.length - 1;
             let index = this.hoverIndex === -1 ? this.$route.meta.index : this.hoverIndex;
             let tar;
             if (this.hoverIndex >= this.links.length) {
-                tar = (Tab - index) * SubTabWidth + diff + 'px';
+                tar = (Tab - index) * SubTabWidth + diff + offset + 'px';
             } else {
-                tar = (this.links.length - 1 - index) * MainTabWidth + diff + subWidth + 'px';
+                tar = (this.links.length - 1 - index) * MainTabWidth + diff + subWidth + offset + 'px';
             }
             return tar;
         },
         indicatorWidth() {
-            let tar = this.hoverIndex > this.links.length - 1 ? 25 : 80;
+            let tar = this.hoverIndex > this.links.length - 1 ? 25 : 65;
             tar = this.$route.meta.index === -1 && this.hoverIndex === -1 ? 0 : tar;
             return tar + 'px';
         },
@@ -101,7 +102,7 @@ $font-size-p:16px; //过渡动画样式
     @include link-transition(0.3s);
     .tab-indicator {
         height: 2px;
-        width: 80px;
+        width: 65px;
         position: absolute;
         bottom: 0;
         right: 412.5px;
@@ -166,9 +167,12 @@ $font-size-p:16px; //过渡动画样式
             outline: none;
         }
     }
+    .nav-main {
+        margin-right: 25px;
+    }
     .nav-main a {
         color: #666;
-        width: 125px;
+        width: 110px;
         i {
             margin-right: .5em;
         }

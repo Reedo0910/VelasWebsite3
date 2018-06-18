@@ -105,7 +105,7 @@ $font-size-p:16px; //过渡动画样式
         width: 65px;
         position: absolute;
         bottom: 0;
-        right: 412.5px;
+        right: 487.5px;
         background-color: #2196f3;
         transition: all .3s cubic-bezier(.35, 0, .25, 1);
     }

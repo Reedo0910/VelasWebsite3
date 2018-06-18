@@ -10,7 +10,7 @@
                     </router-link>
                     <div class="post-meta">
                         <div class="labels">
-                            <a>{{ p.labels[0].name }}</a>
+                            <a v-if="p.labels[0]">{{ p.labels[0].name }}</a>
                         </div>
                         <div class="date">{{ p.date }}</div>
                         <div class="entry-comments">

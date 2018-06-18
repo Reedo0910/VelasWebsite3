@@ -13,10 +13,10 @@
             <div class="context">
                 <section class="talk-section lt">
                     <h2 class="context-big-headtitle">博客</h2>
-                    <!-- <p class="jump-icon">blog.velas.xyz</p> -->
+                    <!-- <p class="jump-icon">reedo0910.github.io</p> -->
                     <div class="hr"></div>
                     <p class="context-intro">某处女座的碎碎念</p>
-                    <a class="arrow-link" href="http://blog.velas.xyz/" target="_blank">
+                    <a class="arrow-link" href="https://reedo0910.github.io" target="_blank">
                         <span>查看更多</span>
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                     </a>
@@ -334,20 +334,20 @@ export default {
             .then(this.filter)
             .catch(this.errorHandler)
 
-        io.getBlogList(1)
+        io.getBlogList()
             .then(res => {
                 moment.locale('zh-cn');
                 if (res === 404 || res.length === 0) {
                     throw new Error('网络异常');
                 }
                 for (let i = 0; i < 2; i++) {
-                    const post = res.data[i];
+                    const post = res[i];
                     const tarPost = vm.talkposts[i];
                     tarPost.title = vm.summaryTitle(post.title);
                     tarPost.body = vm.summaryBody(post.excerpt);
                     tarPost.bg = post.cover || 'http://o7a3i0m1t.bkt.clouddn.com/image/blog/background/background-min.jpg';
                     tarPost.date = moment(post.date).format('ll');
-                    tarPost.url = `http://blog.velas.xyz/${moment(post.date).format('YYYY-MM-DD')}-${post.slug}.html`;
+                    tarPost.url = `https://reedo0910.github.io/${moment(post.date).format('YYYY-MM-DD')}-${post.slug}.html`;
                 }
                 vm.isTalkLoaded = true;
             })

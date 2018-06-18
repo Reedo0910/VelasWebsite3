@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = 'https://api.github.com/repos';
-const blogApi = 'http://blog.velas.xyz/api';
+const blogApi = 'https://reedo0910.github.io/api';
 
 function setSession(key, val) {
     return sessionStorage.setItem(key, JSON.stringify(val));
@@ -79,9 +79,9 @@ export function getComs(repo, id) {
     }
 }
 
-export function getBlogList(page) {
-    const url = `${blogApi}/posts/${page}.json`;
-    const key = `blog-list${page}`
+export function getBlogList() {
+    const url = `${blogApi}/posts.json`;
+    const key = 'blog-list'
     if (!getSession(key)) {
         return axios.get(url)
             .then(res => {

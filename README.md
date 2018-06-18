@@ -8,5 +8,5 @@ Using new responsive design. And more pages is coming soon.
 
 ## Snapshot
 
-![Home Page](https://github.com/Reedo0910/VelasWebsite3/blob/master/doc/Screenshot_2018-06-13.png)
+![Home Page](https://github.com/Reedo0910/VelasWebsite3/blob/master/doc/Screenshot_2018-06-19.png)
 Home Page

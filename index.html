@@ -45,9 +45,28 @@
     cnzz_s_tag.src = 'https://w.cnzz.com/c.php?id=1273976870&async=1';
     var root_s = document.getElementsByTagName('script')[0];
     root_s.parentNode.insertBefore(cnzz_s_tag, root_s);
+
+</script>
+<!-- baidu spider -->
+<script>
+    (function() {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+
 </script>
 <!-- page body -->
+
 <body>
     <div id="app"></div>
 </body>
+
 </html>

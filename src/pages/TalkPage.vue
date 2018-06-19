@@ -1,7 +1,7 @@
 <template>
     <transition name="switch-page" mode="out-in">
         <div>
-            <talk-sub-nav></talk-sub-nav>
+            <div class="top-space-holeder"></div>
             <header>
                 <div class="content-mask"></div>
                 <h1>每日碎碎念</h1>
@@ -9,69 +9,83 @@
             </header>
             <main>
                 <talk-main></talk-main>
+                <div class="notice">
+                    <p>
+                        <strong>这……这是……Velas Talk?</strong>
+                    </p>
+                    <p>没错，现在你可以在Velas查看我所有的博客文章啦！当然，你也可以<a href="https://reedo0910.github.io/" target="_blank">回到Velas Talk <i class="fa fa-angle-right" aria-hidden="true"></i></a>来获得完整的博客浏览体验
+                    </p>
+                </div>
             </main>
         </div>
     </transition>
 </template>
 
 <script>
-import TalkSubNav from '../components/SubNav/TalkSubNav'
-import TalkMain from '../components/Talk/TalkMain'
-export default {
-    name: 'Talk',
-    components: {
-        TalkSubNav,
-        TalkMain
+    import TalkMain from '../components/Talk/TalkMain'
+    export default {
+        name: 'Talk',
+        components: {
+            TalkMain
+        }
     }
-}
 </script>
 
 <style lang="scss" scoped>
-//过渡动画样式
-@mixin link-transition($time) {
-    -webkit-transition: all $time ease-out;
-    -moz-transition: all $time ease-out;
-    transition: all $time ease-out;
-}
+    //过渡动画样式
+    @mixin link-transition($time) {
+      -webkit-transition: all $time ease-out;
+      -moz-transition: all $time ease-out;
+      transition: all $time ease-out;
+    }
 
-//--Vue
-.fade-enter-active {
-    transition: opacity .8s
-}
+    //--Vue
+    .fade-enter-active {
+      transition: opacity 0.8s;
+    }
 
-.fade-enter,
-.fade-leave {
-    opacity: 0
-}
+    .fade-enter,
+    .fade-leave {
+      opacity: 0;
+    }
 
-header {
-    height: 440px;
-    background: #777 url(http://o7a3i0m1t.bkt.clouddn.com/image/website/nikhil-kumar-231465.jpg) no-repeat;
-    background-size: cover;
-    background-position: center center;
-    width: 90%;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-    h1,
-    p {
+    .top-space-holeder {
+      margin: 0 auto;
+      padding: 80px 0 10px;
+      height: 1px;
+      width: 80%;
+    }
+
+    header {
+      height: 440px;
+      background: #777
+        url(http://o7a3i0m1t.bkt.clouddn.com/image/website/nikhil-kumar-231465.jpg)
+        no-repeat;
+      background-size: cover;
+      background-position: center center;
+      width: 90%;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      h1,
+      p {
         text-align: center;
         position: relative;
         z-index: 3;
-    }
-    p {
+      }
+      p {
         color: #fff;
         letter-spacing: 2px;
         line-height: 25px;
-    }
-    h1 {
+      }
+      h1 {
         margin: 0;
         padding: 150px 0 0;
         color: #fff;
         font-size: 3em;
         letter-spacing: 1px;
-    }
-    .content-mask {
+      }
+      .content-mask {
         width: 100%;
         height: 100%;
         background-color: rgba(59, 59, 59, 0.2);
@@ -79,66 +93,66 @@ header {
         top: 0;
         left: 0;
         z-index: 2;
+      }
     }
-}
 
-main {
-    position: relative;
-    width: 100%;
-    margin: 0 auto;
-    .blank {
+    main {
+      position: relative;
+      width: 100%;
+      margin: 0 auto;
+      .blank {
         height: 120px;
-    }
-    .notice {
+      }
+      .notice {
         margin: 0px auto;
         padding: 5px 80px;
         width: 100%;
         box-sizing: border-box;
-        opacity: .8;
+        opacity: 0.8;
         background-color: #fafafa;
         text-align: center;
-        &+& {
-            margin-top: 30px;
+        & + & {
+          margin-top: 30px;
         }
         p {
-            display: inline-block;
+          display: inline-block;
         }
         a {
-            text-decoration: none;
-            color: #444;
-            margin: 0 5px;
-            &:hover {
-                border-bottom: 1px solid #444;
-            }
+          text-decoration: none;
+          color: #444;
+          margin: 0 5px;
+          &:hover {
+            border-bottom: 1px solid #444;
+          }
         }
         i {
-            color: #444;
+          color: #444;
         }
         &.thanks p {
-            font-size: .8em;
-            color: #673ab7;
+          font-size: 0.8em;
+          color: #673ab7;
         }
+      }
     }
-}
 
-@media screen and (max-width: 900px) {
-    main {
+    @media screen and (max-width: 900px) {
+      main {
         .notice {
-            p {
-                display: block;
-            }
+          p {
+            display: block;
+          }
         }
+      }
     }
-}
 
-@media screen and (max-width: 500px) {
-    header {
+    @media screen and (max-width: 500px) {
+      header {
         width: 100%;
-    }
-    main {
+      }
+      main {
         .notice {
-            padding: 5px 40px;
+          padding: 5px 40px;
         }
+      }
     }
-}
 </style>

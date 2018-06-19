@@ -35,7 +35,7 @@ export default {
     },
     computed: {
         indicatorPos() {
-            const MainTabWidth = 110;
+            const MainTabWidth = 105;
             const SubTabWidth = 70;
             const diff = 45 / 2;
             const offset = 25;
@@ -51,7 +51,7 @@ export default {
             return tar;
         },
         indicatorWidth() {
-            let tar = this.hoverIndex > this.links.length - 1 ? 25 : 65;
+            let tar = this.hoverIndex > this.links.length - 1 ? 25 : 60;
             tar = this.$route.meta.index === -1 && this.hoverIndex === -1 ? 0 : tar;
             return tar + 'px';
         },
@@ -102,10 +102,10 @@ $font-size-p:16px; //过渡动画样式
     @include link-transition(0.3s);
     .tab-indicator {
         height: 2px;
-        width: 65px;
+        width: 60px;
         position: absolute;
         bottom: 0;
-        right: 487.5px;
+        right: 572.5px;
         background-color: #2196f3;
         transition: all .3s cubic-bezier(.35, 0, .25, 1);
     }
@@ -172,7 +172,7 @@ $font-size-p:16px; //过渡动画样式
     }
     .nav-main a {
         color: #666;
-        width: 110px;
+        width: 105px;
         i {
             margin-right: .5em;
         }

@@ -140,7 +140,7 @@ $font-size-p:16px; //过渡动画样式
         @include link-transition(0.3s);
         background-color: rgba(255, 255, 255, 0.99);
         .nav-list {
-            height: 270px;
+            height: 330px;
             opacity: 1;
             li.nav-main,
             a.nav-sub {
@@ -191,7 +191,7 @@ $font-size-p:16px; //过渡动画样式
 
     .nav-list {
         @include link-transition(0.3s);
-        padding: 0 0 5px;
+        padding: 0;
         overflow-y: hidden;
         height: 0;
         opacity: 0;

@@ -28,6 +28,12 @@ export const Mainlinks = [
     isExact: false,
     iconClass: 'icon-luyingcamping1',
     name: '探索'
+  },
+  {
+    route: '/message',
+    isExact: false,
+    iconClass: 'icon-bulletin-board',
+    name: '留言'
   }
 ];
 

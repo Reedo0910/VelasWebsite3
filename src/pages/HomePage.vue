@@ -16,13 +16,13 @@
                     <!-- <p class="jump-icon">reedo0910.github.io</p> -->
                     <div class="hr"></div>
                     <p class="context-intro">某处女座的碎碎念</p>
-                    <a class="arrow-link" href="https://reedo0910.github.io" target="_blank">
+                    <router-link class="arrow-link" to="/talk">
                         <span>查看更多</span>
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </a>
+                    </router-link>
                     <div class="blankspace1"></div>
                     <div class="post-group">
-                        <a class="skeleton" v-for="(t, index) in talkposts" :key="index" :href="t.url" target="_blank">
+                        <router-link class="skeleton" v-for="(t, index) in talkposts" :key="index" :to="t.url">
                             <transition name="fade">
                                 <div class="post" v-if="isTalkLoaded" :style="{'background-image': 'url(' + t.bg + ')' }">
                                     <div class="post-mask"></div>
@@ -30,14 +30,14 @@
                                         <p class="date">{{t.date}}</p>
                                         <h3 class="title">{{t.title}}</h3>
                                         <p class="body">{{t.body}}</p>
-                                        <a class="arrow-link" :href="t.url" target="_blank">
+                                        <router-link class="arrow-link" :to="t.url">
                                             <span>阅读全文</span>
                                             <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                        </a>
+                                        </router-link>
                                     </div>
                                 </div>
                             </transition>
-                        </a>
+                        </router-link>
                     </div>
                     <div class="blankspace"></div>
                 </section>
@@ -150,6 +150,7 @@
 <script>
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import * as io from '../assets/js/io';
+import { isBlackList } from '../assets/js/blacklist'
 import moment from 'moment';
 
 export default {
@@ -285,6 +286,16 @@ export default {
         prev() {
             this.$refs.swipe.prev();
         },
+        blackListFilter(url) {
+            if (!url) {
+                return 'http://o7a3i0m1t.bkt.clouddn.com/image/blog/background/background-min.jpg'
+            }
+            if (isBlackList(url)) {
+                return 'http://o7a3i0m1t.bkt.clouddn.com/image/blog/background/background-min.jpg'
+            } else {
+                return url;
+            }
+        },
         linkGenerator: function(seed) {
             const url = 'http://o7a3i0m1t.bkt.clouddn.com/image/website/news/post-header/';
             const TOTAL = 19;
@@ -345,9 +356,9 @@ export default {
                     const tarPost = vm.talkposts[i];
                     tarPost.title = vm.summaryTitle(post.title);
                     tarPost.body = vm.summaryBody(post.excerpt);
-                    tarPost.bg = post.cover || 'http://o7a3i0m1t.bkt.clouddn.com/image/blog/background/background-min.jpg';
+                    tarPost.bg = vm.blackListFilter(post.cover);
                     tarPost.date = moment(post.date).format('ll');
-                    tarPost.url = `https://reedo0910.github.io/${moment(post.date).format('YYYY-MM-DD')}-${post.slug}.html`;
+                    tarPost.url = `/talk/post/${moment(post.date).format('YYYY-MM-DD')}-${post.slug}`;
                 }
                 vm.isTalkLoaded = true;
             })

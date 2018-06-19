@@ -98,3 +98,23 @@ export function getBlogList() {
         });
     }
 }
+
+export function getBlogPostBySlug(slug) {
+    const url = `${blogApi}/articles/${slug}.json`;
+    const key = `bp-${slug}`
+    if (!getSession(key)) {
+        return axios.get(url)
+            .then(res => {
+                setSession(key, res.data)
+                return res.data
+            })
+            .catch(error => {
+                console.log(error);
+                return 404;
+            });
+    } else {
+        return new Promise(function(resolve, reject) {
+            resolve(getSession(key));
+        });
+    }
+}

@@ -64,7 +64,7 @@ export default {
             return url + result + '.jpg';
         },
         shuffle: function(a, b, c, t) {
-            return ((a + b) * c) % t + 1;
+            return (a * b * c) % t + 1;
         },
         summary: function(body) {
             return body.replace(/[\\\`\*\~\_\[\]\#\+\-\!\>\x]/g, '').substr(0, 110) + ' …';

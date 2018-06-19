@@ -293,7 +293,7 @@ export default {
             return url + result + '.jpg';
         },
         shuffle: function(a, b, c, t) {
-            return ((a + b) * c) % t + 1;
+            return (a * b * c) % t + 1;
         },
         summaryBody: function(body) {
             body = body.trim().replace('[Figure]', '').replace(/[\\\`\*\~\_\[\]\#\+\-\!\>\x]/g, '').substr(0, 45);

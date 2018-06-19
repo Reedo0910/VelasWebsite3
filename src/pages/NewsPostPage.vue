@@ -111,7 +111,7 @@ export default {
     },
     methods: {
         updateTitle: function () {
-            document.title = `${this.post.title} - Velas 新闻`;
+            document.title = `${this.post.title} - Velas新闻`;
         },
         scrollToCom: function() {
             return document.getElementById('comments').scrollIntoView();

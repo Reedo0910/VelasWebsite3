@@ -288,10 +288,10 @@ export default {
         },
         blackListFilter(url) {
             if (!url) {
-                return 'http://o7a3i0m1t.bkt.clouddn.com/image/blog/background/background-min.jpg'
+                return 'http://o7a3i0m1t.bkt.clouddn.com/image/website/news/post-header/11.jpg'
             }
             if (isBlackList(url)) {
-                return 'http://o7a3i0m1t.bkt.clouddn.com/image/blog/background/background-min.jpg'
+                return 'http://o7a3i0m1t.bkt.clouddn.com/image/website/news/post-header/11.jpg'
             } else {
                 return url;
             }

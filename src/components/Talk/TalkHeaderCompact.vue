@@ -8,9 +8,10 @@
         </p>
         <h1>{{ title }}</h1>
         <p>标签：
-            <span v-for="(t, index) in tags" :key="t.name">{{ t.name }}
+            <span v-if="tags" v-for="(t, index) in tags" :key="t.name">{{ t.name }}
                 <span v-if="index !== tags.length-1">, </span>
             </span>
+            <span v-else>无</span>
         </p>
     </header>
 </template>

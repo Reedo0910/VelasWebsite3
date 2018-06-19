@@ -120,7 +120,14 @@
             },
             init: function () {
                 const vm = this;
-                const slug = vm.$route.params.full_title.split('-')[3];
+                let slug = '';
+                const splitArr = vm.$route.params.full_title.split('-');
+                for (let i = 3; i < splitArr.length; i++) {
+                    slug += splitArr[i];
+                    if (i !== splitArr.length - 1) {
+                        slug += '-';
+                    }
+                }
                 moment.locale('zh-cn');
                 hexo.getBlogPostBySlug(slug)
                     .then(function (res) {

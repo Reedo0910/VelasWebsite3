@@ -100,10 +100,10 @@
                     <!-- <p class="jump-icon">www.velascamp.cn</p> -->
                     <div class="hr"></div>
                     <p class="context-intro">无数的奇思妙想从这里诞生</p>
-                    <a class="arrow-link" href="http://www.velascamp.cn/" target="_blank">
+                    <router-link class="arrow-link" to="/camp">
                         <span>查看更多</span>
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </a>
+                    </router-link>
                     <div class="blankspace1"></div>
                     <div class="swipe-group">
                         <swiper class="swiper" :options="swiperOption" ref="mySwiper">

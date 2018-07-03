@@ -14,6 +14,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
+    "macy": "^2.3.0",
     "node-sass": "^4.9.0"
   },
   "devDependencies": {

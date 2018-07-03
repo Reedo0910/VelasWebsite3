@@ -38,6 +38,9 @@ const TalkPage = resovle => {
 const TalkPostPage = resovle => {
     require(['@/pages/TalkPostPage.vue'], resovle)
 };
+const CampPage = resovle => {
+    require(['@/pages/CampPage.vue'], resovle)
+};
 
 Vue.use(Router)
 
@@ -164,6 +167,16 @@ export default new Router({
                 style: 'light'
             }
         }]
+    },
+    {
+        path: '/camp',
+        name: 'camp-page',
+        component: CampPage,
+        meta: {
+            index: 4,
+            title: '探索',
+            style: 'light'
+        }
     },
     {
         path: '*',

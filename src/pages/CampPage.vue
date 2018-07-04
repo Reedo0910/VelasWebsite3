@@ -244,18 +244,23 @@
         @include link-transition(0.2s);
         .clear-btn {
           position: absolute;
-          width: 10px;
-          height: 10px;
-          right: 8px;
-          top: 15px;
+          width: 36px;
+          height: 36px;
+          right: -10px;
+          top: 1px;
           background-color: transparent;
           border: none;
           background-image: url("/static/images/clear.png");
           background-size: 10px;
           background-repeat: no-repeat;
+          background-position: center center;
           outline: none;
           cursor: pointer;
-          opacity: 0.8;
+          opacity: .7;
+          &:hover,
+          &:focus {
+            opacity: 1;
+          }
         }
         .input-box {
           width: 100%;
@@ -274,7 +279,7 @@
           background-position: 10px center;
           background-size: 16px;
           font-weight: lighter;
-          opacity: .7;
+          opacity: 0.7;
           @include link-transition(0.2s);
           &:focus {
             opacity: 1;

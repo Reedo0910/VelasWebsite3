@@ -239,7 +239,7 @@
       .search-box {
         width: 160px;
         height: 36px;
-        margin: 6px 0 10px;
+        margin: 6px 10px 10px;
         position: relative;
         @include link-transition(0.2s);
         .clear-btn {
@@ -292,7 +292,8 @@
         list-style: none;
         display: flex;
         justify-content: center;
-        padding: 15px 20px;
+        // padding: 15px 20px;
+        padding: 15px 0;
         font-weight: lighter;
         color: #666;
         margin-bottom: 10px;
@@ -377,14 +378,36 @@
     }
 
     @media screen and (max-width: 723px) {
-      header .search-box {
-        width: 250px;
+      header {
+        width: 100%;
+        .search-box {
+          width: 250px;
+        }
       }
     }
 
     @media screen and (max-width: 425px) {
-      header .search-box {
-        width: 100%;
+      header {
+        .search-box {
+          width: 80%;
+        }
+        .filter-list {
+          flex-wrap: wrap;
+          .filter-list-item {
+            margin: 0 5px;
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 425px) {
+      header {
+        .filter-list {
+          .filter-list-item {
+            padding: 5px 7px;
+            margin: 0 5px;
+          }
+        }
       }
     }
 </style>

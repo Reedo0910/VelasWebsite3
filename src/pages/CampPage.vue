@@ -4,16 +4,16 @@
             <div class="top-space-holeder"></div>
             <header>
                 <h1>作品</h1>
-                <div class="search-box">
-                    <input class="input-box" type="text" v-model.trim="key" :placeholder="placeholder">
-                    <transition name="fade">
+                <div class="flex-content">
+                    <div class="search-box">
+                        <input class="input-box" type="text" v-model.trim="key" :placeholder="placeholder">
                         <button class="clear-btn" @click="key=''" v-show="isClearShow"></button>
-                    </transition>
+                    </div>
+                    <ul class="filter-list">
+                        <li class="filter-list-item" v-for="category in categories" :key="category.id" :class="{active: active === category.id}" @click="active = category.id">{{ category.name }}</li>
+                    </ul>
+                    <!-- <div style="height:1px; width:160px;"></div> -->
                 </div>
-                <ul class="filter-list">
-                    <!-- <span class="filter-list-item">Filter:</span> -->
-                    <li class="filter-list-item" v-for="category in categories" :key="category.id" :class="{active: active === category.id}" @click="active = category.id">{{ category.name }}</li>
-                </ul>
             </header>
             <main>
                 <div class="card-group" id="card_group">
@@ -39,7 +39,7 @@
             return {
                 active: 'All',
                 key: '',
-                placeholder: '搜索',
+                placeholder: 'Search',
                 isClearShow: false,
                 isAdapt: 'fa fa-mobile',
                 categories: [{
@@ -228,42 +228,53 @@
         margin: 0;
       }
 
+      .flex-content {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        justify-content: center;
+        align-items: baseline;
+      }
+
       .search-box {
-        width: 270px;
-        height: 38px;
-        margin: 10px auto;
+        width: 160px;
+        height: 36px;
+        margin: 6px 0 10px;
         position: relative;
         @include link-transition(0.2s);
         .clear-btn {
           position: absolute;
-          width: 12px;
-          height: 12px;
+          width: 10px;
+          height: 10px;
           right: 8px;
-          top: 13px;
+          top: 15px;
           background-color: transparent;
           border: none;
           background-image: url("/static/images/clear.png");
-          background-size: 12px;
+          background-size: 10px;
           background-repeat: no-repeat;
           outline: none;
           cursor: pointer;
+          opacity: 0.8;
         }
         .input-box {
           width: 100%;
           height: 100%;
           position: relative;
           box-sizing: border-box;
-          padding: 5px 25px 5px 25px;
+          padding: 5px 25px 5px 35px;
           overflow: auto;
           background-color: transparent;
           outline: none;
           border: none;
-          border-bottom: #888 1px solid;
+          //   border-bottom: #888 1px solid;
+          //   background-color: #e9e9e9;
           background-image: url("/static/images/search.png");
           background-repeat: no-repeat;
-          background-position: 0 center;
+          background-position: 10px center;
           background-size: 16px;
-          opacity: 0.5;
+          font-weight: lighter;
+          opacity: .7;
           @include link-transition(0.2s);
           &:focus {
             opacity: 1;
@@ -362,15 +373,15 @@
       }
     }
 
-    @media screen and (max-width: 768px) {
-      .search-box {
-        width: 200px;
+    @media screen and (max-width: 723px) {
+      header .search-box {
+        width: 250px;
       }
     }
 
     @media screen and (max-width: 425px) {
-      .search-box {
-        display: none;
+      header .search-box {
+        width: 100%;
       }
     }
 </style>

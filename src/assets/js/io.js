@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const api = 'https://api.github.com/repos';
+const github = 'https://api.github.com'
 const blogApi = 'https://reedo0910.github.io/api';
 
 function setSession(key, val) {
@@ -62,6 +63,26 @@ export function getIssueById(repo, id) {
 export function getComs(repo, id) {
     const url = `${api}/Reedo0910/${repo}/issues/${id}/comments`;
     const key = `c${repo}${id}`;
+    if (!getSession(key)) {
+        return axios.get(url)
+            .then(res => {
+                setSession(key, res.data)
+                return res.data;
+            })
+            .catch(error => {
+                console.log(error);
+                return 404;
+            });
+    } else {
+        return new Promise(function(resolve, reject) {
+            resolve(getSession(key));
+        });
+    }
+}
+
+export function getUser() {
+    const url = `${github}/users/Reedo0910`;
+    const key = 'user';
     if (!getSession(key)) {
         return axios.get(url)
             .then(res => {

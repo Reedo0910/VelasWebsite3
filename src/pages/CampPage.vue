@@ -12,7 +12,6 @@
                     <ul class="filter-list">
                         <li class="filter-list-item" v-for="category in categories" :key="category.id" :class="{active: active === category.id}" @click="active = category.id">{{ category.name }}</li>
                     </ul>
-                    <!-- <div style="height:1px; width:160px;"></div> -->
                 </div>
             </header>
             <main>

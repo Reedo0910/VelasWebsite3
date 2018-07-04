@@ -3,7 +3,7 @@
         <div class="template-content">
             <div class="top-space-holeder"></div>
             <header>
-                <h1>作品</h1>
+                <h1>探索</h1>
                 <div class="flex-content">
                     <div class="search-box">
                         <input class="input-box" type="text" v-model.trim="key" :placeholder="placeholder">
@@ -16,13 +16,15 @@
             </header>
             <main>
                 <div class="card-group" id="card_group">
-                    <a target="_blank" :href="w.url" class="works-card" v-for="w in filterCards" v-if="active === 'All' || active === w.category" :key="w.name" :style="{'height': w.height + 'px', 'background-color': w.color}" :title="w.name">
+                    <a target="_blank" :href="w.url" class="works-card" v-for="w in filterCards" v-if="active === 'All' || active === w.category" :key="w.name" :style="{'height': w.height + 'px', 'background-color': w.color}">
                         <img class="card-screenshot" :src="w.image">
-                        <!-- <p class="card-description">{{ w.category }}</p>
-                            <h2 class="card-title">
-                            <div class="title-text">{{ w.name }}</div>
-                            <i :class="w.mobile ? isAdapt : ''" aria-hidden="true"></i>
-                        </h2> -->
+                        <div class="card-mask">
+                            <div class="card-title">
+                                <p class="title-text">{{ w.name }}</p>
+                                <p class="category-text">{{ w.category }}</p>
+                                <!-- <i :class="w.mobile ? isAdapt : ''" aria-hidden="true"></i> -->
+                            </div>
+                        </div>
                     </a>
                 </div>
             </main>
@@ -326,50 +328,70 @@
           display: block;
           text-decoration: none;
           outline: none;
+          z-index: 0;
+          overflow: hidden;
           @include link-transition(0.2s);
-          .card-title {
-            margin: 0;
-            margin-top: 5px;
-            .title-text {
-              max-width: 180px;
-              white-space: nowrap;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              display: inline-block;
-              vertical-align: middle;
-            }
-            i {
-              margin-left: 0.5em;
-              display: inline-block;
-              vertical-align: middle;
+          .card-mask {
+            width: 100%;
+            height: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 5;
+            background-color: rgba(0, 0, 0, 0.45);
+            color: #ffffff;
+            opacity: .6;
+            text-align: center;
+            position: absolute;
+            transition: all .3s ease-out;
+            .card-title {
+              height: 67px;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              opacity: 0;
+              margin: auto;
+              position: absolute;
+              transition: opacity .3s ease-out;
+              .title-text {
+                margin-top: 0;
+                margin-bottom: 15px;
+                font-size: 24px;
+                text-transform: uppercase;
+              }
+              i {
+                margin-left: 0.5em;
+                display: inline-block;
+                vertical-align: middle;
+              }
+              .category-text {
+                margin: 0;
+                font-weight: lighter;
+              }
             }
           }
-          .card-description {
-            margin: 0;
-            margin-top: 15px;
-          }
-          img {
+          img.card-screenshot {
             display: block;
             width: 70%;
             position: absolute;
+            z-index: 1;
             margin: auto;
             top: 0;
             bottom: 0;
             left: 0;
             right: 0;
             box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px;
-            @include link-transition(0.2s);
           }
           &:hover,
           &:active {
-            @include link-transition(0.2s);
-            .card-title,
-            .card-description,
-            img {
-              @include link-transition(0.2s);
+            .card-mask {
+              opacity: 1;
+              height: 100%;
+              transition: all .3s ease-out;
             }
-            .card-title .title-text {
-              overflow: visible;
+            .card-title {
+              opacity: 1;
+              transition: opacity .3s ease-out;
             }
           }
         }

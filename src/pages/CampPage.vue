@@ -244,10 +244,10 @@
         @include link-transition(0.2s);
         .clear-btn {
           position: absolute;
-          width: 36px;
-          height: 36px;
-          right: -10px;
-          top: 1px;
+          width: 25px;
+          height: 25px;
+          right: -2px;
+          top: 7px;
           background-color: transparent;
           border: none;
           background-image: url("/static/images/clear.png");
@@ -256,10 +256,10 @@
           background-position: center center;
           outline: none;
           cursor: pointer;
-          opacity: .7;
+          border-radius: 25px;
           &:hover,
           &:focus {
-            opacity: 1;
+            background-color: rgba(211, 211, 211, 0.5);
           }
         }
         .input-box {
@@ -272,8 +272,6 @@
           background-color: transparent;
           outline: none;
           border: none;
-          //   border-bottom: #888 1px solid;
-          //   background-color: #e9e9e9;
           background-image: url("/static/images/search.png");
           background-repeat: no-repeat;
           background-position: 10px center;

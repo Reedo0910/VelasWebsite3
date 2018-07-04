@@ -247,7 +247,7 @@
           position: absolute;
           width: 25px;
           height: 25px;
-          right: -2px;
+          right: 2px;
           top: 7px;
           background-color: transparent;
           border: none;
@@ -268,11 +268,12 @@
           height: 100%;
           position: relative;
           box-sizing: border-box;
-          padding: 5px 25px 5px 35px;
+          padding: 5px 30px 5px 38px;
           overflow: auto;
           background-color: transparent;
           outline: none;
           border: none;
+          border-radius: 3px;
           background-image: url("/static/images/search.png");
           background-repeat: no-repeat;
           background-position: 10px center;
@@ -280,8 +281,16 @@
           font-weight: lighter;
           opacity: 0.7;
           @include link-transition(0.2s);
+          &:hover,
           &:focus {
             opacity: 1;
+            @include link-transition(0.2s);
+          }
+          &:hover {
+            background-color: #ffffff80;
+          }
+          &:focus {
+            background-color: #fff;
           }
           &::-ms-clear {
             display: none;
@@ -293,7 +302,6 @@
         list-style: none;
         display: flex;
         justify-content: center;
-        // padding: 15px 20px;
         padding: 15px 0;
         font-weight: lighter;
         color: #666;
@@ -302,6 +310,14 @@
           cursor: pointer;
           border-radius: 3px;
           user-select: none;
+          &,
+          &:hover,
+          &.active {
+            @include link-transition(0.15s);
+          }
+          &:hover {
+            background-color: #ffffff80;
+          }
           &.active {
             background-color: #fff;
             cursor: initial;
@@ -339,10 +355,10 @@
             z-index: 5;
             background-color: rgba(0, 0, 0, 0.45);
             color: #ffffff;
-            opacity: .6;
+            opacity: 0.6;
             text-align: center;
             position: absolute;
-            transition: all .3s ease-out;
+            transition: all 0.3s ease-out;
             .card-title {
               height: 67px;
               top: 0;
@@ -352,7 +368,7 @@
               opacity: 0;
               margin: auto;
               position: absolute;
-              transition: opacity .3s ease-out;
+              transition: opacity 0.3s ease-out;
               .title-text {
                 margin-top: 0;
                 margin-bottom: 15px;
@@ -387,22 +403,22 @@
             .card-mask {
               opacity: 1;
               height: 100%;
-              transition: all .3s ease-out;
+              transition: all 0.3s ease-out;
             }
             .card-title {
               opacity: 1;
-              transition: opacity .3s ease-out;
+              transition: opacity 0.3s ease-out;
             }
           }
         }
       }
     }
 
-    @media screen and (max-width: 723px) {
+    @media screen and (max-width: 698px) {
       header {
         width: 100%;
         .search-box {
-          width: 250px;
+          width: 60%;
         }
       }
     }
@@ -421,14 +437,9 @@
       }
     }
 
-    @media screen and (max-width: 425px) {
-      header {
-        .filter-list {
-          .filter-list-item {
-            padding: 5px 7px;
-            margin: 0 5px;
-          }
-        }
+    @media screen and (max-width: 320px) {
+      header .filter-list .filter-list-item {
+        padding: 5px 7px;
       }
     }
 </style>

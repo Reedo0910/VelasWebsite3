@@ -1,5 +1,5 @@
 <template>
-    <div id="footer-block" v-show="blackList">
+    <div class="footer-block" v-show="blackList">
         <ul class="share-group">
             <a v-for="b in btns" :key="b.title" :href="b.href" target="_blank">
                 <li class="fa fa-lg" :class="b.icon">
@@ -7,7 +7,7 @@
                 </li>
             </a>
         </ul>
-        <a class="fa fa-angle-up fa-2x gototop" id="gototop" @click="gototop" :class="{ not_on_top: !isOnTop }"></a>
+        <gototop></gototop>
         <div class="footer-copy">
             <p>©2016-2018 by Eric R. Lee. All rights reserved.</p>
         </div>
@@ -15,11 +15,14 @@
 </template>
 
 <script>
+    import Gototop from './Gototop'
     export default {
         name: 'FooterBlock',
+        components: {
+            Gototop
+        },
         data() {
             return {
-                isOnTop: true,
                 btns: [
                     {
                         href: 'mailto:ericrlee@outlook.com',
@@ -42,52 +45,24 @@
                 ]
             }
         },
-        methods: {
-            gototop() {
-                const dd = document.documentElement;
-                const db = document.body;
-                let top = dd.scrollTop || db.scrollTop;
-                const step = Math.floor(top / 15);
-                (function fn() {
-                    top -= step;
-                    if (top > -step) {
-                        dd.scrollTop === 0 ? db.scrollTop = top : dd.scrollTop = top;
-                        setTimeout(fn, 10);
-                    }
-                })();
-            },
-            handleScroll() {
-                let top = document.documentElement.scrollTop || document.body.scrollTop;
-                this.isOnTop = top <= 200;
-            }
-        },
         computed: {
             blackList() {
                 return this.$route.meta.index !== -1 && document.body.clientHeight >= 300;
             }
-        },
-        created() {
-            this.handleScroll();
-        },
-        mounted() {
-            window.addEventListener('scroll', this.handleScroll);
-        },
-        beforeDestroy() {
-            window.removeEventListener('scroll', this.handleScroll);
         }
     }
 </script>
 
 <style lang="scss" scoped>
-    @mixin link-transition($time, $type:all) {
+    @mixin link-transition($time, $type: all) {
       -webkit-transition: $type $time ease-out;
       -moz-transition: $type $time ease-out;
       transition: $type $time ease-out;
     }
 
-    #footer-block {
-      background-color: #333;
-      color: #fff;
+    .footer-block {
+      background-color: #eee;
+      color: #1d1d1d;
       width: 100%;
       min-height: 200px;
       text-align: center;
@@ -95,27 +70,22 @@
         font-weight: 300;
         letter-spacing: 1px;
       }
-      .hr {
-        background-color: #fff;
-        margin: 30px auto 10px;
-        height: 1px;
-      }
       .share-group {
         padding: 50px 40px 20px;
         display: block;
         margin: 0 auto;
         a {
-          color: #fff;
+          color: #1d1d1d;
           text-decoration: none;
           @include link-transition(0.2s);
           li {
             display: inline-block;
             padding: 10px;
             p {
-              color: #fff;
-              opacity: 0;
-              font-family: Arial, Helvetica, sans-serif;
+              color: #1d1d1d;
+              text-transform: uppercase;
               font-size: 12px;
+              opacity: 0;
               @include link-transition(0.2s);
             }
           }
@@ -140,47 +110,12 @@
         }
       }
       .footer-copy p {
+        color: #8e8e8e;
+        background-color: #f5f5f5;
+        text-transform: uppercase;
+        font-size: 12px;
         padding: 15px 0 20px;
-        font-size: 14px;
         margin: 0;
-      }
-      .gototop {
-        display: block;
-        position: fixed;
-        z-index: 800;
-        padding: 5px;
-        bottom: 65px;
-        right: 6%;
-        width: 32px;
-        border-radius: 100%;
-        background-color: #eee;
-        text-decoration: none;
-        color: #444;
-        transform: scale(0);
-        -webkit-transition: all 0.2s ease;
-        -moz-transition: all 0.2s ease;
-        transition: all 0.2s ease;
-        outline: none;
-        cursor: pointer;
-        &.not_on_top {
-          transform: scale(1);
-          &:hover {
-            background-color: #fff;
-            color: #000000;
-            transform: scale(1.1);
-            -webkit-transition: all 0.2s ease;
-            -moz-transition: all 0.2s ease;
-            transition: all 0.2s ease;
-          }
-        }
-      }
-    }
-
-    @media screen and (max-width: 600px) {
-      #footer-block .gototop {
-        width: 28px;
-        line-height: 28px;
-        border-radius: 28px;
       }
     }
 </style>

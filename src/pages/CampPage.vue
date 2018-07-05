@@ -239,7 +239,7 @@
 
       .search-box {
         width: 160px;
-        height: 36px;
+        height: 32px;
         margin: 6px 10px 10px;
         position: relative;
         @include link-transition(0.2s);
@@ -248,7 +248,7 @@
           width: 25px;
           height: 25px;
           right: 2px;
-          top: 7px;
+          top: 4px;
           background-color: transparent;
           border: none;
           background-image: url("/static/images/clear.png");

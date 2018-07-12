@@ -29,7 +29,7 @@ const NewsPage = resovle => {
 const NewsPostPage = resovle => {
     require(['@/pages/NewsPostPage.vue'], resovle)
 };
-const TCPage = resovle => {
+const TimeCapsulePage = resovle => {
     require(['@/pages/TimeCapsulePage.vue'], resovle)
 };
 const TalkPage = resovle => {
@@ -40,6 +40,9 @@ const TalkPostPage = resovle => {
 };
 const CampPage = resovle => {
     require(['@/pages/CampPage.vue'], resovle)
+};
+const GuestbookPage = resovle => {
+    require(['@/pages/Guestbook.vue'], resovle)
 };
 
 Vue.use(Router)
@@ -150,7 +153,7 @@ export default new Router({
         {
             path: 'time-capsule',
             name: 'time-capsule-page',
-            component: TCPage,
+            component: TimeCapsulePage,
             meta: {
                 index: 3,
                 title: '时间胶囊',
@@ -175,6 +178,16 @@ export default new Router({
         meta: {
             index: 4,
             title: '探索',
+            style: 'light'
+        }
+    },
+    {
+        path: '/guestbook',
+        name: 'guestbook-page',
+        component: GuestbookPage,
+        meta: {
+            index: 5,
+            title: '留言',
             style: 'light'
         }
     },

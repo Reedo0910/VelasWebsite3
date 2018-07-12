@@ -30,7 +30,7 @@ export const Mainlinks = [
     name: '探索'
   },
   {
-    route: '/message',
+    route: '/guestbook',
     isExact: false,
     iconClass: 'icon-bulletin-board',
     name: '留言'

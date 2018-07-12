@@ -14,10 +14,10 @@
                 <i :class="[link.iconClass, 'fa', 'iconfont']" aria-hidden="true"></i>{{link.name}}
                 <div class="touch-ripple"></div>
             </router-link>
-            <a v-for="slink in sublinks" class="nav-sub" :key="slink.name" :href="slink.href" target="_blank" @mousedown="handleMouseDown">
+            <!-- <a v-for="slink in sublinks" class="nav-sub" :key="slink.name" :href="slink.href" target="_blank" @mousedown="handleMouseDown">
                 <i :class="['fa', 'iconfont', slink.iconClass]" aria-hidden="true"></i>{{slink.name}}
                 <div class="touch-ripple"></div>
-            </a>
+            </a> -->
         </ul>
     </div>
 </template>

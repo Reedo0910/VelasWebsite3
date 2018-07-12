@@ -10,6 +10,7 @@ selenium-debug.log
 Velas.conf
 etc/
 src/assets/js/read_only_token.js
+config/
 
 # Editor directories and files
 .vscode

@@ -24,21 +24,21 @@
                 <div class="hr"></div>
                 <h2>写留言</h2>
                 <div class="comment-area bg-white area-block">
-                    <form class="comment-form">
+                    <form class="comment-form" @submit.prevent="leaveMessage">
                         <div class="form-group">
                             <div class="info">
                                 <div class="input-group">
                                     <label class="label" for="author">昵称</label>
-                                    <input id="author" name="author" type="text" class="input" required placeholder="你的大名">
+                                    <input id="author" name="author" type="text" class="input" v-model="form.name" required placeholder="你的大名">
                                 </div>
                                 <div class="input-group">
                                     <label class="label" for="email">邮箱地址
                                         <sup>*注1</sup>
                                     </label>
-                                    <input id="email" name="email" type="email" class="input" required placeholder="你的个人邮箱">
+                                    <input id="email" name="email" type="email" class="input" v-model="form.email" required placeholder="你的个人邮箱">
                                 </div>
                                 <div class="input-group">
-                                    <input type="checkbox" name="save" id="saveinfo" checked>
+                                    <input type="checkbox" name="save" id="saveinfo" v-model="form.tag">
                                     <label for="saveinfo">保存我的个人信息
                                         <sup>*注2</sup>
                                     </label>
@@ -49,7 +49,7 @@
                                     <label class="label" for="comment">留言
                                         <sup>*注3</sup>
                                     </label>
-                                    <textarea id="comment" name="content" type="text" class="input textarea" placeholder="告诉我你的想法" required></textarea>
+                                    <textarea id="comment" name="content" type="text" class="input textarea" placeholder="告诉我你的想法" required v-model="form.content"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -92,12 +92,25 @@
                         date: '2018-07-12T08:11:45.740Z',
                         content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
                     }
-                ]
+                ],
+                form: {
+                    name: '',
+                    email: '',
+                    tag: true,
+                    content: ''
+                }
             }
         },
         methods: {
             fullTimeFormatter: function (time) {
                 return moment(time).format('lll');
+            },
+            leaveMessage: function () {
+                const name = this.form.name;
+                const email = this.form.email;
+                const saveTag = this.form.tag;
+                const text = this.form.content;
+                console.log({ name, email, saveTag, text });
             }
         },
         created() {
@@ -258,6 +271,8 @@
         min-width: 100%;
         max-width: 100%;
         min-height: 168px;
+        padding: 5px;
+        resize: none;
       }
     }
 

@@ -29,7 +29,7 @@
                             <div class="text">
                                 <div class="input-group comment-field">
                                     <label class="label" for="comment">留言（不超过1000字）</label>
-                                    <textarea id="comment" name="content" type="text" class="input textarea" placeholder="谢谢你的留言" required v-model="form.content"></textarea>
+                                    <textarea id="comment" name="content" type="text" class="input textarea" placeholder="谢谢你的留言￣▽￣" required v-model="form.content"></textarea>
                                 </div>
                             </div>
                             <div class="info">
@@ -144,7 +144,7 @@
                             if (data.success) {
                                 that.$iziToast.success({
                                     title: '留言成功',
-                                    message: '谢谢你的留言',
+                                    message: '谢谢你的留言￣3￣',
                                     id: data.message,
                                     toastOnce: true,
                                     onClosing: function (instance, toast, closedBy) {

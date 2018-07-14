@@ -3,7 +3,8 @@ import axios from 'axios';
 // 创建axios实例
 const instance = axios.create({
     baseURL: process.env.BASE_URL, // api的base_url
-    timeout: 5000 // 请求超时时间
+    timeout: 5000, // 请求超时时间
+    withCredentials: true
 });
 
 // respone拦截器

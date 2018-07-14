@@ -1,22 +1,23 @@
 import request from '@/utils/request'
 
-export function leaveMessage(name, email, text) {
+export function leaveComment(name, email, text, captcha) {
     const data = {
         name,
         email,
-        text
+        text,
+        captcha
     };
 
     return request({
-        url: '/guestbook',
+        url: '/comments',
         method: 'post',
         data
     })
 }
 
-export function getMessages() {
+export function getComments() {
     return request({
-        url: '/guestbook',
+        url: '/comments',
         method: 'get'
     })
 }

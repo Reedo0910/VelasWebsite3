@@ -47,6 +47,7 @@
 
 <script>
 import NewsSubNav from '../components/SubNav/NewsSubNav'
+import { setCookie, getCookie, checkCookie } from '../utils/cookie'
 export default {
     name: 'TimeCapsule',
     components: {
@@ -98,28 +99,14 @@ export default {
         }
     },
     methods: {
-        // cookie操作
         setCookie: function(name, value, days) {
-            let d = new Date();
-            d.setTime(d.getTime() + 24 * 60 * 60 * 1000 * days);
-            window.document.cookie = name + '=' + value + ';path=/;expires=' + d.toGMTString();
-        },
-        getCookie: function(name) {
-            let v = window.document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-            return v ? v[2] : null;
-        },
-        checkCookie: function() {
-            let c = this.getCookie('notice')
-            if (c !== null && c !== '' && c === 'false') {
-                this.isNotice = false;
-            }
-        },
-        deleteCookie: function(name) {
-            this.setCookie(name, '', -1);
+            setCookie(name, value, days);
         }
     },
     created() {
-        this.checkCookie();
+        if (checkCookie('notice', 'false')) {
+            this.isNotice = false;
+        }
     }
 }
 </script>

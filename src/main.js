@@ -3,29 +3,30 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
 import 'babel-polyfill';
-
 import NProgress from 'nprogress'
+import iziToast from './utils/iziToastPlugin';
 
 Vue.config.productionTip = false
+
+Vue.use(iziToast);
 
 NProgress.configure({ easing: 'ease', speed: 500, showSpinner: false })
 NProgress.inc(0.2)
 
 router.beforeEach((to, from, next) => {
-  NProgress.start()
-  next()
+    NProgress.start()
+    next()
 })
 
 router.afterEach(() => {
-  NProgress.done()
+    NProgress.done()
 })
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  router,
-  template: '<App/>',
-  components: { App }
+    el: '#app',
+    router,
+    template: '<App/>',
+    components: { App }
 })

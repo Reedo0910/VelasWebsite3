@@ -85,7 +85,7 @@
                     throw new Error('网络异常');
                 }
                 const vm = this;
-                var res = [];
+                // var res = [];
                 moment.locale('zh-cn');
                 posts.map(function (p) {
                     vm.posts.push({

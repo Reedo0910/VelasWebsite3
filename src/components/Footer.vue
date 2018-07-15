@@ -64,7 +64,7 @@
       background-color: #eee;
       color: #1d1d1d;
       width: 100%;
-      min-height: 200px;
+      min-height: 190px;
       text-align: center;
       p {
         font-weight: 300;

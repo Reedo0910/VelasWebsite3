@@ -1,7 +1,7 @@
 {
   "name": "velas3",
   "version": "1.0.0",
-  "description": "Velas Website 2017 summer update",
+  "description": "Velas.xyz Website",
   "author": "zeee <sea.sand@live.cn>",
   "private": true,
   "scripts": {
@@ -14,8 +14,6 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
-    "izitoast": "^1.3.0",
-    "macy": "^2.3.0",
     "node-sass": "^4.9.0"
   },
   "devDependencies": {

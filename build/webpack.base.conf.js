@@ -36,7 +36,9 @@ module.exports = {
       'vue-awesome-swiper': 'VueAwesomeSwiper',
       'moment': 'moment',
       'marked': 'marked',
-      'highlight.js': 'hljs'
+      'highlight.js': 'hljs',
+      'macy': 'Macy',
+      'izitoast': 'iziToast'
   },
   module: {
     rules: [

@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import iziToast from 'izitoast'
-import 'izitoast/dist/css/iziToast.min.css'
 
 iziToast.settings({
     timeout: 5000,

@@ -129,7 +129,7 @@
                         toastOnce: true
                     })
                 }
-                if (text.length < 15) {
+                if (text.length < 10) {
                     return that.$iziToast.warning({
                         title: '留言信息太短',
                         message: '多写几个字吧，我会很开心的哦',

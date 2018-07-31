@@ -23,7 +23,7 @@
                         <strong>想查看以前的更新日志？</strong>
                     </p>
                     <p>日志已于2017年8月29日停止更新，你仍可以在
-                        <router-link to="/log">这里</router-link> 找到他</p>
+                        <router-link to="/update-log">这里</router-link> 找到他</p>
                 </div>
                 <div class="notice thanks">
                     <p>Velas News的建成离不开<a href="https://github.com/cogons/issvue" target="_blank">issvue</a>的帮助</p>

@@ -130,7 +130,7 @@ export default new Router({
         }
     },
     {
-        path: '/log',
+        path: '/update-log',
         name: 'log-page',
         component: LogPage,
         meta: {

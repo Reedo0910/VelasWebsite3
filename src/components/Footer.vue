@@ -124,21 +124,21 @@
         margin: 0;
       }
 
-      &.dark-style {
-        color: #eee;
-        background-color: #1b1b1b;
-        .share-group {
-          a {
-            color: #f0f0f0;
-            li p {
-              color: #f0f0f0;
-            }
-          }
-        }
-        .footer-copy p {
-          background-color: #222;
-          color: #f5f5f5;
-        }
-      }
+    //   &.dark-style {
+    //     color: #eee;
+    //     background-color: #1b1b1b;
+    //     .share-group {
+    //       a {
+    //         color: #f0f0f0;
+    //         li p {
+    //           color: #f0f0f0;
+    //         }
+    //       }
+    //     }
+    //     .footer-copy p {
+    //       background-color: #222;
+    //       color: #f5f5f5;
+    //     }
+    //   }
     }
 </style>

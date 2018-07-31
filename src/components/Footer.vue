@@ -1,5 +1,5 @@
 <template>
-    <div class="footer-block" v-show="blackList">
+    <div class="footer-block" v-show="blackList" :class="styleSeletor">
         <ul class="share-group">
             <a v-for="b in btns" :key="b.title" :href="b.href" target="_blank">
                 <li class="fa fa-lg" :class="b.icon">
@@ -48,6 +48,12 @@
         computed: {
             blackList() {
                 return this.$route.meta.index !== -1 && document.body.clientHeight >= 300;
+            },
+            styleSeletor() {
+                return {
+                    'light-style': this.$route.meta.style === 'light',
+                    'dark-style': this.$route.meta.style === 'dark'
+                }
             }
         }
     }
@@ -116,6 +122,23 @@
         font-size: 12px;
         padding: 15px 0 20px;
         margin: 0;
+      }
+
+      &.dark-style {
+        color: #eee;
+        background-color: #1b1b1b;
+        .share-group {
+          a {
+            color: #f0f0f0;
+            li p {
+              color: #f0f0f0;
+            }
+          }
+        }
+        .footer-copy p {
+          background-color: #222;
+          color: #f5f5f5;
+        }
       }
     }
 </style>

@@ -109,12 +109,16 @@ $font-size-p:16px; //过渡动画样式
         background-color: #2196f3;
         transition: all .3s cubic-bezier(.35, 0, .25, 1);
     }
+    &.dark-style {
+        background-color: #2b2b2b;
+    }
     &.ontop {
         box-shadow: initial;
         padding-top: 8px;
         background-color: transparent;
     }
-    &.ontop.dark-style {
+    &.ontop.dark-style,
+    &.dark-style {
         .nav-main a,
         .nav-sub a {
             color: #fff;

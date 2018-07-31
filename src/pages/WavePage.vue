@@ -1,6 +1,6 @@
 <template>
     <transition name="switch-page" mode="out-in">
-        <div>
+        <div class="template-content">
             <div class="top-space-holeder"></div>
             <header>
                 <div class="content-mask"></div>
@@ -72,9 +72,14 @@
       }
     }
 
+    .template-content {
+      background-color: #454545;
+    }
+
     header {
       height: 440px;
-      background: #777 url(http://o7a3i0m1t.bkt.clouddn.com/image/website/wave/fancycrave-503527.jpg)
+      background: #777
+        url(http://o7a3i0m1t.bkt.clouddn.com/image/website/wave/fancycrave-503527.jpg)
         no-repeat;
       background-size: cover;
       background-position: center bottom;
@@ -114,12 +119,13 @@
     main {
       min-height: 400px;
       p.notice {
-        color: #444;
+        color: #fff;
         font-size: 1.5em;
         line-height: 400px;
         text-align: center;
         vertical-align: middle;
         overflow: hidden;
+        margin: 0;
         i {
           padding-right: 10px;
           font-size: 2em;

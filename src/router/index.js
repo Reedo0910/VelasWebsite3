@@ -57,7 +57,7 @@ export default new Router({
         meta: {
             index: 1,
             title: '电波站',
-            style: 'light'
+            style: 'dark'
         }
     },
     {

@@ -95,7 +95,11 @@ $font-size-p:16px; //过渡动画样式
         padding-top: 8px;
         background-color: transparent;
     }
-    &.ontop.dark-style {
+    &.dark-style {
+        background-color: #2b2b2b;
+    }
+    &.ontop.dark-style,
+    &.dark-style {
         .nav-list {
             li.nav-main,
             a.nav-sub {

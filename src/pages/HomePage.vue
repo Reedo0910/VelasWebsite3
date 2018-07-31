@@ -11,6 +11,38 @@
                 </div>
             </header>
             <div class="context">
+                <section class="intro-velas-section lt">
+                    <div class="blankspace1"></div>
+                    <h2 class="context-big-headtitle">这是哪？</h2>
+                    <div class="hr"></div>
+                    <p class="context-intro">这是我的个人网站，<br>我用它来分享我的见解、脑洞和文章随笔。<br>如果这里能为你带来一些灵感或是轻松愉悦的体验，<br id="tbr">那么这将是我的荣幸。</p>
+                    <div class="blankspace"></div>
+                </section>
+                <section class="wave-section dk">
+                    <h2 class="context-big-headtitle">电波站</h2>
+                    <div class="hr"></div>
+                    <p class="context-intro">让世界听见我的声音</p>
+                    <router-link class="arrow-link" to="/wave">
+                        <span>查看更多</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </router-link>
+                    <div class="blankspace1"></div>
+                    <div class="card-group" id="card-group">
+                        <div v-for="card in cards" class="card" :key="card.title" :style="{'background-image': 'url(' + card.background + ')'}">
+                            <div class="card-mask"></div>
+                            <div class="card-content">
+                                <router-link class="card-title" :to="card.href">
+                                    <span>{{card.title}}</span>
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </router-link>
+                                <p class="card-intro">{{card.intro}}</p>
+                                <router-link :to="card.href" class="card-icon">
+                                    <i class="fa fa-3x" :class="card.icon" aria-hidden="true"></i>
+                                </router-link>
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 <section class="talk-section lt">
                     <h2 class="context-big-headtitle">博客</h2>
                     <div class="hr"></div>
@@ -40,32 +72,7 @@
                     </div>
                     <div class="blankspace"></div>
                 </section>
-                <section class="wave-section dk">
-                    <h2 class="context-big-headtitle">电波站</h2>
-                    <div class="hr"></div>
-                    <p class="context-intro">让世界听见我的声音</p>
-                    <router-link class="arrow-link" to="/wave">
-                        <span>查看更多</span>
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </router-link>
-                    <div class="blankspace1"></div>
-                    <div class="card-group" id="card-group">
-                        <div v-for="card in cards" class="card" :key="card.title" :style="{'background-image': 'url(http://o7a3i0m1t.bkt.clouddn.com/image/website/' + card.background + ')'}">
-                            <div class="card-mask"></div>
-                            <div class="card-content">
-                                <router-link class="card-title" :to="card.href">
-                                    <span>{{card.title}}</span>
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                </router-link>
-                                <p class="card-intro">{{card.intro}}</p>
-                                <router-link :to="card.href" class="card-icon">
-                                    <i class="fa fa-3x" :class="card.icon" aria-hidden="true"></i>
-                                </router-link>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section class="news-section lt">
+                <section class="news-section wt">
                     <h2 class="context-big-headtitle">新闻</h2>
                     <div class="hr"></div>
                     <p class="context-intro">一切关于Velas的新鲜事</p>
@@ -94,6 +101,37 @@
                     </div>
                     <div class="blankspace"></div>
                 </section>
+                 <section class="flex-section">
+                    <section class="inn-section lt">
+                        <div class="blankspace1"></div>
+                        <div class="blankspace1"></div>
+                        <h2 class="context-big-headtitle">留言板</h2>
+                        <div class="hr"></div>
+                        <p class="context-intro">你有什么话要传达给Velas呢？</p>
+                        <router-link class="arrow-link" to="/inn">
+                            <span>说来听听</span>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </router-link>
+                        <div class="blankspace"></div>
+                        <div class="blankspace1"></div>
+                    </section>
+                    <section class="time-capsule-section dk">
+                        <div class="bg-layer"></div>
+                        <div class="ft-content">
+                            <div class="blankspace1"></div>
+                            <div class="blankspace1"></div>
+                            <h2 class="context-big-headtitle">时间胶囊</h2>
+                            <div class="hr"></div>
+                            <p class="context-intro">聆听时间讲的故事</p>
+                            <router-link class="arrow-link" to="/time-capsule">
+                                <span>查看详情</span>
+                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            </router-link>
+                            <div class="blankspace"></div>
+                            <div class="blankspace1"></div>
+                        </div>
+                    </section>
+                </section>
                 <section class="camp-section dk">
                     <h2 class="context-big-headtitle">探索</h2>
                     <!-- <p class="jump-icon">www.velascamp.cn</p> -->
@@ -119,26 +157,6 @@
                             <div class="swiper-button-prev  swiper-button-white" slot="button-prev"></div>
                             <div class="swiper-button-next  swiper-button-white" slot="button-next"></div>
                         </swiper>
-                    </div>
-                </section>
-                <section class="intro-velas-section lt">
-                    <div class="blankspace1"></div>
-                    <h2 class="context-big-headtitle">这是哪？</h2>
-                    <div class="hr"></div>
-                    <p class="context-intro">这是我的个人网站，<br>用于分享我的想法见解和个人爱好。<br>如果这里能为你带来一些灵感或是轻松愉悦的体验，<br id="tbr">那么这将是我的荣幸。</p>
-                    <div class="blankspace"></div>
-                </section>
-                <section class="time-capsule-section dk">
-                    <div class="bg-layer"></div>
-                    <div class="ft-content">
-                        <h2 class="context-big-headtitle">时间胶囊</h2>
-                        <div class="hr"></div>
-                        <p class="context-intro">聆听时间讲的故事</p>
-                        <router-link class="arrow-link" to="/time-capsule">
-                            <span>查看详情</span>
-                            <i class="fa fa-angle-right" aria-hidden="true"></i>
-                        </router-link>
-                        <div class="blankspace"></div>
                     </div>
                 </section>
             </div>
@@ -195,25 +213,25 @@ export default {
             isTalkLoaded: false,
             cards: [
                 {
-                    href: '/collection/music',
-                    title: '音乐',
-                    background: 'paramore-dallas.jpg',
-                    icon: 'fa-music',
-                    intro: '来场由耳朵到心灵的旅行'
-                },
-                {
-                    href: '/collection/tasty',
-                    title: '美食',
-                    background: 'oyakodon.jpg',
-                    icon: 'fa-cutlery',
-                    intro: '连味蕾也为之颤栗的美味'
-                },
-                {
-                    href: '/collection/movie',
-                    title: '电影',
-                    background: 'your_name.png',
+                    href: '/wave#movie',
+                    title: '影视',
+                    background: 'http://o7a3i0m1t.bkt.clouddn.com/image/website/your_name.png',
                     icon: 'fa-film',
-                    intro: '在萤幕里体验另一种人生'
+                    intro: '在萤幕中体验另一番人生'
+                },
+                {
+                    href: '/wave#game',
+                    title: '游戏',
+                    background: 'http://o7a3i0m1t.bkt.clouddn.com/image/website/tomb_raider.jpg',
+                    icon: 'fa-gamepad',
+                    intro: '感受从指尖至内心的律动'
+                },
+                {
+                    href: '/wave#book',
+                    title: '书籍',
+                    background: 'http://o7a3i0m1t.bkt.clouddn.com/image/website/rhema-kallianpur.jpg',
+                    icon: 'fa-book',
+                    intro: '来场由眼睛到心灵的旅行'
                 }
             ],
             slides: [
@@ -578,7 +596,7 @@ export default {
                     position: relative;
                     z-index: 1;
                     color: #fff;
-                    opacity: 0.85;
+                    opacity: 0.9;
                     box-sizing: border-box;
                     background: {
                         size: cover;
@@ -724,6 +742,20 @@ export default {
         .lt {
             color: #000;
             background-color: #eee;
+        }
+        .wt {
+            color: #000;
+            background-color: #fff;
+        }
+        .flex-section {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            overflow: hidden;
+            section {
+                flex-grow: 1;
+                width: 600px;
+            }
         }
     }
 }

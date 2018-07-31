@@ -231,7 +231,7 @@ export default {
                     title: '书籍',
                     background: 'http://o7a3i0m1t.bkt.clouddn.com/image/website/rhema-kallianpur.jpg',
                     icon: 'fa-book',
-                    intro: '任心灵在纸墨间浮沉漂流'
+                    intro: '任心灵在纸墨间自由漂流'
                 }
             ],
             slides: [

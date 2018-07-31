@@ -1,7 +1,7 @@
 <template>
     <transition name="switch-page" mode="out-in">
         <div class="template-content">
-            <news-sub-nav></news-sub-nav>
+            <div class="top-space-holeder"></div>
             <header>
                 <div class="content-mask"></div>
                 <h1>时间胶囊</h1>
@@ -46,13 +46,9 @@
 </template>
 
 <script>
-import NewsSubNav from '../components/SubNav/NewsSubNav'
 import { setCookie, getCookie, checkCookie } from '../utils/cookie'
 export default {
     name: 'TimeCapsule',
-    components: {
-        NewsSubNav
-    },
     data() {
         return {
             isNotice: true,
@@ -120,6 +116,13 @@ export default {
 
 .template-content {
     background-color: #f5f5f5;
+}
+
+.top-space-holeder {
+    margin: 0 auto;
+    padding: 80px 0 10px;
+    height: 1px;
+    width: 80%;
 }
 
 header {

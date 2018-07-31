@@ -6,22 +6,16 @@ export const Mainlinks = [
     name: '首页'
   },
   {
-    route: '/talk',
-    isExact: false,
-    iconClass: 'icon-bird',
-    name: '博客'
-  },
-  {
-    route: '/collection',
+    route: '/wave',
     isExact: false,
     iconClass: 'icon-radio-tower',
     name: '电波'
   },
   {
-    route: '/news',
+    route: '/talk',
     isExact: false,
-    iconClass: 'icon-News',
-    name: '新闻'
+    iconClass: 'icon-bird',
+    name: '博客'
   },
   {
     route: '/camp',

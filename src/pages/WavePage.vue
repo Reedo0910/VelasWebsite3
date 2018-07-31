@@ -1,11 +1,11 @@
 <template>
     <transition name="switch-page" mode="out-in">
         <div>
-            <collection-sub-nav></collection-sub-nav>
+            <wave-sub-nav></wave-sub-nav>
             <header>
                 <div class="content-mask"></div>
-                <h1>我的收藏</h1>
-                <p>珍藏每一样美好的东西</p>
+                <h1>电波站</h1>
+                <p>让你听到我的声音</p>
             </header>
             <main>
                 <section class="memorabilia co">
@@ -64,11 +64,11 @@
 </template>
 
 <script>
-    import CollectionSubNav from '../components/SubNav/CollectionSubNav';
+    import WaveSubNav from '../components/SubNav/WaveSubNav';
     export default {
-        name: 'Collection',
+        name: 'Wave',
         components: {
-            CollectionSubNav
+            WaveSubNav
         },
         data() {
             return {

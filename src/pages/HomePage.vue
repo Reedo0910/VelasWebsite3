@@ -13,7 +13,6 @@
             <div class="context">
                 <section class="talk-section lt">
                     <h2 class="context-big-headtitle">博客</h2>
-                    <!-- <p class="jump-icon">reedo0910.github.io</p> -->
                     <div class="hr"></div>
                     <p class="context-intro">某处女座的碎碎念</p>
                     <router-link class="arrow-link" to="/talk">
@@ -41,11 +40,11 @@
                     </div>
                     <div class="blankspace"></div>
                 </section>
-                <section class="collection-section dk">
-                    <h2 class="context-big-headtitle">收藏</h2>
+                <section class="wave-section dk">
+                    <h2 class="context-big-headtitle">电波站</h2>
                     <div class="hr"></div>
-                    <p class="context-intro">虽然算不上丰富，但绝对是真心推荐</p>
-                    <router-link class="arrow-link" to="/collection">
+                    <p class="context-intro">让你听到我的声音</p>
+                    <router-link class="arrow-link" to="/wave">
                         <span>查看更多</span>
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                     </router-link>
@@ -70,13 +69,13 @@
                     <h2 class="context-big-headtitle">新闻</h2>
                     <div class="hr"></div>
                     <p class="context-intro">一切关于Velas的新鲜事</p>
-                    <router-link class="arrow-link" to="/news">
+                    <router-link class="arrow-link" to="/wave/news">
                         <span>查看更多</span>
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                     </router-link>
                     <div class="blankspace1"></div>
                     <div class="post-group">
-                        <router-link v-for="(p, index) in newsposts" :key="index" :to="{ path: '/news/post/' + p.number }" class="skeleton">
+                        <router-link v-for="(p, index) in newsposts" :key="index" :to="{ path: '/wave/news/' + p.number }" class="skeleton">
                             <transition name="fade">
                                 <div class="post" v-if="isNewsLoaded" :style="{'background-image': 'url(' + p.image + ')'}">
                                     <div class="post-mask"></div>
@@ -84,7 +83,7 @@
                                         <p class="date">{{ p.date }}</p>
                                         <h3 class="title">{{ p.title }}</h3>
                                         <p class="body">{{ p.body }}</p>
-                                        <router-link class="arrow-link" :to="{ path: '/news/post/' + p.number }">
+                                        <router-link class="arrow-link" :to="{ path: '/wave/news/' + p.number }">
                                             <span>阅读全文</span>
                                             <i class="fa fa-angle-right" aria-hidden="true"></i>
                                         </router-link>
@@ -135,7 +134,7 @@
                         <h2 class="context-big-headtitle">时间胶囊</h2>
                         <div class="hr"></div>
                         <p class="context-intro">聆听时间讲的故事</p>
-                        <router-link class="arrow-link" to="/news/time-capsule">
+                        <router-link class="arrow-link" to="/time-capsule">
                             <span>查看详情</span>
                             <i class="fa fa-angle-right" aria-hidden="true"></i>
                         </router-link>
@@ -567,7 +566,7 @@ export default {
                 }
             }
         }
-        .collection-section {
+        .wave-section {
             .card-group {
                 margin: 0 auto;
                 display: flex;

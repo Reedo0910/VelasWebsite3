@@ -1,6 +1,6 @@
 <template>
-    <div id="newsSubNav">
-        <router-link v-for="(link, index) in links" :key="link.name" :to="link.route" :exact="link.isExact">
+    <div id="waveSubNav">
+        <router-link v-for="link in links" :key="link.name" :to="link.route" :exact="link.isExact">
             {{link.name}}
         </router-link>
     </div>
@@ -8,29 +8,19 @@
 
 <script>
 export default {
-    name: 'CollectionSubNav',
+    name: 'WaveSubNav',
     data() {
         return {
             links: [
                 {
-                    route: '/collection',
+                    route: '/wave',
                     isExact: true,
-                    name: '概览'
+                    name: '电波站'
                 },
                 {
-                    route: '/collection/music',
+                    route: '/wave/news',
                     isExact: false,
-                    name: '音乐'
-                },
-                {
-                    route: '/collection/tasty',
-                    isExact: false,
-                    name: '美食'
-                },
-                {
-                    route: '/collection/movie',
-                    isExact: false,
-                    name: '电影'
+                    name: '每周新闻'
                 }
             ]
         }
@@ -39,7 +29,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#newsSubNav {
+#waveSubNav {
     text-align: right;
     padding: 90px 0 10px;
     width: 90%;
@@ -62,7 +52,7 @@ export default {
 }
 
 @media screen and (max-width: 500px) {
-    #newsSubNav {
+    #waveSubNav {
         text-align: center;
     }
 }

@@ -5,17 +5,8 @@ import NotFoundPage from '@/pages/NotFoundPage';
 const HomePage = resovle => {
     require(['@/pages/HomePage.vue'], resovle)
 };
-const CollectionPage = resovle => {
-    require(['@/pages/CollectionPage.vue'], resovle)
-};
-const MusicPage = resovle => {
-    require(['@/pages/MusicPage.vue'], resovle)
-};
-const TastyPage = resovle => {
-    require(['@/pages/TastyPage.vue'], resovle)
-};
-const MoviePage = resovle => {
-    require(['@/pages/MoviePage.vue'], resovle)
+const WavePage = resovle => {
+    require(['@/pages/WavePage.vue'], resovle)
 };
 const LogPage = resovle => {
     require(['@/pages/LogPage.vue'], resovle)
@@ -60,6 +51,40 @@ export default new Router({
         }
     },
     {
+        path: '/wave',
+        component: SubIndex,
+        children: [{
+            path: '/',
+            name: 'wave-page',
+            component: WavePage,
+            meta: {
+                index: 1,
+                title: '电波站',
+                style: 'light'
+            }
+        },
+        {
+            path: 'news',
+            name: 'news-page',
+            component: NewsPage,
+            meta: {
+                index: 1,
+                title: '新闻',
+                style: 'light'
+            }
+        },
+        {
+            path: 'news/:id',
+            name: 'news-post',
+            component: NewsPostPage,
+            meta: {
+                index: 1,
+                title: '新闻',
+                style: 'light'
+            }
+        }]
+    },
+    {
         path: '/talk',
         component: SubIndex,
         children: [{
@@ -67,7 +92,7 @@ export default new Router({
             name: 'news-page',
             component: TalkPage,
             meta: {
-                index: 1,
+                index: 2,
                 title: '博客',
                 style: 'light'
             }
@@ -77,96 +102,8 @@ export default new Router({
             name: 'talk-post',
             component: TalkPostPage,
             meta: {
-                index: 1,
+                index: 2,
                 title: '博客',
-                style: 'light'
-            }
-        }]
-    },
-    {
-        path: '/collection',
-        component: SubIndex,
-        children: [{
-            path: '/',
-            name: 'collection-page',
-            component: CollectionPage,
-            meta: {
-                index: 2,
-                title: '收藏',
-                style: 'light'
-            }
-        },
-        {
-            path: 'music',
-            name: 'music-page',
-            component: MusicPage,
-            meta: {
-                index: 2,
-                title: '音乐',
-                style: 'dark'
-            }
-        },
-        {
-            path: 'tasty',
-            name: 'tasty-page',
-            component: TastyPage,
-            meta: {
-                index: 2,
-                title: '美食',
-                style: 'dark'
-            }
-        },
-        {
-            path: 'movie',
-            name: 'movie-page',
-            component: MoviePage,
-            meta: {
-                index: 2,
-                title: '电影',
-                style: 'dark'
-            }
-        }]
-    },
-    {
-        path: '/news',
-        component: SubIndex,
-        children: [{
-            path: '/',
-            name: 'news-page',
-            component: NewsPage,
-            meta: {
-                index: 3,
-                title: '新闻',
-                style: 'light'
-            }
-        },
-        {
-            path: 'post/:id',
-            name: 'news-post',
-            component: NewsPostPage,
-            meta: {
-                index: 3,
-                title: '新闻',
-                style: 'light'
-            }
-        },
-        {
-            path: 'time-capsule',
-            name: 'time-capsule-page',
-            component: TimeCapsulePage,
-            meta: {
-                index: 3,
-                title: '时间胶囊',
-                style: 'light'
-            }
-        },
-        {
-            path: 'log',
-            name: 'log-page',
-            component: LogPage,
-            meta: {
-                index: 3,
-                title: '更新日志',
                 style: 'light'
             }
         }]
@@ -176,7 +113,7 @@ export default new Router({
         name: 'camp-page',
         component: CampPage,
         meta: {
-            index: 4,
+            index: 3,
             title: '探索',
             style: 'light'
         }
@@ -186,8 +123,28 @@ export default new Router({
         name: 'inn-page',
         component: InnPage,
         meta: {
-            index: 5,
+            index: 4,
             title: '留言',
+            style: 'light'
+        }
+    },
+    {
+        path: '/log',
+        name: 'log-page',
+        component: LogPage,
+        meta: {
+            index: -1,
+            title: '更新日志',
+            style: 'light'
+        }
+    },
+    {
+        path: '/time-capsule',
+        name: 'time-capsule-page',
+        component: TimeCapsulePage,
+        meta: {
+            index: -1,
+            title: '时间胶囊',
             style: 'light'
         }
     },

@@ -1,7 +1,7 @@
 <template>
     <transition name="switch-page" mode="out-in">
         <div class="container">
-            <news-sub-nav></news-sub-nav>
+            <wave-sub-nav></wave-sub-nav>
             <news-header-compact :newsTitle="post.title" :newsDate="post.created_at"></news-header-compact>
             <article>
                 <div v-if="isClosed" class="notice closed">
@@ -19,7 +19,7 @@
             </article>
             <nav class="adjacent-posts">
                 <p class="page-nav next">
-                    <router-link class="page-navigation" :to="{ path: '/news/post/'+ nextPage.id }" v-if="nextPage.id !== -1">
+                    <router-link class="page-navigation" :to="{ path: '/wave/news/'+ nextPage.id }" v-if="nextPage.id !== -1">
                         <span class="nav-label">后一篇文章</span>
                         <strong class="nav-name">{{ nextPage.name }}</strong>
                         <span class="nav-time">{{ nextPage.time }}</span>
@@ -27,7 +27,7 @@
                     </router-link>
                 </p>
                 <p class="page-nav previous">
-                    <router-link class="page-navigation" :to="{ path: '/news/post/'+ previousPage.id }" v-if="previousPage.id !== -1">
+                    <router-link class="page-navigation" :to="{ path: '/wave/news/'+ previousPage.id }" v-if="previousPage.id !== -1">
                         <span class="nav-label">前一篇文章</span>
                         <strong class="nav-name">{{ previousPage.name }}</strong>
                         <span class="nav-time">{{ previousPage.time }}</span>
@@ -70,13 +70,13 @@ import moment from 'moment'
 import md from 'marked'
 import highlightjs from 'highlight.js'
 import NewsHeaderCompact from '../components/News/NewsHeaderCompact'
-import NewsSubNav from '../components/SubNav/NewsSubNav'
+import WaveSubNav from '../components/SubNav/WaveSubNav'
 import LoadingIcon from '../components/LoadingIcon'
 
 export default {
     name: 'NewsPost',
     components: {
-        NewsSubNav,
+        WaveSubNav,
         NewsHeaderCompact,
         LoadingIcon
     },

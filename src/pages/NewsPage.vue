@@ -1,7 +1,7 @@
 <template>
     <transition name="switch-page" mode="out-in">
         <div>
-            <news-sub-nav></news-sub-nav>
+            <wave-sub-nav></wave-sub-nav>
             <header>
                 <div class="content-mask"></div>
                 <h1>每周新闻</h1>
@@ -14,7 +14,7 @@
                         <strong>想找回以前的版本？</strong>
                     </p>
                     <p>打开这颗
-                        <router-link to="/news/time-capsule">时间胶囊</router-link>
+                        <router-link to="/time-capsule">时间胶囊</router-link>
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                     </p>
                 </div>
@@ -23,11 +23,10 @@
                         <strong>想查看以前的更新日志？</strong>
                     </p>
                     <p>日志已于2017年8月29日停止更新，你仍可以在
-                        <router-link to="/news/log">这里</router-link> 找到他</p>
+                        <router-link to="/log">这里</router-link> 找到他</p>
                 </div>
                 <div class="notice thanks">
                     <p>Velas News的建成离不开<a href="https://github.com/cogons/issvue" target="_blank">issvue</a>的帮助</p>
-                    <p>数据均从GitHub获取</p>
                 </div>
             </main>
         </div>
@@ -35,12 +34,12 @@
 </template>
 
 <script>
-import NewsSubNav from '../components/SubNav/NewsSubNav'
+import WaveSubNav from '../components/SubNav/WaveSubNav'
 import NewsMain from '../components/News/NewsMain'
 export default {
     name: 'News',
     components: {
-        NewsSubNav,
+        WaveSubNav,
         NewsMain
     }
 }

@@ -14,8 +14,8 @@ export const Mainlinks = [
   {
     route: '/collection',
     isExact: false,
-    iconClass: 'icon-iconcollectionp',
-    name: '收藏'
+    iconClass: 'icon-radio-tower',
+    name: '电波'
   },
   {
     route: '/news',
@@ -30,7 +30,7 @@ export const Mainlinks = [
     name: '探索'
   },
   {
-    route: '/guestbook',
+    route: '/inn',
     isExact: false,
     iconClass: 'icon-bulletin-board',
     name: '留言'

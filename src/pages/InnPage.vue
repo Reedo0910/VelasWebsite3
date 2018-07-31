@@ -78,7 +78,7 @@
     import { getCaptcha } from '@/api/captcha'
     import { setCookie, getCookie, checkCookie, deleteCookie } from '../utils/cookie'
     export default {
-        name: 'Guestbook',
+        name: 'Inn',
         data() {
             return {
                 comments: [],
@@ -148,7 +148,7 @@
                                     id: data.message,
                                     toastOnce: true,
                                     onClosing: function (instance, toast, closedBy) {
-                                        if (!checkCookie('guestbook-verifysys-notice', 'false')) {
+                                        if (!checkCookie('inn-verifysys-notice', 'false')) {
                                             that.$iziToast.show({
                                                 title: '审核系统开发中',
                                                 message: '目前留言会在未经审核的情况下被展示，请注意文明言论哦',
@@ -162,7 +162,7 @@
                                                     ['<button>我知道了</button>', function (instance, toast) {
                                                         instance.hide({
                                                             onClosing: function (instance, toast, closedBy) {
-                                                                setCookie('guestbook-verifysys-notice', 'false', 10)
+                                                                setCookie('inn-verifysys-notice', 'false', 10)
                                                             }
                                                         }, toast, 'verify-sys-notice');
                                                     }]
@@ -172,8 +172,8 @@
                                     }
                                 });
                                 if (saveTag) {
-                                    setCookie('guestbook-name', name, 7);
-                                    setCookie('guestbook-email', email, 7);
+                                    setCookie('inn-name', name, 7);
+                                    setCookie('inn-email', email, 7);
                                     that.isRemembered = true;
                                 } else {
                                     that.form.name = '';
@@ -262,8 +262,8 @@
                 return EmailExp.test(email);
             },
             clearMyInfo() {
-                deleteCookie('guestbook-name');
-                deleteCookie('guestbook-email');
+                deleteCookie('inn-name');
+                deleteCookie('inn-email');
                 this.form.name = '';
                 this.form.email = '';
                 this.isRemembered = false;
@@ -271,9 +271,9 @@
         },
         mounted() {
             this.getMessages();
-            this.form.name = getCookie('guestbook-name');
-            this.form.email = getCookie('guestbook-email');
-            if (getCookie('guestbook-name') || getCookie('guestbook-email')) {
+            this.form.name = getCookie('inn-name');
+            this.form.email = getCookie('inn-email');
+            if (getCookie('inn-name') || getCookie('inn-email')) {
                 this.isRemembered = true;
             }
         },

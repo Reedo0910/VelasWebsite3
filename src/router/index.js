@@ -41,8 +41,8 @@ const TalkPostPage = resovle => {
 const CampPage = resovle => {
     require(['@/pages/CampPage.vue'], resovle)
 };
-const GuestbookPage = resovle => {
-    require(['@/pages/Guestbook.vue'], resovle)
+const InnPage = resovle => {
+    require(['@/pages/InnPage.vue'], resovle)
 };
 
 Vue.use(Router)
@@ -182,9 +182,9 @@ export default new Router({
         }
     },
     {
-        path: '/guestbook',
-        name: 'guestbook-page',
-        component: GuestbookPage,
+        path: '/inn',
+        name: 'inn-page',
+        component: InnPage,
         meta: {
             index: 5,
             title: '留言',

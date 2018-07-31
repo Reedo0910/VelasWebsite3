@@ -90,13 +90,13 @@ $font-size-p:16px; //过渡动画样式
     overflow: hidden;
     box-shadow: 0 0 5px rgba(57, 70, 78, 0.2);
     @include link-transition(0.3s);
+    &.dark-style {
+        background-color: #2b2b2b;
+    }
     &.ontop {
         box-shadow: initial;
         padding-top: 8px;
         background-color: transparent;
-    }
-    &.dark-style {
-        background-color: #2b2b2b;
     }
     &.ontop.dark-style,
     &.dark-style {

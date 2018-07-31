@@ -101,37 +101,6 @@
                     </div>
                     <div class="blankspace"></div>
                 </section>
-                 <section class="flex-section">
-                    <section class="inn-section lt">
-                        <div class="blankspace1"></div>
-                        <div class="blankspace1"></div>
-                        <h2 class="context-big-headtitle">留言板</h2>
-                        <div class="hr"></div>
-                        <p class="context-intro">你有什么话要传达给Velas呢？</p>
-                        <router-link class="arrow-link" to="/inn">
-                            <span>说来听听</span>
-                            <i class="fa fa-angle-right" aria-hidden="true"></i>
-                        </router-link>
-                        <div class="blankspace"></div>
-                        <div class="blankspace1"></div>
-                    </section>
-                    <section class="time-capsule-section dk">
-                        <div class="bg-layer"></div>
-                        <div class="ft-content">
-                            <div class="blankspace1"></div>
-                            <div class="blankspace1"></div>
-                            <h2 class="context-big-headtitle">时间胶囊</h2>
-                            <div class="hr"></div>
-                            <p class="context-intro">聆听时间讲的故事</p>
-                            <router-link class="arrow-link" to="/time-capsule">
-                                <span>查看详情</span>
-                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                            </router-link>
-                            <div class="blankspace"></div>
-                            <div class="blankspace1"></div>
-                        </div>
-                    </section>
-                </section>
                 <section class="camp-section dk">
                     <h2 class="context-big-headtitle">探索</h2>
                     <!-- <p class="jump-icon">www.velascamp.cn</p> -->
@@ -157,6 +126,31 @@
                             <div class="swiper-button-prev  swiper-button-white" slot="button-prev"></div>
                             <div class="swiper-button-next  swiper-button-white" slot="button-next"></div>
                         </swiper>
+                    </div>
+                </section>
+                <section class="inn-section lt">
+                    <div class="blankspace1"></div>
+                    <h2 class="context-big-headtitle">留言板</h2>
+                    <div class="hr"></div>
+                    <p class="context-intro">有什么话想要对Velas说呢？</p>
+                    <router-link class="arrow-link" to="/inn">
+                        <span>让我为你传达</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </router-link>
+                    <div class="blankspace"></div>
+                </section>
+                <section class="time-capsule-section dk">
+                    <div class="bg-layer"></div>
+                    <div class="ft-content">
+                        <div class="blankspace1"></div>
+                        <h2 class="context-big-headtitle">时间胶囊</h2>
+                        <div class="hr"></div>
+                        <p class="context-intro">聆听时间讲的故事</p>
+                        <router-link class="arrow-link" to="/time-capsule">
+                            <span>查看详情</span>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </router-link>
+                        <div class="blankspace"></div>
                     </div>
                 </section>
             </div>

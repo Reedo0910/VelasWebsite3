@@ -118,13 +118,6 @@ export default {
     background-color: #f5f5f5;
 }
 
-.top-space-holeder {
-    margin: 0 auto;
-    padding: 80px 0 10px;
-    height: 1px;
-    width: 80%;
-}
-
 header {
     height: 440px;
     background: #777 url(http://o7a3i0m1t.bkt.clouddn.com/image/website/5-most-beautiful-glaciers-in-norway-3.jpg) no-repeat;

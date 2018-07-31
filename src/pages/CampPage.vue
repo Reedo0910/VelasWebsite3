@@ -214,13 +214,6 @@
       background-color: #f5f5f5;
     }
 
-    .top-space-holeder {
-      margin: 0 auto;
-      padding: 80px 0 10px;
-      height: 1px;
-      width: 80%;
-    }
-
     header {
       width: 80%;
       text-align: center;

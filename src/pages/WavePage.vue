@@ -1,11 +1,11 @@
 <template>
     <transition name="switch-page" mode="out-in">
         <div>
-            <wave-sub-nav></wave-sub-nav>
+            <div class="top-space-holeder"></div>
             <header>
                 <div class="content-mask"></div>
                 <h1>电波站</h1>
-                <p>让你听到我的声音</p>
+                <p>让世界听见我的声音</p>
             </header>
             <main>
                 <section class="memorabilia co">
@@ -64,12 +64,8 @@
 </template>
 
 <script>
-    import WaveSubNav from '../components/SubNav/WaveSubNav';
     export default {
         name: 'Wave',
-        components: {
-            WaveSubNav
-        },
         data() {
             return {
                 mCover: 'http://o7a3i0m1t.bkt.clouddn.com/image/website/collection/cover18-1-15.jpg',

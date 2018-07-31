@@ -52,37 +52,13 @@ export default new Router({
     },
     {
         path: '/wave',
-        component: SubIndex,
-        children: [{
-            path: '/',
-            name: 'wave-page',
-            component: WavePage,
-            meta: {
-                index: 1,
-                title: '电波站',
-                style: 'light'
-            }
-        },
-        {
-            path: 'news',
-            name: 'news-page',
-            component: NewsPage,
-            meta: {
-                index: 1,
-                title: '新闻',
-                style: 'light'
-            }
-        },
-        {
-            path: 'news/post/:id',
-            name: 'news-post',
-            component: NewsPostPage,
-            meta: {
-                index: 1,
-                title: '新闻',
-                style: 'light'
-            }
-        }]
+        name: 'wave-page',
+        component: WavePage,
+        meta: {
+            index: 1,
+            title: '电波站',
+            style: 'light'
+        }
     },
     {
         path: '/talk',
@@ -109,11 +85,36 @@ export default new Router({
         }]
     },
     {
+        path: '/news',
+        component: SubIndex,
+        children: [
+        {
+            path: '/',
+            name: 'news-page',
+            component: NewsPage,
+            meta: {
+                index: 3,
+                title: '新闻',
+                style: 'light'
+            }
+        },
+        {
+            path: 'post/:id',
+            name: 'news-post',
+            component: NewsPostPage,
+            meta: {
+                index: 3,
+                title: '新闻',
+                style: 'light'
+            }
+        }]
+    },
+    {
         path: '/camp',
         name: 'camp-page',
         component: CampPage,
         meta: {
-            index: 3,
+            index: 4,
             title: '探索',
             style: 'light'
         }
@@ -123,7 +124,7 @@ export default new Router({
         name: 'inn-page',
         component: InnPage,
         meta: {
-            index: 4,
+            index: 5,
             title: '留言',
             style: 'light'
         }

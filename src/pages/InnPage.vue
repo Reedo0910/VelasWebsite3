@@ -327,13 +327,6 @@
       display: flex;
     }
 
-    .top-space-holeder {
-      margin: 0 auto;
-      padding: 80px 0 10px;
-      height: 1px;
-      width: 80%;
-    }
-
     .no-btn {
       background-color: transparent;
       border: none;

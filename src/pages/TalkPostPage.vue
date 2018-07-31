@@ -185,13 +185,6 @@
       background-color: #fbfbfb;
     }
 
-    .top-space-holeder {
-      margin: 0 auto;
-      padding: 60px 0 10px;
-      height: 1px;
-      width: 80%;
-    }
-
     .hr {
       width: 50px;
       height: 1px;

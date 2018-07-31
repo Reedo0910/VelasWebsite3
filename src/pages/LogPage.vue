@@ -26,11 +26,4 @@ export default {
 
 <style lang="scss" scoped>
 @import '../assets/scss/log.scss';
-
-.top-space-holeder {
-    margin: 0 auto;
-    padding: 80px 0 10px;
-    height: 1px;
-    width: 80%;
-}
 </style>

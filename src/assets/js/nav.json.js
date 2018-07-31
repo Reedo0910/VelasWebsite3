@@ -18,6 +18,12 @@ export const Mainlinks = [
     name: '博客'
   },
   {
+    route: '/news',
+    isExact: false,
+    iconClass: 'icon-News',
+    name: '新闻'
+  },
+  {
     route: '/camp',
     isExact: false,
     iconClass: 'icon-luyingcamping1',

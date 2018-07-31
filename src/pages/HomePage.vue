@@ -43,7 +43,7 @@
                 <section class="wave-section dk">
                     <h2 class="context-big-headtitle">电波站</h2>
                     <div class="hr"></div>
-                    <p class="context-intro">让你听到我的声音</p>
+                    <p class="context-intro">让世界听见我的声音</p>
                     <router-link class="arrow-link" to="/wave">
                         <span>查看更多</span>
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -69,13 +69,13 @@
                     <h2 class="context-big-headtitle">新闻</h2>
                     <div class="hr"></div>
                     <p class="context-intro">一切关于Velas的新鲜事</p>
-                    <router-link class="arrow-link" to="/wave/news">
+                    <router-link class="arrow-link" to="/news">
                         <span>查看更多</span>
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                     </router-link>
                     <div class="blankspace1"></div>
                     <div class="post-group">
-                        <router-link v-for="(p, index) in newsposts" :key="index" :to="{ path: '/wave/news/post/' + p.number }" class="skeleton">
+                        <router-link v-for="(p, index) in newsposts" :key="index" :to="{ path: '/news/post/' + p.number }" class="skeleton">
                             <transition name="fade">
                                 <div class="post" v-if="isNewsLoaded" :style="{'background-image': 'url(' + p.image + ')'}">
                                     <div class="post-mask"></div>
@@ -83,7 +83,7 @@
                                         <p class="date">{{ p.date }}</p>
                                         <h3 class="title">{{ p.title }}</h3>
                                         <p class="body">{{ p.body }}</p>
-                                        <router-link class="arrow-link" :to="{ path: '/wave/news/post/' + p.number }">
+                                        <router-link class="arrow-link" :to="{ path: '/news/post/' + p.number }">
                                             <span>阅读全文</span>
                                             <i class="fa fa-angle-right" aria-hidden="true"></i>
                                         </router-link>

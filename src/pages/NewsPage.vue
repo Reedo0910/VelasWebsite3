@@ -1,7 +1,7 @@
 <template>
     <transition name="switch-page" mode="out-in">
         <div>
-            <wave-sub-nav></wave-sub-nav>
+            <div class="top-space-holeder"></div>
             <header>
                 <div class="content-mask"></div>
                 <h1>每周新闻</h1>
@@ -34,12 +34,10 @@
 </template>
 
 <script>
-import WaveSubNav from '../components/SubNav/WaveSubNav'
 import NewsMain from '../components/News/NewsMain'
 export default {
     name: 'News',
     components: {
-        WaveSubNav,
         NewsMain
     }
 }

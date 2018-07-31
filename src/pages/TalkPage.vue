@@ -49,13 +49,6 @@
       opacity: 0;
     }
 
-    .top-space-holeder {
-      margin: 0 auto;
-      padding: 80px 0 10px;
-      height: 1px;
-      width: 80%;
-    }
-
     header {
       height: 440px;
       background: #777

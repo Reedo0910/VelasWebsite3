@@ -6,6 +6,7 @@ import router from './router'
 import 'babel-polyfill';
 import NProgress from 'nprogress'
 import iziToast from './utils/iziToastPlugin';
+import './assets/css/global.css'
 
 Vue.config.productionTip = false
 

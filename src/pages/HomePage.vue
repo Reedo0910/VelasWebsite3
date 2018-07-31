@@ -75,7 +75,7 @@
                     </router-link>
                     <div class="blankspace1"></div>
                     <div class="post-group">
-                        <router-link v-for="(p, index) in newsposts" :key="index" :to="{ path: '/wave/news/' + p.number }" class="skeleton">
+                        <router-link v-for="(p, index) in newsposts" :key="index" :to="{ path: '/wave/news/post/' + p.number }" class="skeleton">
                             <transition name="fade">
                                 <div class="post" v-if="isNewsLoaded" :style="{'background-image': 'url(' + p.image + ')'}">
                                     <div class="post-mask"></div>
@@ -83,7 +83,7 @@
                                         <p class="date">{{ p.date }}</p>
                                         <h3 class="title">{{ p.title }}</h3>
                                         <p class="body">{{ p.body }}</p>
-                                        <router-link class="arrow-link" :to="{ path: '/wave/news/' + p.number }">
+                                        <router-link class="arrow-link" :to="{ path: '/wave/news/post/' + p.number }">
                                             <span>阅读全文</span>
                                             <i class="fa fa-angle-right" aria-hidden="true"></i>
                                         </router-link>

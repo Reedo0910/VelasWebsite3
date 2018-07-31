@@ -74,7 +74,7 @@ export default new Router({
             }
         },
         {
-            path: 'news/:id',
+            path: 'news/post/:id',
             name: 'news-post',
             component: NewsPostPage,
             meta: {

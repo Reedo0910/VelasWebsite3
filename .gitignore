@@ -11,6 +11,7 @@ Velas.conf
 etc/
 src/assets/js/read_only_token.js
 config/
+package-lock.json
 
 # Editor directories and files
 .vscode

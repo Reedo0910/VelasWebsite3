@@ -1,14 +1,14 @@
 # Velas (2018 Version)
 
-### Because of the introduction of backend server, the repository of new Velas (Velas 5) is now private. (The url below is still available.)
+### Because of the introduction of the backend server, the repository of new Velas (Velas 5) is now private. (The url below is still available.)
 
 Velas Website 2018 Update based on Vue.
 
-With a new responsive design.
+With a new responsive web design.
 
 More pages are coming soon!
 
-**View this on [www.velas.xyz](http://www.velas.xyz/) (Chinese Only)**
+**View this on [www.velas.xyz](http://www.velas.xyz/) (Simplified Chinese Only)**
 
 ## Snapshot
 

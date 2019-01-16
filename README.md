@@ -1,6 +1,6 @@
 # Velas (2018 Version)
 
-### Because of the introduction of the backend server, the repository of new Velas (Velas 5) is now private. (The url below is still available.)
+### Because of the introduction of the backend server, the repository of new Velas (Velas 5) is now private. (The url below is still available, but it points to the current Velas.)
 
 Velas Website 2018 Update based on Vue.
 

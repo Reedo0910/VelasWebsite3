@@ -8,7 +8,7 @@ With a new responsive web design.
 
 More pages are coming soon!
 
-**View this on [www.velas.xyz](http://www.velas.xyz/) (Simplified Chinese Only)**
+**View this on [www.velasx.com](https://www.velasx.com/) (Simplified Chinese Only)**
 
 ## Snapshot
 
